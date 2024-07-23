@@ -1,0 +1,33 @@
+[remap]
+
+importer="font_data_dynamic"
+type="FontFile"
+uid="uid://dyl32tip5vui4"
+path="res://.godot/imported/Abaddon Light.ttf-33302f45d74dd4bbe7347db3df3c4477.fontdata"
+
+[deps]
+
+source_file="res://Assets/Sprites/Fonts/Abaddon_Fonts_v1.2/Abaddon Light.ttf"
+dest_files=["res://.godot/imported/Abaddon Light.ttf-33302f45d74dd4bbe7347db3df3c4477.fontdata"]
+
+[params]
+
+Rendering=null
+antialiasing=1
+generate_mipmaps=false
+multichannel_signed_distance_field=false
+msdf_pixel_range=8
+msdf_size=48
+allow_system_fallback=true
+force_autohinter=false
+hinting=1
+subpixel_positioning=1
+oversampling=0.0
+Fallbacks=null
+fallbacks=[]
+Compress=null
+compress=true
+preload=[]
+language_support={}
+script_support={}
+opentype_features={}
