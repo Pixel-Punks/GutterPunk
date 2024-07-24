@@ -3,5 +3,6 @@
 [ext_resource type="Script" path="res://scripts/entities/components/WeaponComponent.gd" id="1_rogtg"]
 
 [node name="WeaponComponent" type="Node2D"]
+z_index = 2
 y_sort_enabled = true
 script = ExtResource("1_rogtg")

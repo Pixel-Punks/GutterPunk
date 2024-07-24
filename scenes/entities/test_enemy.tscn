@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dddi5pqj0cjoi"]
+
+[ext_resource type="PackedScene" uid="uid://rx0rdvf2oh53" path="res://scenes/entities/base/enemy.tscn" id="1_rnd2m"]
+[ext_resource type="Texture2D" uid="uid://ckpfn62meb6ja" path="res://icon.svg" id="2_qc1f3"]
+[ext_resource type="PackedScene" uid="uid://bw8nak3lvoi3i" path="res://scenes/components/path_finding_component.tscn" id="3_jq8tn"]
+
+[node name="test_enemy" instance=ExtResource("1_rnd2m")]
+
+[node name="FlashingSpriteComponent" parent="." index="1" node_paths=PackedStringArray("sprite")]
+sprite = NodePath("../Sprite2D")
+
+[node name="HealthComponent" parent="." index="2"]
+MAX_HEALTH = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="3"]
+texture = ExtResource("2_qc1f3")
+
+[node name="PathFindingComponent" parent="." index="4" node_paths=PackedStringArray("enemy") instance=ExtResource("3_jq8tn")]
+enemy = NodePath("..")

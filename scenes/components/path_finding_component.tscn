@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://bw8nak3lvoi3i"]
+
+[ext_resource type="Script" path="res://scripts/entities/components/PathFindingComponent.gd" id="1_iyb1q"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pyqcl"]
+radius = 130.015
+
+[node name="PathFindingComponent" type="Node2D" node_paths=PackedStringArray("nav")]
+script = ExtResource("1_iyb1q")
+nav = NodePath("NavigationAgent2D")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+navigation_layers = 32
+avoidance_layers = 0
+avoidance_mask = 0
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 33
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_pyqcl")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

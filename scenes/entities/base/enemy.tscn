@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://rx0rdvf2oh53"]
+
+[ext_resource type="Script" path="res://scripts/entities/base/enemy.gd" id="1_nrgb2"]
+[ext_resource type="PackedScene" uid="uid://lthvbl7wgup7" path="res://scenes/components/hitbox_component.tscn" id="2_ohq10"]
+[ext_resource type="PackedScene" uid="uid://oqbyes5tx2jp" path="res://scenes/components/flashing_sprite_component.tscn" id="3_x5r8o"]
+[ext_resource type="PackedScene" uid="uid://swvxckbky45x" path="res://scenes/components/health_component.tscn" id="4_sy1yc"]
+
+[node name="enemy" type="CharacterBody2D"]
+script = ExtResource("1_nrgb2")
+
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("2_ohq10")]
+health_component = NodePath("../HealthComponent")
+
+[node name="FlashingSpriteComponent" parent="." instance=ExtResource("3_x5r8o")]
+
+[node name="HealthComponent" parent="." instance=ExtResource("4_sy1yc")]
+
+[connection signal="hp_reached_zero" from="HealthComponent" to="." method="_on_health_component_hp_reached_zero"]
+[connection signal="took_damage" from="HealthComponent" to="." method="_on_health_component_took_damage"]
+[connection signal="took_damage" from="HealthComponent" to="FlashingSpriteComponent" method="_on_health_component_took_damage"]
