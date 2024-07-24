@@ -1,0 +1,73 @@
+[gd_scene load_steps=8 format=3 uid="uid://bm3obvhh2cyfr"]
+
+[ext_resource type="Script" path="res://scripts/menues/pause_menu.gd" id="1_2cf8a"]
+[ext_resource type="Theme" uid="uid://d2oa4mfybj5hy" path="res://Assets/Themes/startmenu_btn_start.tres" id="2_ynhyw"]
+[ext_resource type="Theme" uid="uid://cdr0f37ukoy1b" path="res://Assets/Themes/startmenu_btn_option.tres" id="3_qfgag"]
+[ext_resource type="Theme" uid="uid://d3nm3wojms07c" path="res://Assets/Themes/startmenu_btn_exit.tres" id="4_0uk3b"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8w2vj"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Theme" id="Theme_7163a"]
+Panel/styles/panel = SubResource("StyleBoxFlat_8w2vj")
+
+[sub_resource type="Theme" id="Theme_stw5x"]
+VBoxContainer/constants/separation = 50
+
+[node name="PopupMenu" type="Control"]
+process_mode = 2
+z_index = 99
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2cf8a")
+
+[node name="Panel" type="Panel" parent="."]
+process_mode = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -735.0
+offset_bottom = -195.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_7163a")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -114.0
+offset_top = -40.5
+offset_right = 114.0
+offset_bottom = 40.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_stw5x")
+
+[node name="ResumeButton" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("2_ynhyw")
+text = "Resume
+"
+
+[node name="SettingsButton" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_qfgag")
+text = "Settings"
+
+[node name="ExitButton" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_0uk3b")
+text = "Home"
+
+[connection signal="pressed" from="Panel/VBoxContainer/ResumeButton" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
