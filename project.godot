@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg")
+
 [input]
 
 player_attack={
@@ -67,6 +71,3 @@ open_menu={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg")
