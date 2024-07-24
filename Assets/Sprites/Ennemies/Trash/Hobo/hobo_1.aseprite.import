@@ -3,12 +3,12 @@
 importer="aseprite_wizard.plugin"
 type="SpriteFrames"
 uid="uid://c1y5dvupgojxq"
-path="res://.godot/imported/hobo_1.aseprite-c35368aa20d0c64b820fc73fd8ee961c.res"
+path="res://.godot/imported/hobo_1.aseprite-940dc43c4ba65436a4a6914323d06176.res"
 
 [deps]
 
-source_file="res://Assets/Sprites/Ennemies/Hobo/hobo_1.aseprite"
-dest_files=["res://.godot/imported/hobo_1.aseprite-c35368aa20d0c64b820fc73fd8ee961c.res"]
+source_file="res://Assets/Sprites/Ennemies/Trash/Hobo/hobo_1.aseprite"
+dest_files=["res://.godot/imported/hobo_1.aseprite-940dc43c4ba65436a4a6914323d06176.res"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cf8fjr7yym6os"
-path="res://.godot/imported/cop_1.png-5a9696e3b5a22d6546aff1b679190518.ctex"
+path="res://.godot/imported/cop_1.png-8e845c1e8153fb04684bf290d932f3d2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Ennemies/Cops/cop_1.png"
-dest_files=["res://.godot/imported/cop_1.png-5a9696e3b5a22d6546aff1b679190518.ctex"]
+source_file="res://Assets/Sprites/Ennemies/Trash/Cops/cop_1.png"
+dest_files=["res://.godot/imported/cop_1.png-8e845c1e8153fb04684bf290d932f3d2.ctex"]
 
 [params]
 
