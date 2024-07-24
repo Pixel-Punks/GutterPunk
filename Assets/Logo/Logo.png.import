@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cuyyuyv34berj"
-path="res://.godot/imported/Caddy.png-1d4729f2993a13dc85a9e27e2765098d.ctex"
+uid="uid://carpvkid7pdqw"
+path="res://.godot/imported/Logo.png-6288b94522d9de969948f66162468edc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Items/Equipment/Weapon/Caddy.png"
-dest_files=["res://.godot/imported/Caddy.png-1d4729f2993a13dc85a9e27e2765098d.ctex"]
+source_file="res://Assets/Logo/Logo.png"
+dest_files=["res://.godot/imported/Logo.png-6288b94522d9de969948f66162468edc.ctex"]
 
 [params]
 
