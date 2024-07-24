@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/weapons/crowbar.gd" id="1_wr8s1"]
 [ext_resource type="PackedScene" uid="uid://cfaoy8ryqsvvl" path="res://scenes/components/weapon_component.tscn" id="2_72yaw"]
-[ext_resource type="SpriteFrames" uid="uid://d1vwxp3r3x1fy" path="res://Assets/Sprites/Items/Equipment/Weapon/crowbar/crowbar.tres" id="3_35hvj"]
+[ext_resource type="SpriteFrames" uid="uid://dmgog7d7otomv" path="res://Assets/Sprites/Items/Equipment/Weapon/Crowbar/crowbar.aseprite" id="3_o6bgr"]
 
 [node name="CrowBar" type="Node2D" node_paths=PackedStringArray("weapon")]
 z_index = 1
@@ -22,15 +22,17 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="WeaponComponent/Area2D"]
 position = Vector2(-104, -23)
 scale = Vector2(155037, 119528)
-polygon = PackedVector2Array(0.000161252, 0.000184057, 0.000154802, 0.000853353, 0.000844959, 0.000769691, 0.00105136, 0.000184057, 0.000806259, -0.000359747, 0.000154802, -0.000468508)
+polygon = PackedVector2Array(0.000161252, 0.000184057, 0.000154802, 0.000853353, 0.00109651, 0.000987216, 0.00125776, 0.000184057, 0.000967511, -0.000736229, 0.000154802, -0.000468508)
 
 [node name="AttackSprites" type="AnimatedSprite2D" parent="WeaponComponent"]
 position = Vector2(3.8147e-06, -1)
 rotation = 1.5708
-scale = Vector2(7, 7)
-sprite_frames = ExtResource("3_35hvj")
-animation = &"ltr"
-frame = 5
-frame_progress = 1.0
+scale = Vector2(5, 5)
+sprite_frames = ExtResource("3_o6bgr")
+animation = &"RTL"
+metadata/_aseprite_wizard_interface_config_ = {
+"layer_section": false,
+"output_section": true
+}
 
 [connection signal="area_entered" from="WeaponComponent/Area2D" to="WeaponComponent" method="_on_area_2d_area_entered"]

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/entities/player.gd" id="1_sjrlc"]
 [ext_resource type="PackedScene" uid="uid://lthvbl7wgup7" path="res://scenes/components/hitbox_component.tscn" id="2_5wbem"]
 [ext_resource type="PackedScene" uid="uid://swvxckbky45x" path="res://scenes/components/health_component.tscn" id="3_ckffq"]
-[ext_resource type="Texture2D" uid="uid://cergoelod2md6" path="res://Assets/Sprites/Player/fred.png" id="4_yjnwf"]
+[ext_resource type="Texture2D" uid="uid://b0kgrvl2pd071" path="res://Assets/Sprites/Player/fred.png" id="4_yjnwf"]
 [ext_resource type="PackedScene" uid="uid://c3lv1vx7mqof7" path="res://scenes/weapons/crowbar.tscn" id="5_kxjh0"]
 [ext_resource type="PackedScene" uid="uid://bm3obvhh2cyfr" path="res://scenes/menues/popup_menu.tscn" id="6_6xkec"]
 
@@ -33,8 +33,6 @@ shape = SubResource("RectangleShape2D_d7mgq")
 scale = Vector2(5, 5)
 texture = ExtResource("4_yjnwf")
 
-[node name="CrowBar" parent="." instance=ExtResource("5_kxjh0")]
-
 [node name="HitBox" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 0.5)
 shape = SubResource("RectangleShape2D_vv8u7")
@@ -47,5 +45,7 @@ offset_left = 363.212
 offset_top = 103.848
 offset_right = 363.212
 offset_bottom = 103.848
+
+[node name="CrowBar" parent="." instance=ExtResource("5_kxjh0")]
 
 [connection signal="pause_menu" from="." to="Camera2D/PopupMenu" method="_on_player_pause_menu"]
