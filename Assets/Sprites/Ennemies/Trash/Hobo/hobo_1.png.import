@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0kgrvl2pd071"
-path="res://.godot/imported/fred.png-b6d39d5c2c5d1e514c6e586c26cd45c7.ctex"
+uid="uid://ppixbad0xxuw"
+path="res://.godot/imported/hobo_1.png-612b31acf5790551d79219774104a26e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Player/fred.png"
-dest_files=["res://.godot/imported/fred.png-b6d39d5c2c5d1e514c6e586c26cd45c7.ctex"]
+source_file="res://Assets/Sprites/Ennemies/Hobo/hobo_1.png"
+dest_files=["res://.godot/imported/hobo_1.png-612b31acf5790551d79219774104a26e.ctex"]
 
 [params]
 
