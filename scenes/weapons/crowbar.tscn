@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://c3lv1vx7mqof7"]
+
+[ext_resource type="Script" path="res://scripts/weapons/crowbar.gd" id="1_wr8s1"]
+[ext_resource type="PackedScene" uid="uid://cfaoy8ryqsvvl" path="res://scenes/components/weapon_component.tscn" id="2_72yaw"]
+[ext_resource type="SpriteFrames" uid="uid://d1vwxp3r3x1fy" path="res://Assets/Sprites/Items/Equipment/Weapon/crowbar/crowbar.tres" id="3_35hvj"]
+
+[node name="CrowBar" type="Node2D" node_paths=PackedStringArray("weapon")]
+z_index = 1
+y_sort_enabled = true
+script = ExtResource("1_wr8s1")
+weapon = NodePath("WeaponComponent")
+
+[node name="WeaponComponent" parent="." node_paths=PackedStringArray("hurtbox", "animated_sprites") instance=ExtResource("2_72yaw")]
+position = Vector2(79, 1)
+hurtbox = NodePath("Area2D/CollisionShape2D")
+animated_sprites = NodePath("AttackSprites")
+
+[node name="Area2D" type="Area2D" parent="WeaponComponent"]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="WeaponComponent/Area2D"]
+position = Vector2(-104, -23)
+scale = Vector2(155037, 119528)
+polygon = PackedVector2Array(0.000161252, 0.000184057, 0.000154802, 0.000853353, 0.000844959, 0.000769691, 0.00105136, 0.000184057, 0.000806259, -0.000359747, 0.000154802, -0.000468508)
+
+[node name="AttackSprites" type="AnimatedSprite2D" parent="WeaponComponent"]
+position = Vector2(3.8147e-06, -1)
+rotation = 1.5708
+scale = Vector2(7, 7)
+sprite_frames = ExtResource("3_35hvj")
+animation = &"ltr"
+frame = 5
+frame_progress = 1.0
+
+[connection signal="area_entered" from="WeaponComponent/Area2D" to="WeaponComponent" method="_on_area_2d_area_entered"]
