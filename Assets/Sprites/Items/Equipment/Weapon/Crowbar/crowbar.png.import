@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2864s7f37kc6"
-path="res://.godot/imported/fred_hand.png-a6478f087b75d7965f4528edee0e1859.ctex"
+uid="uid://duxwmyuwiv6cj"
+path="res://.godot/imported/crowbar.png-0dd037454291fefa862c46618aef04db.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Player/fred_hand.png"
-dest_files=["res://.godot/imported/fred_hand.png-a6478f087b75d7965f4528edee0e1859.ctex"]
+source_file="res://Assets/Sprites/Items/Equipment/Weapon/Crowbar/crowbar.png"
+dest_files=["res://.godot/imported/crowbar.png-0dd037454291fefa862c46618aef04db.ctex"]
 
 [params]
 

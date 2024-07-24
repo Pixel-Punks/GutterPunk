@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://duxwmyuwiv6cj"
-path="res://.godot/imported/crowbar.png-004fc36ffa229a3bf09176cecf61b37e.ctex"
+uid="uid://cbewt80e6qunj"
+path="res://.godot/imported/pipe.png-c5118b48a8b10de534464ab2ef2d28cd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Items/Equipment/Weapon/crowbar.png"
-dest_files=["res://.godot/imported/crowbar.png-004fc36ffa229a3bf09176cecf61b37e.ctex"]
+source_file="res://Assets/Sprites/Items/Equipment/Weapon/Pipe/pipe.png"
+dest_files=["res://.godot/imported/pipe.png-c5118b48a8b10de534464ab2ef2d28cd.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cbewt80e6qunj"
-path="res://.godot/imported/pipe.png-275786d511a13ddd72537636b228f19f.ctex"
+uid="uid://cuyyuyv34berj"
+path="res://.godot/imported/Caddy.png-9711ba40405a2c1eac9d7e66d3e899ea.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Items/Equipment/Weapon/pipe.png"
-dest_files=["res://.godot/imported/pipe.png-275786d511a13ddd72537636b228f19f.ctex"]
+source_file="res://Assets/Sprites/Items/Equipment/Weapon/Caddy/Caddy.png"
+dest_files=["res://.godot/imported/Caddy.png-9711ba40405a2c1eac9d7e66d3e899ea.ctex"]
 
 [params]
 
