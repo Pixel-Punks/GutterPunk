@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://b3btsn8t46j5k"]
+
+[ext_resource type="Script" path="res://scripts/entities/base/breakable_object.gd" id="1_of6b3"]
+[ext_resource type="PackedScene" uid="uid://swvxckbky45x" path="res://scenes/components/health_component.tscn" id="2_ds01k"]
+[ext_resource type="PackedScene" uid="uid://lthvbl7wgup7" path="res://scenes/components/hitbox_component.tscn" id="3_36w2u"]
+[ext_resource type="PackedScene" uid="uid://oqbyes5tx2jp" path="res://scenes/components/flashing_sprite_component.tscn" id="4_bpauf"]
+
+[node name="BreakableObject" type="StaticBody2D"]
+y_sort_enabled = true
+script = ExtResource("1_of6b3")
+
+[node name="HealthComponent" parent="." instance=ExtResource("2_ds01k")]
+
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_36w2u")]
+collision_layer = 8
+collision_mask = 8
+health_component = NodePath("../HealthComponent")
+
+[node name="FlashingSpriteComponent" parent="." instance=ExtResource("4_bpauf")]
+
+[connection signal="hp_reached_zero" from="HealthComponent" to="." method="_on_health_component_hp_reached_zero"]
+[connection signal="took_damage" from="HealthComponent" to="." method="_on_health_component_took_damage"]
+[connection signal="took_damage" from="HealthComponent" to="FlashingSpriteComponent" method="_on_health_component_took_damage"]
+[connection signal="area_entered" from="HitboxComponent" to="HitboxComponent" method="_on_area_entered"]
+[connection signal="body_entered" from="HitboxComponent" to="HitboxComponent" method="_on_body_entered"]

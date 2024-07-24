@@ -1,22 +1,19 @@
 extends CharacterBody2D
 
-@export var weapon : Weapon
+@export var weapon : Node2D
 
 @export var speed = 400
 
-func _physics_process(delta):
-	rotate_weapon()
+func _physics_process(_delta):
 	handle_attack()
-	handle_movement(delta)
-
-func rotate_weapon():
-	%Hand.look_at(get_global_mouse_position())
+	handle_movement()
 
 func handle_attack():
 	if Input.is_action_pressed("player_attack"):
-		weapon.attack()
+		if weapon && weapon.has_method(("attack")):
+			weapon.attack()
 
-func handle_movement(delta):
+func handle_movement():
 	var input_direction = Input.get_vector(
 		"player_move_left",
 		"player_move_right", 

@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://cxwnr5jjjgxix"]
+
+[ext_resource type="PackedScene" uid="uid://b3btsn8t46j5k" path="res://scenes/entities/base/breakable_object.tscn" id="1_anvki"]
+[ext_resource type="Texture2D" uid="uid://8y10h2kb3ohn" path="res://Assets/Sprites/InteractiveTiles/pfp_dustbin.png" id="2_wg5ma"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_enafy"]
+radius = 43.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w56qy"]
+radius = 44.1022
+
+[node name="GarbageBin" instance=ExtResource("1_anvki")]
+collision_layer = 32
+collision_mask = 32
+
+[node name="HealthComponent" parent="." index="0"]
+MAX_HEALTH = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" index="0"]
+z_index = 1
+shape = SubResource("CircleShape2D_enafy")
+
+[node name="FlashingSpriteComponent" parent="." index="2" node_paths=PackedStringArray("sprite")]
+sprite = NodePath("../Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="3"]
+y_sort_enabled = true
+scale = Vector2(5, 5)
+texture = ExtResource("2_wg5ma")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="4"]
+shape = SubResource("CircleShape2D_w56qy")

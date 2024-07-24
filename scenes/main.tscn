@@ -1,8 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://7ctjg8b40g38"]
+[gd_scene load_steps=3 format=3 uid="uid://7ctjg8b40g38"]
 
 [ext_resource type="PackedScene" uid="uid://c3e2ieqre2k83" path="res://scenes/entities/player.tscn" id="1_3pje7"]
+[ext_resource type="PackedScene" uid="uid://cxwnr5jjjgxix" path="res://scenes/entities/garbage_bin.tscn" id="2_18bym"]
 
 [node name="main" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_3pje7")]
 position = Vector2(302, 287)
+
+[node name="GarbageBin" parent="." instance=ExtResource("2_18bym")]
+y_sort_enabled = false
+position = Vector2(767, 363)
+
+[node name="GarbageBin2" parent="." instance=ExtResource("2_18bym")]
+y_sort_enabled = false
+position = Vector2(492, 521)
