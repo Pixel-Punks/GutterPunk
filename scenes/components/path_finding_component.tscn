@@ -11,8 +11,9 @@ nav = NodePath("NavigationAgent2D")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 navigation_layers = 32
+avoidance_enabled = true
 avoidance_layers = 0
-avoidance_mask = 0
+avoidance_mask = 40
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 33
@@ -22,3 +23,4 @@ collision_mask = 32
 shape = SubResource("CircleShape2D_pyqcl")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

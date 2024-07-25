@@ -9,5 +9,5 @@ func _process(_delta):
 func rotate_weapon():
 	look_at(get_global_mouse_position())
 
-func attack():
-	weapon.attack()
+func attack(strength : int):
+	weapon.attack(strength)

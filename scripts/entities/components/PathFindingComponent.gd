@@ -10,9 +10,9 @@ func _physics_process(delta):
 		nav.target_position = target_area.global_position
 		print_debug(nav.target_position)
 	var direction = (nav.get_next_path_position() - global_position).normalized()
-	enemy.translate(direction * 200 * delta)
+	enemy.velocity = direction * 100
+	enemy.move_and_slide()
 
-
-func _on_area_2d_area_entered(area):
-	if area is HitBoxComponent:
-		target_area = area
+func _on_area_2d_body_entered(body):
+	if body is Player:
+		target_area = body

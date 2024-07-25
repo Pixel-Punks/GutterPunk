@@ -14,8 +14,8 @@ size = Vector2(81, 80)
 size = Vector2(81, 81)
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("weapon")]
-scale = Vector2(0.83973, 0.99183)
 z_index = 1
+scale = Vector2(0.83973, 0.99183)
 collision_layer = 32
 collision_mask = 32
 script = ExtResource("1_sjrlc")
@@ -42,14 +42,8 @@ shape = SubResource("RectangleShape2D_vv8u7")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-
 [node name="PopupMenu" parent="Camera2D" instance=ExtResource("6_6xkec")]
 visible = false
-offset_left = 363.212
-offset_top = 103.848
-offset_right = 363.212
-offset_bottom = 103.848
 
 [node name="CrowBar" parent="." instance=ExtResource("5_kxjh0")]
 
