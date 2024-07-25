@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://wvflhfl7jfsr"]
+
+[ext_resource type="PackedScene" uid="uid://c8w2a75gykdsd" path="res://rooms/streets/street_down.tscn" id="1_6ruyw"]
+[ext_resource type="PackedScene" uid="uid://b8mtdggkhdrty" path="res://rooms/streets/street_line.tscn" id="2_2vox1"]
+[ext_resource type="PackedScene" uid="uid://yqfmkglmfrmn" path="res://rooms/streets/street_up.tscn" id="3_cgqqb"]
+
+[node name="street_lab" type="Node2D"]
+position = Vector2(81, 44)
+
+[node name="street_down" parent="." instance=ExtResource("1_6ruyw")]
+position = Vector2(0, 384)
+
+[node name="street_line" parent="." instance=ExtResource("2_2vox1")]
+position = Vector2(0, 192)
+
+[node name="street_up" parent="." instance=ExtResource("3_cgqqb")]
