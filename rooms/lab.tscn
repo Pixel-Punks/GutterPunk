@@ -9,7 +9,8 @@
 vertices = PackedVector2Array(885, 563, 889, 723, 653, 720, 646, 775, 467, 773, 469, 722, 1196, 384, 1191, 19, 2080, 17, 2085, 1042, 1193, 1039, 1188, 565, 885, 384, 231, 717, 228, 100, 883, 100)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(3, 4, 5, 2), PackedInt32Array(6, 7, 8, 9), PackedInt32Array(6, 9, 10, 11), PackedInt32Array(12, 6, 11, 0), PackedInt32Array(2, 5, 13, 14, 15, 12, 0)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(218, 91, 222, 727, 459, 732, 457, 783, 656, 786, 662, 730, 900, 734, 895, 573, 1178, 575, 1184, 1049, 2096, 1053, 2090, 7, 1181, 10, 1186, 374, 895, 374, 893, 90)])
-source_geometry_group_name = &"navigation_polygon_source_group"
+source_geometry_mode = 1
+source_geometry_group_name = &"navigation"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s38d4"]
 radius = 59.2284
@@ -24,9 +25,20 @@ position = Vector2(840, 281)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_4jitd")
-navigation_layers = 32
 
-[node name="TileMap" type="TileMap" parent="NavigationRegion2D"]
+[node name="test_enemy" parent="." instance=ExtResource("5_pqin2")]
+position = Vector2(1650, 506)
+collision_layer = 32
+collision_mask = 32
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="test_enemy"]
+shape = SubResource("CircleShape2D_s38d4")
+
+[node name="test_enemy2" parent="." instance=ExtResource("5_pqin2")]
+position = Vector2(1422, 372)
+
+[node name="TileMap" type="TileMap" parent="." groups=["navigation"]]
+visible = false
 scale = Vector2(5, 5)
 tile_set = ExtResource("3_1wc68")
 format = 2
@@ -40,14 +52,3 @@ layer_2/tile_data = PackedInt32Array(524294, 720896, 19, 524295, 786432, 19, 589
 layer_3/name = "furniture"
 layer_3/navigation_enabled = false
 layer_3/tile_data = PackedInt32Array(131076, 393216, 18)
-
-[node name="test_enemy" parent="." instance=ExtResource("5_pqin2")]
-position = Vector2(1650, 506)
-collision_layer = 32
-collision_mask = 32
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="test_enemy"]
-shape = SubResource("CircleShape2D_s38d4")
-
-[node name="test_enemy2" parent="." instance=ExtResource("5_pqin2")]
-position = Vector2(1422, 372)

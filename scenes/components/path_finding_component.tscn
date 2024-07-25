@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/entities/components/PathFindingComponent.gd" id="1_iyb1q"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pyqcl"]
-radius = 130.015
+radius = 506.142
 
 [node name="PathFindingComponent" type="Node2D" node_paths=PackedStringArray("nav")]
 script = ExtResource("1_iyb1q")
@@ -12,7 +12,7 @@ nav = NodePath("NavigationAgent2D")
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 navigation_layers = 32
 avoidance_enabled = true
-avoidance_layers = 0
+avoidance_layers = 32
 avoidance_mask = 40
 
 [node name="Area2D" type="Area2D" parent="."]

@@ -1,13 +1,14 @@
 [gd_scene load_steps=5 format=3 uid="uid://dddi5pqj0cjoi"]
 
 [ext_resource type="PackedScene" uid="uid://rx0rdvf2oh53" path="res://scenes/entities/base/enemy.tscn" id="1_rnd2m"]
-[ext_resource type="Texture2D" uid="uid://ckpfn62meb6ja" path="res://icon.svg" id="2_qc1f3"]
+[ext_resource type="Texture2D" uid="uid://ppixbad0xxuw" path="res://Assets/Sprites/Ennemies/Trash/Hobo/hobo_1.png" id="2_mq5tf"]
 [ext_resource type="PackedScene" uid="uid://bw8nak3lvoi3i" path="res://scenes/components/path_finding_component.tscn" id="3_jq8tn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ye7rg"]
-radius = 64.2806
+radius = 47.0106
 
 [node name="test_enemy" instance=ExtResource("1_rnd2m")]
+z_index = 1
 collision_layers = PackedInt32Array(6)
 mask_layers = PackedInt32Array(6)
 
@@ -25,7 +26,8 @@ sprite = NodePath("../Sprite2D")
 MAX_HEALTH = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="." index="3"]
-texture = ExtResource("2_qc1f3")
+scale = Vector2(5, 5)
+texture = ExtResource("2_mq5tf")
 
 [node name="PathFindingComponent" parent="." index="4" node_paths=PackedStringArray("enemy") instance=ExtResource("3_jq8tn")]
 enemy = NodePath("..")
