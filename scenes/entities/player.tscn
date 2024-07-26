@@ -12,13 +12,13 @@ size = Vector2(16, 16)
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("weapon")]
 z_index = 1
-collision_layer = 32
+collision_layer = 64
 collision_mask = 32
 script = ExtResource("1_sjrlc")
 weapon = NodePath("CrowBar")
 
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("2_5wbem")]
-collision_layer = 32
+collision_layer = 64
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
@@ -38,5 +38,9 @@ visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_d7mgq")
+
+[node name="ProjectileTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
 
 [connection signal="pause_menu" from="." to="Camera2D/PopupMenu" method="_on_player_pause_menu"]
