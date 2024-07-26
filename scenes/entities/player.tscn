@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c3e2ieqre2k83"]
+[gd_scene load_steps=8 format=3 uid="uid://c3e2ieqre2k83"]
 
 [ext_resource type="Script" path="res://scripts/entities/player.gd" id="1_sjrlc"]
 [ext_resource type="PackedScene" uid="uid://lthvbl7wgup7" path="res://scenes/components/hitbox_component.tscn" id="2_5wbem"]
@@ -8,34 +8,26 @@
 [ext_resource type="PackedScene" uid="uid://bm3obvhh2cyfr" path="res://scenes/menues/pause_full_menu.tscn" id="6_6xkec"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d7mgq"]
-size = Vector2(81, 80)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vv8u7"]
-size = Vector2(81, 81)
+size = Vector2(16, 16)
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("weapon")]
-scale = Vector2(0.83973, 0.99183)
+z_index = 1
 collision_layer = 32
 collision_mask = 32
 script = ExtResource("1_sjrlc")
 weapon = NodePath("CrowBar")
 
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("2_5wbem")]
+collision_layer = 32
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
-position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_d7mgq")
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_ckffq")]
 
 [node name="PlayerSprite" type="Sprite2D" parent="."]
-scale = Vector2(5, 5)
 texture = ExtResource("4_yjnwf")
-
-[node name="HitBox" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 0.5)
-shape = SubResource("RectangleShape2D_vv8u7")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -49,5 +41,8 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="CrowBar" parent="." instance=ExtResource("5_kxjh0")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_d7mgq")
 
 [connection signal="pause_menu" from="." to="Camera2D/PopupMenu" method="_on_player_pause_menu"]

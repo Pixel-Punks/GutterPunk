@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://coy0tem2pj82c"
-path="res://.godot/imported/pfp_walkingstreet_border_v1.png-ea9e89234d28be6d75ffc7a5c22f60fc.ctex"
+uid="uid://qrfe1ls7ncis"
+path="res://.godot/imported/Boss_1.png-641705b128302661992523a9dd0154c5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Tiles/pfp_walkingstreet_border_v1.png"
-dest_files=["res://.godot/imported/pfp_walkingstreet_border_v1.png-ea9e89234d28be6d75ffc7a5c22f60fc.ctex"]
+source_file="res://Assets/Sprites/Ennemies/Bosses/PunkRat/Boss_1.png"
+dest_files=["res://.godot/imported/Boss_1.png-641705b128302661992523a9dd0154c5.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bhhthb1ubdxrm"
-path="res://.godot/imported/Tilemap_tiles.png-02e53503737729f11ab9ae7648f0f2d1.ctex"
+uid="uid://ibrb1xni3oxw"
+path="res://.godot/imported/shopkeeper.png-492910e7bb32229b9c96856df26c70ef.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Tiles/Tilemap_tiles.png"
-dest_files=["res://.godot/imported/Tilemap_tiles.png-02e53503737729f11ab9ae7648f0f2d1.ctex"]
+source_file="res://Assets/Sprites/NPC/shopkeeper.png"
+dest_files=["res://.godot/imported/shopkeeper.png-492910e7bb32229b9c96856df26c70ef.ctex"]
 
 [params]
 

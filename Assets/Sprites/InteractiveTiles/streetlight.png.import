@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bhhthb1ubdxrm"
-path="res://.godot/imported/Tilemap_tiles.png-02e53503737729f11ab9ae7648f0f2d1.ctex"
+uid="uid://bwuvpv2h8cm1f"
+path="res://.godot/imported/streetlight.png-de573382111c5cc868f0a8a67fbe8889.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Tiles/Tilemap_tiles.png"
-dest_files=["res://.godot/imported/Tilemap_tiles.png-02e53503737729f11ab9ae7648f0f2d1.ctex"]
+source_file="res://Assets/Sprites/InteractiveTiles/streetlight.png"
+dest_files=["res://.godot/imported/streetlight.png-de573382111c5cc868f0a8a67fbe8889.ctex"]
 
 [params]
 

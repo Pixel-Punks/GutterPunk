@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dn7jgd0fgu6vq"
-path="res://.godot/imported/pfp_walkingstreet_v1.png-8fe4c0a9363280764d3b796b804673f4.ctex"
+uid="uid://cuu1dimp8b0e7"
+path="res://.godot/imported/street_tiles.png-313c751ef49be84e3b34dc336061168b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Tiles/pfp_walkingstreet_v1.png"
-dest_files=["res://.godot/imported/pfp_walkingstreet_v1.png-8fe4c0a9363280764d3b796b804673f4.ctex"]
+source_file="res://tilemaps/street_tiles.png"
+dest_files=["res://.godot/imported/street_tiles.png-313c751ef49be84e3b34dc336061168b.ctex"]
 
 [params]
 
