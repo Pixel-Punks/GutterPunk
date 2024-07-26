@@ -3,6 +3,8 @@
 [ext_resource type="TileSet" uid="uid://iq8ujs6yhntt" path="res://tilesets/street_tileset.tres" id="1_ij15k"]
 
 [node name="big_street_line" type="TileMap"]
+position = Vector2(0, -80)
+scale = Vector2(5, 5)
 tile_set = ExtResource("1_ij15k")
 format = 2
 layer_0/name = "border"

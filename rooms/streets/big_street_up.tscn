@@ -3,6 +3,7 @@
 [ext_resource type="TileSet" uid="uid://iq8ujs6yhntt" path="res://tilesets/street_tileset.tres" id="1_lbxkf"]
 
 [node name="big_street_down" type="TileMap"]
+scale = Vector2(5, 5)
 tile_set = ExtResource("1_lbxkf")
 format = 2
 layer_0/name = "border"

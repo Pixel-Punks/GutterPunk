@@ -15,7 +15,8 @@ func _ready():
 
 func damage(attack : Attack):
 	health -= attack.damage * attack.strength
-	took_damage.emit(attack)
 	await get_tree().create_timer(0.1).timeout
 	if health <= 0:
 		hp_reached_zero.emit()
+		return
+	took_damage.emit(attack)

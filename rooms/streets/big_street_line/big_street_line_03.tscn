@@ -1,10 +1,12 @@
 [gd_scene load_steps=4 format=3 uid="uid://dvgoitmaknm0g"]
 
 [ext_resource type="TileSet" uid="uid://iq8ujs6yhntt" path="res://tilesets/street_tileset.tres" id="1_32g2x"]
-[ext_resource type="PackedScene" uid="uid://dddi5pqj0cjoi" path="res://scenes/entities/test_enemy.tscn" id="2_dat75"]
+[ext_resource type="PackedScene" uid="uid://dddi5pqj0cjoi" path="res://scenes/entities/hobo.tscn" id="2_dat75"]
 [ext_resource type="PackedScene" uid="uid://cxwnr5jjjgxix" path="res://scenes/entities/garbage_bin.tscn" id="3_261da"]
 
 [node name="big_street_line" type="TileMap"]
+position = Vector2(0, -80)
+scale = Vector2(5, 5)
 tile_set = ExtResource("1_32g2x")
 format = 2
 layer_0/name = "border"

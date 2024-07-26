@@ -10,6 +10,7 @@ extends NavigationRegion2D
 @export var middle_streets : Array[StreetParts]
 @export var lower_street : PackedScene
 
+var upper_street_instance
 var map_needs_update : bool = false
 
 func _ready():
@@ -32,6 +33,8 @@ func generate_map(fragments : int) -> int:
 
 func place_street(y_position : int, map_scene : PackedScene):
 	var map_piece = map_scene.instantiate()
+	if not upper_street_instance:
+		upper_street_instance = map_piece
 	add_child(map_piece)
 	map_piece.position.y = y_position
 	map_piece.z_index = 0
@@ -52,7 +55,6 @@ func create_navigation_polygon(width : int, height : int):
 
 func place_player(x_pos : int, y_pos : int) -> void :
 	var player : Player = get_tree().get_first_node_in_group("player")
-	add_child(player)
 	player.scale = Vector2(tile_scale, tile_scale)
 	player.position = Vector2(x_pos, y_pos)
 

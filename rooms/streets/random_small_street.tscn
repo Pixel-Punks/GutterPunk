@@ -21,6 +21,7 @@ script = ExtResource("1_qpp62")
 navigation_polygon = SubResource("NavigationPolygon_o67wm")
 navigation_layers = 32
 script = ExtResource("2_mj2hi")
+fragments = 8
 upper_street = ExtResource("3_k7ir1")
 middle_streets = [NodePath("middle_street_1")]
 lower_street = ExtResource("4_g7ptj")

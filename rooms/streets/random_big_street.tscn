@@ -1,0 +1,71 @@
+[gd_scene load_steps=14 format=3 uid="uid://s8kxm8wky47r"]
+
+[ext_resource type="Script" path="res://scripts/maps/street_nav.gd" id="1_ybbi1"]
+[ext_resource type="PackedScene" uid="uid://dbdhlci6hx4g6" path="res://rooms/streets/big_street_up/big_street_up_01.tscn" id="2_4xace"]
+[ext_resource type="PackedScene" uid="uid://ee2g1spgaxlf" path="res://rooms/streets/big_street_down/big_street_down_01.tscn" id="3_hsreg"]
+[ext_resource type="Script" path="res://scripts/entities/base/street_parts.gd" id="4_mwmrc"]
+[ext_resource type="PackedScene" uid="uid://uxb1468s817f" path="res://rooms/streets/big_street_line/big_street_line_01.tscn" id="5_3qxhw"]
+[ext_resource type="PackedScene" uid="uid://dvkykxpqkpf3w" path="res://rooms/streets/big_street_line/big_street_line_02.tscn" id="6_yfrgg"]
+[ext_resource type="PackedScene" uid="uid://dvgoitmaknm0g" path="res://rooms/streets/big_street_line/big_street_line_03.tscn" id="7_1t3pg"]
+[ext_resource type="PackedScene" uid="uid://dkagcornmhghr" path="res://rooms/streets/big_street_line/big_street_line_04.tscn" id="8_im8c5"]
+[ext_resource type="PackedScene" uid="uid://clnie4ucrtu23" path="res://rooms/streets/big_street_line/big_street_line_05.tscn" id="9_eudrp"]
+[ext_resource type="PackedScene" uid="uid://d3jqbjbjnft2e" path="res://rooms/streets/big_street_line/big_street_line_06.tscn" id="10_b40rm"]
+[ext_resource type="PackedScene" uid="uid://cg7535bjud5vs" path="res://rooms/streets/big_street_line/big_street_line_07.tscn" id="11_qq45s"]
+[ext_resource type="PackedScene" uid="uid://bla0hlrd4w3w1" path="res://rooms/streets/big_street_line/big_street_line_08.tscn" id="12_8vslv"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_k0xqr"]
+outlines = Array[PackedVector2Array]([PackedVector2Array(480, 56, 352, 216, 928, 248, 640, 56)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+
+[node name="RandomBigStreet" type="Node2D"]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." node_paths=PackedStringArray("middle_streets")]
+navigation_polygon = SubResource("NavigationPolygon_k0xqr")
+navigation_layers = 32
+script = ExtResource("1_ybbi1")
+map_width = 18
+upper_street = ExtResource("2_4xace")
+middle_streets = [NodePath("StreetParts"), NodePath("StreetParts2"), NodePath("StreetParts3"), NodePath("StreetParts4"), NodePath("StreetParts5"), NodePath("StreetParts6"), NodePath("StreetParts7"), NodePath("StreetParts8")]
+lower_street = ExtResource("3_hsreg")
+
+[node name="StreetParts" type="Node" parent="NavigationRegion2D"]
+script = ExtResource("4_mwmrc")
+scene = ExtResource("5_3qxhw")
+height = 12
+
+[node name="StreetParts2" type="Node" parent="NavigationRegion2D"]
+script = ExtResource("4_mwmrc")
+scene = ExtResource("6_yfrgg")
+height = 12
+
+[node name="StreetParts3" type="Node" parent="NavigationRegion2D"]
+script = ExtResource("4_mwmrc")
+scene = ExtResource("7_1t3pg")
+height = 12
+
+[node name="StreetParts4" type="Node" parent="NavigationRegion2D"]
+script = ExtResource("4_mwmrc")
+scene = ExtResource("8_im8c5")
+height = 12
+
+[node name="StreetParts5" type="Node" parent="NavigationRegion2D"]
+script = ExtResource("4_mwmrc")
+scene = ExtResource("9_eudrp")
+height = 12
+
+[node name="StreetParts6" type="Node" parent="NavigationRegion2D"]
+script = ExtResource("4_mwmrc")
+scene = ExtResource("10_b40rm")
+height = 12
+
+[node name="StreetParts7" type="Node" parent="NavigationRegion2D"]
+script = ExtResource("4_mwmrc")
+scene = ExtResource("11_qq45s")
+height = 12
+
+[node name="StreetParts8" type="Node" parent="NavigationRegion2D"]
+script = ExtResource("4_mwmrc")
+scene = ExtResource("12_8vslv")
+height = 12
+
+[connection signal="child_exiting_tree" from="NavigationRegion2D" to="NavigationRegion2D" method="_on_child_exiting_tree"]
