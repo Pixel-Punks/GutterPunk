@@ -1,0 +1,16 @@
+[remap]
+
+importer="aseprite_wizard.plugin.static-texture"
+type="AtlasTexture"
+uid="uid://c30r21hxhgqh6"
+path="res://.godot/imported/slider_icon.aseprite-96fb5de96988df13a5b9e4701382654a.res"
+
+[deps]
+
+source_file="res://Assets/Sprites/Backgrounds/slider_icon.aseprite"
+dest_files=["res://.godot/imported/slider_icon.aseprite-96fb5de96988df13a5b9e4701382654a.res"]
+
+[params]
+
+exclude_layers_pattern=""
+only_visible_layers=false

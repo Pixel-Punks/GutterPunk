@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="PFP"
-run/main_scene="res://rooms/streets/test_street.tscn"
+run/main_scene="res://scenes/menues/start_menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 boot_splash/bg_color=Color(0.205489, 0.0217949, 0.311387, 1)
 config/icon="res://icon.svg"
@@ -19,6 +19,9 @@ config/icon="res://icon.svg"
 [display]
 
 window/size/mode=3
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
+window/main_scene="res://rooms/streets/test_street.tscn"
 
 [editor]
 

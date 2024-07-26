@@ -1,0 +1,179 @@
+[gd_scene load_steps=16 format=3 uid="uid://bm3obvhh2cyfr"]
+
+[ext_resource type="Script" path="res://scripts/menues/pause_menu.gd" id="1_1t0kl"]
+[ext_resource type="Theme" uid="uid://d2oa4mfybj5hy" path="res://Assets/Themes/startmenu_btn_start.tres" id="2_7cvoe"]
+[ext_resource type="Texture2D" uid="uid://bnqdm0nj2bpe6" path="res://Assets/Sprites/Backgrounds/mini_background.png" id="2_a56cr"]
+[ext_resource type="Theme" uid="uid://cdr0f37ukoy1b" path="res://Assets/Themes/startmenu_btn_option.tres" id="3_tupke"]
+[ext_resource type="FontFile" uid="uid://bpkcuw2xasmbe" path="res://fonts/Abaddon Bold.ttf" id="4_35dtb"]
+[ext_resource type="Theme" uid="uid://d3nm3wojms07c" path="res://Assets/Themes/startmenu_btn_exit.tres" id="4_kdy0j"]
+[ext_resource type="FontFile" uid="uid://jjuas3p4xaln" path="res://fonts/Abaddon Light.ttf" id="7_nrvia"]
+[ext_resource type="Theme" uid="uid://dverhp74tl1un" path="res://Assets/Themes/mini_volume_slider_theme.tres" id="8_re3dr"]
+[ext_resource type="Theme" uid="uid://bcir5amvnxkob" path="res://Assets/Themes/mini_return_button.tres" id="9_swpvv"]
+
+[sub_resource type="Theme" id="Theme_stw5x"]
+VBoxContainer/constants/separation = 50
+
+[sub_resource type="Theme" id="Theme_efcis"]
+default_font = ExtResource("4_35dtb")
+default_font_size = 70
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_roqh0"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jkitf"]
+content_margin_top = 18.0
+content_margin_bottom = 8.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="Theme" id="Theme_7a47q"]
+default_font = ExtResource("4_35dtb")
+default_font_size = 70
+RichTextLabel/colors/default_color = Color(1, 1, 1, 1)
+RichTextLabel/colors/font_outline_color = Color(1, 1, 1, 1)
+RichTextLabel/colors/font_selected_color = Color(0, 0, 0, 0)
+RichTextLabel/colors/font_shadow_color = Color(0, 0, 0, 0)
+RichTextLabel/colors/selection_color = Color(0.1, 0.1, 1, 0.8)
+RichTextLabel/colors/table_border = Color(0, 0, 0, 0)
+RichTextLabel/colors/table_even_row_bg = Color(0, 0, 0, 0)
+RichTextLabel/colors/table_odd_row_bg = Color(0, 0, 0, 0)
+RichTextLabel/constants/line_separation = 0
+RichTextLabel/constants/outline_size = 0
+RichTextLabel/constants/shadow_offset_x = 1
+RichTextLabel/constants/shadow_offset_y = 1
+RichTextLabel/constants/shadow_outline_size = 1
+RichTextLabel/constants/table_h_separation = 3
+RichTextLabel/constants/table_v_separation = 3
+RichTextLabel/constants/text_highlight_h_padding = 3
+RichTextLabel/constants/text_highlight_v_padding = 3
+RichTextLabel/styles/focus = SubResource("StyleBoxFlat_roqh0")
+RichTextLabel/styles/normal = SubResource("StyleBoxFlat_jkitf")
+
+[sub_resource type="Theme" id="Theme_vimso"]
+default_font = ExtResource("7_nrvia")
+default_font_size = 50
+
+[node name="PauseMenu" type="Control"]
+process_mode = 2
+z_index = 99
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+script = ExtResource("1_1t0kl")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_a56cr")
+
+[node name="PauseBox" type="VBoxContainer" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -90.5
+offset_top = -135.5
+offset_right = 90.5
+offset_bottom = 135.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_stw5x")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TextureRect/PauseBox"]
+layout_mode = 2
+theme = SubResource("Theme_efcis")
+text = "Game Paused"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="ResumeButton" type="Button" parent="TextureRect/PauseBox"]
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("2_7cvoe")
+text = "Resume
+"
+
+[node name="SettingsButton" type="Button" parent="TextureRect/PauseBox"]
+layout_mode = 2
+theme = ExtResource("3_tupke")
+text = "Settings"
+
+[node name="ExitButton" type="Button" parent="TextureRect/PauseBox"]
+layout_mode = 2
+theme = ExtResource("4_kdy0j")
+text = "Home"
+
+[node name="SettingsBox" type="VBoxContainer" parent="TextureRect"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -176.0
+offset_top = -135.5
+offset_right = 176.0
+offset_bottom = 135.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 24
+
+[node name="SettingsTitle" type="RichTextLabel" parent="TextureRect/SettingsBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_7a47q")
+text = "Settings"
+fit_content = true
+autowrap_mode = 0
+
+[node name="VolumeLabel" type="RichTextLabel" parent="TextureRect/SettingsBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_vimso")
+text = "Volume"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="HSlider" type="HSlider" parent="TextureRect/SettingsBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("8_re3dr")
+
+[node name="Button" type="Button" parent="TextureRect/SettingsBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("9_swpvv")
+text = "Return"
+
+[connection signal="pressed" from="TextureRect/PauseBox/ResumeButton" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="TextureRect/PauseBox/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="TextureRect/PauseBox/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="TextureRect/SettingsBox/Button" to="." method="_on_button_pressed"]
