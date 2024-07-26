@@ -9,9 +9,13 @@ var active_areas = []
 var can_interact = true
 
 func register_area(area: InteractionArea):
+	print("register")
+	print(area)
 	active_areas.push_back(area)
 
 func unregister_area(area: InteractionArea):
+	print("unregister")
+	print(area)
 	var i = active_areas.find(area)
 	if i != -1:
 		active_areas.remove_at(i)
@@ -21,7 +25,7 @@ func _process(delta):
 		active_areas.sort_custom(_sort_by_distance_to_player)
 		label.text = base_text + active_areas[0].action_name
 		label.global_position = active_areas[0].global_position
-		label.global_position.y -= 36
+		label.global_position.y -= 60
 		label.global_position.x -= label.size.x / 2
 		label.show()
 	else:

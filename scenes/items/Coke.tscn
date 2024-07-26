@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dhjvsktwlyil5"]
+
+[ext_resource type="Texture2D" uid="uid://75abe7lgchlk" path="res://Assets/Sprites/Items/Consumable/item_coke.png" id="1_vrj1m"]
+[ext_resource type="PackedScene" uid="uid://cd02131g1167t" path="res://scenes/interaction/interaction_area/InteractionArea.tscn" id="2_ebtwk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ssv8g"]
+size = Vector2(20, 24.25)
+
+[node name="Coke" type="Node2D"]
+z_index = 45
+scale = Vector2(4, 4)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_vrj1m")
+
+[node name="InteractionArea" parent="." instance=ExtResource("2_ebtwk")]
+action_name = "take a line"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(0, -4.125)
+shape = SubResource("RectangleShape2D_ssv8g")

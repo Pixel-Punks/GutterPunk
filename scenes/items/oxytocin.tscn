@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://rrp0i170igew"]
+
+[ext_resource type="Texture2D" uid="uid://cq0ugvyypdq6p" path="res://Assets/Sprites/Items/Consumable/item_oxytocin.png" id="1_tv02b"]
+[ext_resource type="PackedScene" uid="uid://cd02131g1167t" path="res://scenes/interaction/interaction_area/InteractionArea.tscn" id="2_15goo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_it3g7"]
+size = Vector2(20, 24.25)
+
+[node name="Oxytocin" type="Node2D"]
+z_index = 47
+scale = Vector2(4, 4)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_tv02b")
+
+[node name="InteractionArea" parent="." instance=ExtResource("2_15goo")]
+action_name = "swallow "
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(0, -4.125)
+shape = SubResource("RectangleShape2D_it3g7")

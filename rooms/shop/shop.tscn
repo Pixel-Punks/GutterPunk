@@ -1,9 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://b0am5qxavi3ic"]
+[gd_scene load_steps=14 format=3 uid="uid://b0am5qxavi3ic"]
 
 [ext_resource type="Texture2D" uid="uid://bhhthb1ubdxrm" path="res://Assets/Sprites/Tiles/Tilemap_tiles.png" id="1_f13b0"]
 [ext_resource type="Texture2D" uid="uid://lajks8p73xlt" path="res://Assets/Sprites/Items/Consumable/Tilemap.png" id="2_hhv4t"]
 [ext_resource type="Texture2D" uid="uid://ibrb1xni3oxw" path="res://Assets/Sprites/NPC/shopkeeper.png" id="2_lx2cd"]
 [ext_resource type="Script" path="res://scripts/maps/shop.gd" id="3_flbyw"]
+[ext_resource type="PackedScene" uid="uid://dhjvsktwlyil5" path="res://scenes/items/Coke.tscn" id="4_yp2pd"]
+[ext_resource type="PackedScene" uid="uid://gdupmmj1txhi" path="res://scenes/items/meth.tscn" id="5_oaedf"]
+[ext_resource type="PackedScene" uid="uid://rrp0i170igew" path="res://scenes/items/oxytocin.tscn" id="6_6v2rg"]
+[ext_resource type="PackedScene" uid="uid://pomxtq57dsmy" path="res://scenes/items/wine.tscn" id="7_q2rt6"]
+[ext_resource type="PackedScene" uid="uid://jtw3bbaphrbo" path="res://scenes/items/moonshine.tscn" id="8_bvxji"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1xs0n"]
 texture = ExtResource("1_f13b0")
@@ -295,6 +300,7 @@ layer_4/name = "trigger"
 layer_4/tile_data = PackedInt32Array()
 script = ExtResource("3_flbyw")
 ShopEntrance = NodePath("ShopEntrance")
+item_list = Array[PackedScene]([ExtResource("4_yp2pd"), ExtResource("5_oaedf"), ExtResource("6_6v2rg"), ExtResource("7_q2rt6"), ExtResource("8_bvxji")])
 
 [node name="Shopkeeper" type="Sprite2D" parent="."]
 z_index = 3
@@ -309,7 +315,15 @@ collision_mask = 33
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(342.4, 264)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_1uphn")
+
+[node name="ItemMarker1" type="Marker2D" parent="." groups=["ItemMarker"]]
+position = Vector2(145.6, 291.4)
+
+[node name="ItemMarker2" type="Marker2D" parent="." groups=["ItemMarker"]]
+position = Vector2(126.4, 291.4)
+
+[node name="ItemMarker3" type="Marker2D" parent="." groups=["ItemMarker"]]
+position = Vector2(56, 293)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
