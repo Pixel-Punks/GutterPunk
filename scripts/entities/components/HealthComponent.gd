@@ -2,7 +2,9 @@ extends Node2D
 
 class_name HealthComponent
 
-@export var MAX_HEALTH : int = 10
+@export var MAX_HEALTH : int = 100
+
+@export var health_bar : HealthBarUi
 
 signal hp_reached_zero()
 signal took_damage(attack : Attack)
@@ -17,6 +19,8 @@ func damage(attack : Attack):
 	health -= attack.damage
 	took_damage.emit(attack)
 	health = health % MAX_HEALTH
+	if health_bar:
+		health_bar.update_health(health)
 	await get_tree().create_timer(0.1).timeout
 	if health == 0:
 		hp_reached_zero.emit()
