@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dddi5pqj0cjoi"]
+[gd_scene load_steps=13 format=3 uid="uid://dddi5pqj0cjoi"]
 
 [ext_resource type="PackedScene" uid="uid://rx0rdvf2oh53" path="res://scenes/entities/base/enemy.tscn" id="1_n6enl"]
 [ext_resource type="PackedScene" uid="uid://bw8nak3lvoi3i" path="res://scenes/components/path_finding_component.tscn" id="2_drs2e"]
@@ -6,6 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://dx1g6mxdvbnhv" path="res://scenes/components/oscillating_sprite_component.tscn" id="4_afc1d"]
 [ext_resource type="PackedScene" uid="uid://8gdhopimueak" path="res://scenes/components/shrinking_sprite_component.tscn" id="5_1ataw"]
 [ext_resource type="Script" path="res://scenes/entities/Area2D.gd" id="6_vv4g2"]
+[ext_resource type="Script" path="res://scenes/entities/SfxComponent.gd" id="7_6v4md"]
+[ext_resource type="AudioStream" uid="uid://bo0wisd7mavpr" path="res://Assets/Sounds/Ennemies/Trash/Hurt/hurt_1.wav" id="8_3b6gn"]
+[ext_resource type="AudioStream" uid="uid://qo74255gflvk" path="res://Assets/Sounds/Ennemies/Trash/Hurt/hurt_2.wav" id="9_evvk8"]
+[ext_resource type="AudioStream" uid="uid://cikcymyqxkask" path="res://Assets/Sounds/Ennemies/Trash/Hurt/hurt_3.wav" id="10_bvxo5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ye7rg"]
 radius = 8.0
@@ -30,8 +34,9 @@ shape = SubResource("CircleShape2D_ye7rg")
 [node name="FlashingSpriteComponent" parent="." index="1" node_paths=PackedStringArray("sprite")]
 sprite = NodePath("../Container/Sprite2D")
 
-[node name="HealthComponent" parent="." index="2"]
+[node name="HealthComponent" parent="." index="2" node_paths=PackedStringArray("audio_player")]
 MAX_HEALTH = 5
+audio_player = NodePath("../SfxComponent")
 
 [node name="PathFindingComponent" parent="." index="3" node_paths=PackedStringArray("enemy", "velocity_component") instance=ExtResource("2_drs2e")]
 enemy = NodePath("..")
@@ -73,11 +78,24 @@ script = ExtResource("6_vv4g2")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
 shape = SubResource("CircleShape2D_qlg61")
 
+[node name="SfxComponent" type="Node2D" parent="." index="11" node_paths=PackedStringArray("audio_players")]
+script = ExtResource("7_6v4md")
+audio_players = [NodePath("AudioStreamPlayer2D"), NodePath("AudioStreamPlayer2D2"), NodePath("AudioStreamPlayer2D3")]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SfxComponent" index="0"]
+stream = ExtResource("8_3b6gn")
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="SfxComponent" index="1"]
+stream = ExtResource("9_evvk8")
+
+[node name="AudioStreamPlayer2D3" type="AudioStreamPlayer2D" parent="SfxComponent" index="2"]
+stream = ExtResource("10_bvxo5")
+
 [connection signal="flicker" from="HealthComponent" to="FlashingSpriteComponent" method="_on_health_component_flicker"]
 [connection signal="flicker" from="HealthComponent" to="Area2D" method="_on_health_component_flicker"]
 [connection signal="hp_reached_zero" from="HealthComponent" to="." method="_on_health_component_hp_reached_zero"]
 [connection signal="took_damage" from="HealthComponent" to="." method="_on_health_component_took_damage"]
-[connection signal="took_damage" from="HealthComponent" to="HitboxComponent" method="_on_health_component_took_damage"]
+[connection signal="took_damage" from="HealthComponent" to="SfxComponent" method="_on_health_component_took_damage"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
