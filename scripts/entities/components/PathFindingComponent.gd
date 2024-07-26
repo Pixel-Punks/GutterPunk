@@ -13,5 +13,6 @@ func _physics_process(delta):
 	enemy.move_and_slide()
 
 func _on_area_2d_body_entered(body):
-	if body is Player:
-		target_area = body
+	pass
+	#if body is Player:
+	#	target_area = body

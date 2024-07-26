@@ -112,6 +112,7 @@ player_interact={
 2d_navigation/layer_5="Items"
 2d_physics/layer_6="Player"
 2d_navigation/layer_6="Player"
+2d_physics/layer_7="Trigger"
 
 [rendering]
 

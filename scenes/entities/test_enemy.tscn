@@ -1,9 +1,17 @@
+<<<<<<< HEAD
 [gd_scene load_steps=6 format=3 uid="uid://dddi5pqj0cjoi"]
+=======
+[gd_scene load_steps=5 format=3 uid="uid://cht2m7ur6fhko"]
+>>>>>>> 27b2523575d91932327d9ebfc5eea1615c453e5c
 
-[ext_resource type="PackedScene" uid="uid://rx0rdvf2oh53" path="res://scenes/entities/base/enemy.tscn" id="1_rnd2m"]
+[ext_resource type="PackedScene" path="res://scenes/entities/base/enemy.tscn" id="1_rnd2m"]
 [ext_resource type="Texture2D" uid="uid://ppixbad0xxuw" path="res://Assets/Sprites/Ennemies/Trash/Hobo/hobo_1.png" id="2_mq5tf"]
+<<<<<<< HEAD
 [ext_resource type="PackedScene" uid="uid://bw8nak3lvoi3i" path="res://scenes/components/path_finding_component.tscn" id="3_jq8tn"]
 [ext_resource type="PackedScene" uid="uid://d07ll4ret32h5" path="res://scenes/components/moneydrop_component.tscn" id="4_33v7p"]
+=======
+[ext_resource type="PackedScene" path="res://scenes/components/path_finding_component.tscn" id="3_jq8tn"]
+>>>>>>> 27b2523575d91932327d9ebfc5eea1615c453e5c
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ye7rg"]
 radius = 8.0
