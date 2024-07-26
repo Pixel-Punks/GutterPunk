@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c3e2ieqre2k83"]
+[gd_scene load_steps=11 format=3 uid="uid://c3e2ieqre2k83"]
 
 [ext_resource type="Script" path="res://scripts/entities/player.gd" id="1_sjrlc"]
 [ext_resource type="PackedScene" uid="uid://lthvbl7wgup7" path="res://scenes/components/hitbox_component.tscn" id="2_5wbem"]
@@ -6,7 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://b0kgrvl2pd071" path="res://Assets/Sprites/Player/fred.png" id="4_yjnwf"]
 [ext_resource type="PackedScene" uid="uid://c3lv1vx7mqof7" path="res://scenes/weapons/crowbar.tscn" id="5_kxjh0"]
 [ext_resource type="PackedScene" uid="uid://bm3obvhh2cyfr" path="res://scenes/menues/popup_menu.tscn" id="6_6xkec"]
-[ext_resource type="PackedScene" uid="uid://dlcrvyo2qfjxn" path="res://scenes/ui/healthbar/healthbar_ui.tscn" id="6_sg0fs"]
+[ext_resource type="PackedScene" uid="uid://dlcrvyo2qfjxn" path="res://scenes/ui/healthBar/healthbar_ui.tscn" id="6_sg0fs"]
+[ext_resource type="PackedScene" uid="uid://cxsf3b7b5i0gv" path="res://scenes/ui/bacBar/bacbar_ui.tscn" id="7_xvq3g"]
+[ext_resource type="PackedScene" uid="uid://c7mf66etejrik" path="res://scenes/ui/overdoseBar/overdosebar_ui.tscn" id="8_12u4a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d7mgq"]
 size = Vector2(16, 16)
@@ -26,6 +28,7 @@ health_component = NodePath("../HealthComponent")
 shape = SubResource("RectangleShape2D_d7mgq")
 
 [node name="HealthComponent" parent="." node_paths=PackedStringArray("health_bar") instance=ExtResource("3_ckffq")]
+MAX_HEALTH = null
 health_bar = NodePath("../Camera2D/HealthbarUi")
 
 [node name="PlayerSprite" type="Sprite2D" parent="."]
@@ -53,6 +56,20 @@ offset_left = -113.2
 offset_top = -62.8
 offset_right = -35.2
 offset_bottom = -52.8
+scale = Vector2(0.5, 0.5)
+
+[node name="BacbarUi" parent="Camera2D" instance=ExtResource("7_xvq3g")]
+offset_left = -113.0
+offset_top = -57.0
+offset_right = -35.0
+offset_bottom = -47.0
+scale = Vector2(0.5, 0.5)
+
+[node name="OverdosebarUi" parent="Camera2D" instance=ExtResource("8_12u4a")]
+offset_left = -113.0
+offset_top = -51.0
+offset_right = -35.0
+offset_bottom = -41.0
 scale = Vector2(0.5, 0.5)
 
 [node name="CrowBar" parent="." instance=ExtResource("5_kxjh0")]

@@ -4,7 +4,7 @@ class_name HealthComponent
 
 @export var MAX_HEALTH : int = 100
 
-@export var health_bar : HealthBarUi
+@export var health_bar : ProgressBarUi
 
 signal hp_reached_zero()
 signal took_damage(attack : Attack)
