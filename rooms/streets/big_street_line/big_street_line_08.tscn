@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bla0hlrd4w3w1"]
+[gd_scene load_steps=4 format=3 uid="uid://bla0hlrd4w3w1"]
 
 [ext_resource type="TileSet" uid="uid://iq8ujs6yhntt" path="res://tilesets/street_tileset.tres" id="1_5vmtn"]
 [ext_resource type="PackedScene" uid="uid://dddi5pqj0cjoi" path="res://scenes/entities/test_enemy.tscn" id="2_yufrs"]
+[ext_resource type="PackedScene" uid="uid://cxwnr5jjjgxix" path="res://scenes/entities/garbage_bin.tscn" id="3_8m1jp"]
 
 [node name="big_street_line" type="TileMap"]
 tile_set = ExtResource("1_5vmtn")
@@ -17,3 +18,9 @@ position = Vector2(240, 80)
 
 [node name="test_enemy3" parent="." instance=ExtResource("2_yufrs")]
 position = Vector2(48, 176)
+
+[node name="GarbageBin" parent="." instance=ExtResource("3_8m1jp")]
+position = Vector2(192, 80)
+
+[node name="GarbageBin2" parent="." instance=ExtResource("3_8m1jp")]
+position = Vector2(48, 144)
