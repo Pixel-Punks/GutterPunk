@@ -6,7 +6,7 @@ extends CharacterBody2D
 
 var target : HitBoxComponent
 
-func _process(delta):
+func _process(_delta):
 	if target:
 		var attack = Attack.new()
 		attack.damage = 10

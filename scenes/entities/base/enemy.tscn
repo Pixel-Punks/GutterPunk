@@ -34,7 +34,3 @@ script = ExtResource("7_snpx1")
 
 [node name="Follow" type="Node" parent="StateMachine"]
 script = ExtResource("8_wxsrw")
-
-[connection signal="hp_reached_zero" from="HealthComponent" to="." method="_on_health_component_hp_reached_zero"]
-[connection signal="took_damage" from="HealthComponent" to="." method="_on_health_component_took_damage"]
-[connection signal="took_damage" from="HealthComponent" to="FlashingSpriteComponent" method="_on_health_component_took_damage"]

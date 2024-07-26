@@ -22,7 +22,7 @@ func accelerate_in_direction(
 func knockback_in_direction(
 	direction : Vector2, 
 	knockback_factor : int, 
-	delta : float = get_process_delta_time()
+	_delta : float = get_process_delta_time()
 	):
 	accelerate_in_direction(direction, acceleration, direction*knockback_factor*10*max_speed)
 	

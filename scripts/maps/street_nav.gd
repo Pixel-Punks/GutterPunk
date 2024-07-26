@@ -19,11 +19,11 @@ func _ready():
 	create_navigation_polygon(width, height)
 	place_player(width/2, height - tile_size*tile_scale)
 
-func generate_map(fragments : int) -> int:
+func generate_map(fragments_amount : int) -> int:
 	var current_y = 0
 	place_street(current_y, upper_street)
 	current_y += map_height * tile_size * tile_scale + 1
-	for i in range(fragments):
+	for i in range(fragments_amount):
 		var random_street : StreetParts = middle_streets[randi() % middle_streets.size()]
 		place_street(current_y, random_street.scene)
 		current_y += random_street.height * tile_size * tile_scale

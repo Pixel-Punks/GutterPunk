@@ -1,10 +1,10 @@
 [gd_scene load_steps=14 format=3 uid="uid://s8kxm8wky47r"]
 
 [ext_resource type="Script" path="res://scripts/maps/street_nav.gd" id="1_ybbi1"]
-[ext_resource type="PackedScene" uid="uid://dbdhlci6hx4g6" path="res://rooms/streets/big_street_up/big_street_up_01.tscn" id="2_4xace"]
-[ext_resource type="PackedScene" uid="uid://ee2g1spgaxlf" path="res://rooms/streets/big_street_down/big_street_down_01.tscn" id="3_hsreg"]
+[ext_resource type="PackedScene" uid="uid://dbdhlci6hx4g6" path="res://rooms/streets/big_street_up.tscn" id="2_4xace"]
+[ext_resource type="PackedScene" uid="uid://ee2g1spgaxlf" path="res://rooms/streets/big_street_down.tscn" id="3_hsreg"]
 [ext_resource type="Script" path="res://scripts/entities/base/street_parts.gd" id="4_mwmrc"]
-[ext_resource type="PackedScene" uid="uid://uxb1468s817f" path="res://rooms/streets/big_street_line/big_street_line_01.tscn" id="5_3qxhw"]
+[ext_resource type="PackedScene" uid="uid://uxb1468s817f" path="res://rooms/streets/big_street_line.tscn" id="5_3qxhw"]
 [ext_resource type="PackedScene" uid="uid://dvkykxpqkpf3w" path="res://rooms/streets/big_street_line/big_street_line_02.tscn" id="6_yfrgg"]
 [ext_resource type="PackedScene" uid="uid://dvgoitmaknm0g" path="res://rooms/streets/big_street_line/big_street_line_03.tscn" id="7_1t3pg"]
 [ext_resource type="PackedScene" uid="uid://dkagcornmhghr" path="res://rooms/streets/big_street_line/big_street_line_04.tscn" id="8_im8c5"]

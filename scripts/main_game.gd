@@ -25,5 +25,5 @@ func place_big_street():
 		scene.tree_exited.connect(place_big_street)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass

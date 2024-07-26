@@ -19,7 +19,7 @@ position = Vector2(16, 0)
 rotation = 1.5708
 sprite_frames = ExtResource("2_ntemd")
 animation = &"LTR"
-frame = 6
+frame = 9
 frame_progress = 1.0
 
 [node name="Area2D" type="Area2D" parent="WeaponComponent"]
@@ -27,7 +27,7 @@ collision_layer = 0
 collision_mask = 40
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="WeaponComponent/Area2D"]
-polygon = PackedVector2Array(0, 0, 0, 0, 24, 16, 32, 8, 32, -8, 24, -16)
+polygon = PackedVector2Array(0, 0, 0, 32, 16, 32, 32, 24, 40, 16, 40, -16, 32, -24, 16, -32, 0, -32)
 
 [node name="Attack" type="Node" parent="."]
 script = ExtResource("3_vqu4t")

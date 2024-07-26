@@ -66,7 +66,5 @@ texture = ExtResource("4_yjnwf")
 [node name="FlashingSpriteComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("10_l1b6j")]
 sprite = NodePath("../Node2D/PlayerSprite")
 
-[connection signal="pause_menu" from="." to="Camera2D/PopupMenu" method="_on_player_pause_menu"]
 [connection signal="hp_reached_zero" from="HealthComponent" to="." method="_on_health_component_hp_reached_zero"]
-[connection signal="took_damage" from="HealthComponent" to="." method="_on_health_component_took_damage"]
 [connection signal="took_damage" from="HealthComponent" to="FlashingSpriteComponent" method="_on_health_component_took_damage"]

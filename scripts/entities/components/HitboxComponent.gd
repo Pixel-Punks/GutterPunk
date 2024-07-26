@@ -16,3 +16,4 @@ func damage(attack):
 	if health_component and timeout <= 0:
 		timeout = max_timeout
 		health_component.damage(attack)
+		
