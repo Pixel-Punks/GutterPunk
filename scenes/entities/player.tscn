@@ -1,24 +1,26 @@
-[gd_scene load_steps=8 format=3 uid="uid://c3e2ieqre2k83"]
+[gd_scene load_steps=9 format=3 uid="uid://c3e2ieqre2k83"]
 
-[ext_resource type="Script" path="res://scripts/entities/player.gd" id="1_sjrlc"]
+[ext_resource type="Script" path="res://scripts/entities/components/player.gd" id="1_sjrlc"]
 [ext_resource type="PackedScene" uid="uid://lthvbl7wgup7" path="res://scenes/components/hitbox_component.tscn" id="2_5wbem"]
 [ext_resource type="PackedScene" uid="uid://swvxckbky45x" path="res://scenes/components/health_component.tscn" id="3_ckffq"]
 [ext_resource type="Texture2D" uid="uid://b0kgrvl2pd071" path="res://Assets/Sprites/Player/fred.png" id="4_yjnwf"]
 [ext_resource type="PackedScene" uid="uid://c3lv1vx7mqof7" path="res://scenes/weapons/crowbar.tscn" id="5_kxjh0"]
 [ext_resource type="PackedScene" uid="uid://bm3obvhh2cyfr" path="res://scenes/menues/popup_menu.tscn" id="6_6xkec"]
+[ext_resource type="PackedScene" uid="uid://8e1qv67xcb1b" path="res://scenes/components/velocity_component.tscn" id="7_knj8m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d7mgq"]
 size = Vector2(16, 16)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("weapon")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("weapon", "velocity_component")]
 z_index = 1
 collision_layer = 32
 collision_mask = 32
 script = ExtResource("1_sjrlc")
 weapon = NodePath("CrowBar")
+velocity_component = NodePath("VelocityComponent")
 
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("2_5wbem")]
-collision_layer = 32
+collision_layer = 64
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
@@ -38,5 +40,8 @@ visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_d7mgq")
+
+[node name="VelocityComponent" parent="." node_paths=PackedStringArray("body") instance=ExtResource("7_knj8m")]
+body = NodePath("..")
 
 [connection signal="pause_menu" from="." to="Camera2D/PopupMenu" method="_on_player_pause_menu"]

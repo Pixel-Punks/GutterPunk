@@ -2,6 +2,8 @@ extends Node
 
 class_name Attack
 
-@export var damage := 1
-@export var knockback := 1
+@export var damage : int = 1
+@export var knockback : int = 1
+@export var attacks_per_seconds : float = 1
+var strength : int
 var direction : Vector2

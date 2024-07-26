@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @export var collision_layers : PackedInt32Array
 @export var mask_layers : PackedInt32Array
+@export var velocity_component : VelocityComponent
 
 func _ready():
 	for n in range(1,33):
@@ -13,5 +14,4 @@ func _on_health_component_hp_reached_zero():
 	queue_free()
 
 func _on_health_component_took_damage(attack):
-	velocity = velocity.move_toward(attack.direction * attack.knockback* 100, 1000)
-	move_and_slide()
+	velocity_component.knockback_in_direction(attack.direction, attack.knockback)

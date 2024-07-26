@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://c3lv1vx7mqof7"]
 
-[ext_resource type="Script" path="res://scripts/weapons/crowbar.gd" id="1_wr8s1"]
+[ext_resource type="Script" path="res://scripts/weapons/weapon.gd" id="1_mimof"]
 [ext_resource type="PackedScene" uid="uid://cfaoy8ryqsvvl" path="res://scenes/components/weapon_component.tscn" id="2_72yaw"]
 [ext_resource type="SpriteFrames" uid="uid://dmgog7d7otomv" path="res://Assets/Sprites/Items/Equipment/Weapon/Crowbar/crowbar.aseprite" id="3_pcdtv"]
 [ext_resource type="PackedScene" uid="uid://bngee20wjrduv" path="res://scenes/weapons/crowbar_attack.tscn" id="4_3nhi2"]
@@ -8,7 +8,7 @@
 [node name="CrowBar" type="Node2D" node_paths=PackedStringArray("weapon")]
 z_index = 1
 y_sort_enabled = true
-script = ExtResource("1_wr8s1")
+script = ExtResource("1_mimof")
 weapon = NodePath("WeaponComponent")
 
 [node name="WeaponComponent" parent="." node_paths=PackedStringArray("hurtbox", "animated_sprites", "weapon_attack") instance=ExtResource("2_72yaw")]
@@ -18,7 +18,7 @@ animated_sprites = NodePath("AttackSprites")
 weapon_attack = NodePath("../CrowbarAttack")
 
 [node name="Area2D" type="Area2D" parent="WeaponComponent"]
-collision_layer = 8
+collision_layer = 0
 collision_mask = 40
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="WeaponComponent/Area2D"]
@@ -31,6 +31,7 @@ position = Vector2(-63, -1)
 rotation = 1.5708
 sprite_frames = ExtResource("3_pcdtv")
 animation = &"LTR"
+autoplay = "LTR"
 frame = 6
 frame_progress = 1.0
 metadata/_aseprite_wizard_interface_config_ = {
@@ -39,5 +40,7 @@ metadata/_aseprite_wizard_interface_config_ = {
 }
 
 [node name="CrowbarAttack" parent="." instance=ExtResource("4_3nhi2")]
+knockback = 2
+attacks_per_seconds = 2.0
 
 [connection signal="area_entered" from="WeaponComponent/Area2D" to="WeaponComponent" method="_on_area_2d_area_entered"]

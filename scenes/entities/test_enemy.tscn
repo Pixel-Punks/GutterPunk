@@ -9,10 +9,13 @@ radius = 8.0
 
 [node name="test_enemy" instance=ExtResource("1_rnd2m")]
 z_index = 1
-collision_layer = 33
+collision_layer = 41
 collision_mask = 33
 collision_layers = PackedInt32Array(6)
 mask_layers = PackedInt32Array(6)
+
+[node name="HitboxComponent" parent="." index="0"]
+collision_layer = 40
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" index="0"]
 shape = SubResource("CircleShape2D_ye7rg")
@@ -26,8 +29,9 @@ MAX_HEALTH = 2
 [node name="Sprite2D" type="Sprite2D" parent="." index="3"]
 texture = ExtResource("2_mq5tf")
 
-[node name="PathFindingComponent" parent="." index="4" node_paths=PackedStringArray("enemy") instance=ExtResource("3_jq8tn")]
+[node name="PathFindingComponent" parent="." index="4" node_paths=PackedStringArray("enemy", "velocity_component") instance=ExtResource("3_jq8tn")]
 enemy = NodePath("..")
+velocity_component = NodePath("../VelocityComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="5"]
 shape = SubResource("CircleShape2D_ye7rg")

@@ -14,7 +14,7 @@ func _ready():
 	health = MAX_HEALTH
 
 func damage(attack : Attack):
-	health -= attack.damage
+	health -= attack.damage * attack.strength
 	took_damage.emit(attack)
 	health = health % MAX_HEALTH
 	await get_tree().create_timer(0.1).timeout
