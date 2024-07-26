@@ -14,7 +14,7 @@ class_name Player
 
 @export var money : int = 0
 
-signal pause_menu()
+signal pause
 
 func _input(event):
 	handle_attack(event)
@@ -30,7 +30,7 @@ func handle_attack(event):
 
 func handle_menu(event):
 	if event.is_action_pressed("open_menu"):
-		pause_menu.emit()
+		pause.emit()
 
 func handle_movement(delta):
 	var input_direction = Input.get_vector(
