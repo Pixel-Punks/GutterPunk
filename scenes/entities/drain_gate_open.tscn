@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsxxh4df67ty5"]
+
+[ext_resource type="Texture2D" uid="uid://1eq11c2tpi7r" path="res://Assets/Sprites/InteractiveTiles/brain_gate_open.png" id="1_umrek"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j6xqk"]
+radius = 9.0
+
+[node name="DrainGateOpen" type="StaticBody2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_j6xqk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_umrek")
