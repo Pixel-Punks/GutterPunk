@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://jtw3bbaphrbo"]
+
+[ext_resource type="Texture2D" uid="uid://cusai8vg2patw" path="res://Assets/Sprites/Items/Consumable/item_moonshine.png" id="1_2e5y0"]
+[ext_resource type="Script" path="res://scenes/items/moonshine.gd" id="1_e371m"]
+[ext_resource type="PackedScene" uid="uid://cd02131g1167t" path="res://scenes/interaction/interaction_area/InteractionArea.tscn" id="2_p03ap"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8chyp"]
+size = Vector2(20, 30.75)
+
+[node name="Moonshine" type="Node2D"]
+z_index = 49
+scale = Vector2(4, 4)
+script = ExtResource("1_e371m")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_2e5y0")
+
+[node name="InteractionArea" parent="." instance=ExtResource("2_p03ap")]
+action_name = "get intoxicated"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(0, -7.375)
+shape = SubResource("RectangleShape2D_8chyp")

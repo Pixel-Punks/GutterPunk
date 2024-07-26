@@ -29,14 +29,11 @@ position = Vector2(48, 80)
 
 [node name="test_enemy4" parent="." node_paths=PackedStringArray("velocity_component") instance=ExtResource("2_ugrxv")]
 position = Vector2(172.8, 160)
-scale = Vector2(1, 1)
 velocity_component = NodePath("../test_enemy2/VelocityComponent")
 
 [node name="test_enemy5" parent="." node_paths=PackedStringArray("velocity_component") instance=ExtResource("2_ugrxv")]
 position = Vector2(185.6, 51.2)
-scale = Vector2(1, 1)
 velocity_component = NodePath("../test_enemy2/VelocityComponent")
 
 [node name="GarbageBin3" parent="." instance=ExtResource("3_7ssx4")]
 position = Vector2(102.4, 172.8)
-scale = Vector2(1, 1)

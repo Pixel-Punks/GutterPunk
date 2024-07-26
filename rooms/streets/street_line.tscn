@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b8mtdggkhdrty"]
+[gd_scene load_steps=5 format=3 uid="uid://b8mtdggkhdrty"]
 
 [ext_resource type="TileSet" uid="uid://iq8ujs6yhntt" path="res://tilesets/street_tileset.tres" id="1_aqrjc"]
 [ext_resource type="PackedScene" uid="uid://cxwnr5jjjgxix" path="res://scenes/entities/garbage_bin.tscn" id="2_oa1me"]
 [ext_resource type="PackedScene" uid="uid://dddi5pqj0cjoi" path="res://scenes/entities/hobo.tscn" id="3_ha0eh"]
+[ext_resource type="PackedScene" uid="uid://c1ofxpspmmvnv" path="res://scenes/entities/coin.tscn" id="4_5u5eq"]
 
 [node name="street_line" type="TileMap"]
 position = Vector2(80, 4.76837e-07)
@@ -34,3 +35,6 @@ position = Vector2(84.8, 168)
 
 [node name="test_enemy3" parent="." instance=ExtResource("3_ha0eh")]
 position = Vector2(11.2, 158.4)
+
+[node name="Coin" parent="." instance=ExtResource("4_5u5eq")]
+position = Vector2(41.6, 171)

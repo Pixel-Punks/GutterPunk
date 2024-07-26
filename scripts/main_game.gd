@@ -12,7 +12,7 @@ func place_small_street():
 	var scene = load("res://rooms/streets/random_small_street.tscn").instantiate()
 	add_child(scene)
 	small_streets -=1
-	if small_streets > 0:
+	if small_streets >= 0:
 		scene.tree_exited.connect(place_small_street)
 	else:
 		scene.tree_exited.connect(place_big_street)
@@ -21,7 +21,7 @@ func place_big_street():
 	var scene = load("res://rooms/streets/random_big_street.tscn").instantiate()
 	add_child(scene)
 	big_streets -=1
-	if big_streets > 0:
+	if big_streets >= 0:
 		scene.tree_exited.connect(place_big_street)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.

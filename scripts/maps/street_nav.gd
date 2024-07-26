@@ -54,7 +54,7 @@ func create_navigation_polygon(width : int, height : int):
 	bake_navigation_polygon()
 
 func place_player(x_pos : int, y_pos : int) -> void :
-	var player : Player = get_tree().get_first_node_in_group("player")
+	var player : Player = get_tree().get_first_node_in_group("real_player_no_cap")
 	player.scale = Vector2(tile_scale, tile_scale)
 	player.position = Vector2(x_pos, y_pos)
 

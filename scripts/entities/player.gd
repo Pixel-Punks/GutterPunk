@@ -43,7 +43,9 @@ class_name Player
 
 @export var strength : int = 2
 
-signal pause_menu()
+@export var money : int = 0
+
+signal pause
 
 func _ready():
 	velocity_component.max_speed = speed + speed_unit * speed_level
@@ -67,7 +69,7 @@ func handle_attack():
 
 func handle_menu(event):
 	if event.is_action_pressed("open_menu"):
-		pause_menu.emit()
+		pause.emit()
 
 func handle_movement():
 	var input_direction = Input.get_vector(

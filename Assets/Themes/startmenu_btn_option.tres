@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=5 format=3 uid="uid://cdr0f37ukoy1b"]
 
-[ext_resource type="FontFile" uid="uid://tbr8ertawywc" path="res://Assets/Sprites/Fonts/PixelifySans-VariableFont_wght.ttf" id="1_220ly"]
+[ext_resource type="FontFile" uid="uid://bpkcuw2xasmbe" path="res://fonts/Abaddon Bold.ttf" id="1_8onwo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qu8ka"]
 content_margin_left = 4.0
@@ -18,9 +18,7 @@ corner_radius_top_right = 50
 corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 corner_detail = 5
-expand_margin_left = 11.0
 expand_margin_top = 10.0
-expand_margin_right = 11.0
 expand_margin_bottom = 10.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4e5fm"]
@@ -39,9 +37,7 @@ corner_radius_top_right = 50
 corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 corner_detail = 5
-expand_margin_left = 11.0
 expand_margin_top = 10.0
-expand_margin_right = 11.0
 expand_margin_bottom = 10.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_75khc"]
@@ -60,14 +56,12 @@ corner_radius_top_right = 50
 corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 corner_detail = 5
-expand_margin_left = 11.0
 expand_margin_top = 10.0
-expand_margin_right = 11.0
 expand_margin_bottom = 10.0
 
 [resource]
-default_font = ExtResource("1_220ly")
-default_font_size = 60
+default_font = ExtResource("1_8onwo")
+default_font_size = 50
 Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
 Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
 Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)

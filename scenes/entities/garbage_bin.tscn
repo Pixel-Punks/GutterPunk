@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cxwnr5jjjgxix"]
+[gd_scene load_steps=5 format=3 uid="uid://cxwnr5jjjgxix"]
 
 [ext_resource type="PackedScene" uid="uid://b3btsn8t46j5k" path="res://scenes/entities/base/breakable_object.tscn" id="1_anvki"]
 [ext_resource type="Texture2D" uid="uid://8y10h2kb3ohn" path="res://Assets/Sprites/InteractiveTiles/pfp_dustbin.png" id="2_wg5ma"]
+[ext_resource type="PackedScene" uid="uid://d07ll4ret32h5" path="res://scenes/components/moneydrop_component.tscn" id="3_qcmyn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_enafy"]
 radius = 8.0
@@ -31,3 +32,5 @@ texture = ExtResource("2_wg5ma")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="4"]
 z_index = 1
 shape = SubResource("CircleShape2D_enafy")
+
+[node name="MoneyDropComponent" parent="." index="5" instance=ExtResource("3_qcmyn")]

@@ -17,11 +17,9 @@ layer_1/tile_data = PackedInt32Array(65537, 0, 2, 131073, 0, 2, 196609, 0, 2, 26
 
 [node name="GarbageBin3" parent="." instance=ExtResource("3_m5qy2")]
 position = Vector2(160, 89.6)
-scale = Vector2(1, 1)
 
 [node name="test_enemy6" parent="." node_paths=PackedStringArray("velocity_component") instance=ExtResource("2_cmj4g")]
 position = Vector2(160, 147.2)
-scale = Vector2(1, 1)
 velocity_component = NodePath("../test_enemy3/VelocityComponent")
 
 [node name="test_enemy2" parent="." instance=ExtResource("2_cmj4g")]
@@ -46,9 +44,7 @@ position = Vector2(240, 112)
 
 [node name="test_enemy7" parent="." node_paths=PackedStringArray("velocity_component") instance=ExtResource("2_cmj4g")]
 position = Vector2(160, 118.4)
-scale = Vector2(1, 1)
 velocity_component = NodePath("../test_enemy3/VelocityComponent")
 
 [node name="GarbageBin4" parent="." instance=ExtResource("3_m5qy2")]
 position = Vector2(96, 35.2)
-scale = Vector2(1, 1)

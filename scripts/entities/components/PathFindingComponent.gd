@@ -42,3 +42,4 @@ func _on_area_2d_body_exited(body):
 	if body is Player:
 		player_lost.emit()
 		player = null
+

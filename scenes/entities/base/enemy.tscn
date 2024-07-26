@@ -5,9 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://oqbyes5tx2jp" path="res://scenes/components/flashing_sprite_component.tscn" id="3_x5r8o"]
 [ext_resource type="PackedScene" uid="uid://swvxckbky45x" path="res://scenes/components/health_component.tscn" id="4_sy1yc"]
 [ext_resource type="PackedScene" uid="uid://8e1qv67xcb1b" path="res://scenes/components/velocity_component.tscn" id="5_704fb"]
-[ext_resource type="Script" path="res://scripts/state_machines/state_machine.gd" id="6_q4cak"]
-[ext_resource type="Script" path="res://scripts/state_machines/hobo/HoboIdle.gd" id="7_snpx1"]
-[ext_resource type="Script" path="res://scripts/state_machines/hobo/HoboFollow.gd" id="8_wxsrw"]
+[ext_resource type="Script" path="res://scripts/state_machines/state_machine.gd" id="6_so7ml"]
+[ext_resource type="Script" path="res://scripts/state_machines/hobo/HoboIdle.gd" id="7_0kaa0"]
+[ext_resource type="Script" path="res://scripts/state_machines/hobo/HoboFollow.gd" id="8_2un52"]
 
 [node name="enemy" type="CharacterBody2D" node_paths=PackedStringArray("velocity_component")]
 script = ExtResource("1_nrgb2")
@@ -26,11 +26,11 @@ health_component = NodePath("../HealthComponent")
 body = NodePath("..")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
-script = ExtResource("6_q4cak")
+script = ExtResource("6_so7ml")
 initial_state = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="StateMachine"]
-script = ExtResource("7_snpx1")
+script = ExtResource("7_0kaa0")
 
 [node name="Follow" type="Node" parent="StateMachine"]
-script = ExtResource("8_wxsrw")
+script = ExtResource("8_2un52")

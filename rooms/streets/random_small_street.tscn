@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://bl21ahltktemb"]
+[gd_scene load_steps=8 format=3 uid="uid://bl21ahltktemb"]
 
 [ext_resource type="Script" path="res://rooms/streets/random_street.gd" id="1_qpp62"]
 [ext_resource type="Script" path="res://scripts/maps/street_nav.gd" id="2_mj2hi"]
 [ext_resource type="PackedScene" uid="uid://yqfmkglmfrmn" path="res://rooms/streets/street_up.tscn" id="3_k7ir1"]
 [ext_resource type="PackedScene" uid="uid://c8w2a75gykdsd" path="res://rooms/streets/street_down.tscn" id="4_g7ptj"]
-[ext_resource type="PackedScene" uid="uid://cdbljjtd7k114" path="res://rooms/streets/middle_street_1.tscn" id="5_1lt22"]
+[ext_resource type="Script" path="res://scripts/entities/base/street_parts.gd" id="5_vojy4"]
+[ext_resource type="PackedScene" uid="uid://b8mtdggkhdrty" path="res://rooms/streets/street_line.tscn" id="6_ymvq4"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_o67wm"]
 vertices = PackedVector2Array(686, 113, 693, 1108, 113, 1095, 106, 106)
@@ -23,10 +24,13 @@ navigation_layers = 32
 script = ExtResource("2_mj2hi")
 fragments = 8
 upper_street = ExtResource("3_k7ir1")
-middle_streets = [NodePath("middle_street_1")]
+middle_streets = [NodePath("StreetParts")]
 lower_street = ExtResource("4_g7ptj")
 
-[node name="middle_street_1" parent="NavigationRegion2D" instance=ExtResource("5_1lt22")]
+[node name="StreetParts" type="Node" parent="NavigationRegion2D"]
+script = ExtResource("5_vojy4")
+scene = ExtResource("6_ymvq4")
+height = 12
 
 [connection signal="bake_finished" from="NavigationRegion2D" to="NavigationRegion2D" method="_on_bake_finished"]
 [connection signal="child_exiting_tree" from="NavigationRegion2D" to="NavigationRegion2D" method="_on_child_exiting_tree"]
