@@ -1,5 +1,21 @@
-[gd_scene format=3 uid="uid://c1ofxpspmmvnv"]
+[gd_scene load_steps=4 format=3 uid="uid://c1ofxpspmmvnv"]
 
-[node name="Coin" type="Node2D"]
+[ext_resource type="Script" path="res://scenes/entities/coin.gd" id="1_ouu6n"]
+[ext_resource type="Texture2D" uid="uid://pvpn5rd87p52" path="res://Assets/Sprites/Items/Consumable/coin.png" id="3_4b8cu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sjy8p"]
+radius = 9.05539
+
+[node name="Coin" type="StaticBody2D"]
+script = ExtResource("1_ouu6n")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_4b8cu")
+
+[node name="pickeable_area" type="Area2D" parent="."]
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pickeable_area"]
+shape = SubResource("CircleShape2D_sjy8p")
+
+[connection signal="body_entered" from="pickeable_area" to="." method="_on_pickeable_area_body_entered"]

@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://swvxckbky45x" path="res://scenes/components/health_component.tscn" id="3_ckffq"]
 [ext_resource type="Texture2D" uid="uid://b0kgrvl2pd071" path="res://Assets/Sprites/Player/fred.png" id="4_yjnwf"]
 [ext_resource type="PackedScene" uid="uid://c3lv1vx7mqof7" path="res://scenes/weapons/crowbar.tscn" id="5_kxjh0"]
-[ext_resource type="PackedScene" uid="uid://bm3obvhh2cyfr" path="res://scenes/menues/pause_full_menu.tscn" id="5_xiw2s"]
+[ext_resource type="PackedScene" uid="uid://bm3obvhh2cyfr" path="res://scenes/menues/popup_menu.tscn" id="5_xiw2s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d7mgq"]
 size = Vector2(16, 16)

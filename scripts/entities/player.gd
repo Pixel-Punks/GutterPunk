@@ -12,6 +12,8 @@ class_name Player
 
 @export var strength : int = 2
 
+@export var money : int = 0
+
 signal pause_menu()
 
 func _input(event):
