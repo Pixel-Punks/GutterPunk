@@ -1,11 +1,17 @@
-[gd_scene load_steps=8 format=3 uid="uid://c3e2ieqre2k83"]
+[gd_scene load_steps=14 format=3 uid="uid://c3e2ieqre2k83"]
 
 [ext_resource type="Script" path="res://scripts/entities/player.gd" id="1_sjrlc"]
 [ext_resource type="PackedScene" uid="uid://lthvbl7wgup7" path="res://scenes/components/hitbox_component.tscn" id="2_5wbem"]
 [ext_resource type="PackedScene" uid="uid://swvxckbky45x" path="res://scenes/components/health_component.tscn" id="3_ckffq"]
 [ext_resource type="Texture2D" uid="uid://b0kgrvl2pd071" path="res://Assets/Sprites/Player/fred.png" id="4_yjnwf"]
 [ext_resource type="PackedScene" uid="uid://c3lv1vx7mqof7" path="res://scenes/weapons/crowbar.tscn" id="5_kxjh0"]
-[ext_resource type="PackedScene" uid="uid://bm3obvhh2cyfr" path="res://scenes/menues/pause_full_menu.tscn" id="5_naos3"]
+[ext_resource type="PackedScene" uid="uid://bm3obvhh2cyfr" path="res://scenes/menues/popup_menu.tscn" id="6_6xkec"]
+[ext_resource type="PackedScene" uid="uid://dlcrvyo2qfjxn" path="res://scenes/ui/bars/healthBar/healthbar_ui.tscn" id="6_sg0fs"]
+[ext_resource type="PackedScene" uid="uid://cxsf3b7b5i0gv" path="res://scenes/ui/bars/bacBar/bacbar_ui.tscn" id="7_xvq3g"]
+[ext_resource type="PackedScene" uid="uid://c7mf66etejrik" path="res://scenes/ui/bars/overdoseBar/overdosebar_ui.tscn" id="8_12u4a"]
+[ext_resource type="PackedScene" uid="uid://d2g0nblyxabe2" path="res://scenes/ui/stats/speed/speed_stat_ui.tscn" id="9_bkfh8"]
+[ext_resource type="PackedScene" uid="uid://t3du7oxso5e" path="res://scenes/ui/stats/violence/violence_stat_ui.tscn" id="10_hbcqk"]
+[ext_resource type="PackedScene" uid="uid://cmlbay3wqoxww" path="res://scenes/ui/stats/coins/coins_stat_ui.tscn" id="11_32k5y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d7mgq"]
 size = Vector2(16, 16)
@@ -25,7 +31,9 @@ health_component = NodePath("../HealthComponent")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 shape = SubResource("RectangleShape2D_d7mgq")
 
-[node name="HealthComponent" parent="." instance=ExtResource("3_ckffq")]
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("health_bar") instance=ExtResource("3_ckffq")]
+MAX_HEALTH = null
+health_bar = NodePath("../Camera2D/HealthbarUi")
 
 [node name="PlayerSprite" type="Sprite2D" parent="."]
 texture = ExtResource("4_yjnwf")
@@ -34,10 +42,60 @@ texture = ExtResource("4_yjnwf")
 
 [node name="PauseMenu" parent="Camera2D" instance=ExtResource("5_naos3")]
 visible = false
-offset_left = -29.0
-offset_top = -37.0
-offset_right = -29.0
-offset_bottom = -37.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -55.0
+offset_top = -62.0
+offset_right = -55.0
+offset_bottom = -62.0
+scale = Vector2(0.2, 0.2)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="HealthbarUi" parent="Camera2D" instance=ExtResource("6_sg0fs")]
+offset_left = -113.2
+offset_top = -62.8
+offset_right = -35.2
+offset_bottom = -52.8
+scale = Vector2(0.5, 0.5)
+
+[node name="BacbarUi" parent="Camera2D" instance=ExtResource("7_xvq3g")]
+offset_left = -113.0
+offset_top = -56.0
+offset_right = -35.0
+offset_bottom = -46.0
+scale = Vector2(0.5, 0.5)
+
+[node name="OverdosebarUi" parent="Camera2D" instance=ExtResource("8_12u4a")]
+offset_left = -113.0
+offset_top = -49.0
+offset_right = -35.0
+offset_bottom = -39.0
+scale = Vector2(0.5, 0.5)
+
+[node name="SpeedStatUi" parent="Camera2D" instance=ExtResource("9_bkfh8")]
+offset_left = -113.0
+offset_top = -42.0
+offset_right = -85.0
+offset_bottom = -19.0
+scale = Vector2(0.25, 0.25)
+
+[node name="ViolenceStatUi" parent="Camera2D" instance=ExtResource("10_hbcqk")]
+offset_left = -113.0
+offset_top = -36.0
+offset_right = -85.0
+offset_bottom = -13.0
+scale = Vector2(0.25, 0.25)
+
+[node name="CoinsStatUi" parent="Camera2D" instance=ExtResource("11_32k5y")]
+offset_left = 101.2
+offset_top = -62.8
+offset_right = 120.2
+offset_bottom = -39.8
+scale = Vector2(0.25, 0.25)
 
 [node name="CrowBar" parent="." instance=ExtResource("5_kxjh0")]
 

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2g0nblyxabe2"]
+
+[ext_resource type="Texture2D" uid="uid://ifci3rjnuprj" path="res://Assets/Sprites/Player/stats.png" id="1_c3wq6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2wh61"]
+atlas = ExtResource("1_c3wq6")
+region = Rect2(16, 0, 16, 16)
+
+[node name="SpeedStatUi" type="CenterContainer"]
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "10"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(36, 12)
+texture = SubResource("AtlasTexture_2wh61")
