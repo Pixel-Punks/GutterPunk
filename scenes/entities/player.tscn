@@ -1,23 +1,31 @@
-[gd_scene load_steps=9 format=3 uid="uid://c3e2ieqre2k83"]
+[gd_scene load_steps=12 format=3 uid="uid://c3e2ieqre2k83"]
 
-[ext_resource type="Script" path="res://scripts/entities/components/player.gd" id="1_sjrlc"]
+[ext_resource type="Script" path="res://scripts/entities/player.gd" id="1_sjrlc"]
 [ext_resource type="PackedScene" uid="uid://lthvbl7wgup7" path="res://scenes/components/hitbox_component.tscn" id="2_5wbem"]
 [ext_resource type="PackedScene" uid="uid://swvxckbky45x" path="res://scenes/components/health_component.tscn" id="3_ckffq"]
 [ext_resource type="Texture2D" uid="uid://b0kgrvl2pd071" path="res://Assets/Sprites/Player/fred.png" id="4_yjnwf"]
 [ext_resource type="PackedScene" uid="uid://c3lv1vx7mqof7" path="res://scenes/weapons/crowbar.tscn" id="5_kxjh0"]
 [ext_resource type="PackedScene" uid="uid://bm3obvhh2cyfr" path="res://scenes/menues/popup_menu.tscn" id="6_6xkec"]
 [ext_resource type="PackedScene" uid="uid://8e1qv67xcb1b" path="res://scenes/components/velocity_component.tscn" id="7_knj8m"]
+[ext_resource type="PackedScene" uid="uid://8gdhopimueak" path="res://scenes/components/shrinking_sprite_component.tscn" id="7_vismv"]
+[ext_resource type="PackedScene" uid="uid://dx1g6mxdvbnhv" path="res://scenes/components/oscillating_sprite_component.tscn" id="8_jnpau"]
+[ext_resource type="PackedScene" uid="uid://oqbyes5tx2jp" path="res://scenes/components/flashing_sprite_component.tscn" id="10_l1b6j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d7mgq"]
 size = Vector2(16, 16)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("weapon", "velocity_component")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("weapon", "velocity_component", "shrinking_sprite", "oscillating_sprite") groups=["player"]]
 z_index = 1
-collision_layer = 32
-collision_mask = 32
+position = Vector2(0, -8)
+collision_layer = 96
+collision_mask = 64
 script = ExtResource("1_sjrlc")
 weapon = NodePath("CrowBar")
 velocity_component = NodePath("VelocityComponent")
+shrinking_sprite = NodePath("ShrinkingSpriteComponent")
+oscillating_sprite = NodePath("OscillatingSpriteComponent")
+speed = 50
+strength = 1
 
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("2_5wbem")]
 collision_layer = 64
@@ -27,9 +35,7 @@ health_component = NodePath("../HealthComponent")
 shape = SubResource("RectangleShape2D_d7mgq")
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_ckffq")]
-
-[node name="PlayerSprite" type="Sprite2D" parent="."]
-texture = ExtResource("4_yjnwf")
+MAX_HEALTH = 100
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -44,4 +50,23 @@ shape = SubResource("RectangleShape2D_d7mgq")
 [node name="VelocityComponent" parent="." node_paths=PackedStringArray("body") instance=ExtResource("7_knj8m")]
 body = NodePath("..")
 
+[node name="ShrinkingSpriteComponent" parent="." node_paths=PackedStringArray("enemy") instance=ExtResource("7_vismv")]
+enemy = NodePath("../Node2D")
+
+[node name="OscillatingSpriteComponent" parent="." node_paths=PackedStringArray("enemy") instance=ExtResource("8_jnpau")]
+enemy = NodePath("../Node2D")
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(0, 8)
+
+[node name="PlayerSprite" type="Sprite2D" parent="Node2D"]
+position = Vector2(0, -8)
+texture = ExtResource("4_yjnwf")
+
+[node name="FlashingSpriteComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("10_l1b6j")]
+sprite = NodePath("../Node2D/PlayerSprite")
+
 [connection signal="pause_menu" from="." to="Camera2D/PopupMenu" method="_on_player_pause_menu"]
+[connection signal="hp_reached_zero" from="HealthComponent" to="." method="_on_health_component_hp_reached_zero"]
+[connection signal="took_damage" from="HealthComponent" to="." method="_on_health_component_took_damage"]
+[connection signal="took_damage" from="HealthComponent" to="FlashingSpriteComponent" method="_on_health_component_took_damage"]

@@ -4,6 +4,7 @@ extends NavigationRegion2D
 @export var tile_scale : int = 5
 @export var map_width : int = 10
 @export var map_height : int = 12
+@export var fragments : int = 10
 
 @export var upper_street : PackedScene
 @export var middle_streets : Array[StreetParts]
@@ -12,7 +13,6 @@ extends NavigationRegion2D
 var map_needs_update : bool = false
 
 func _ready():
-	var fragments = 100
 	var width = map_width * tile_size * tile_scale
 	var height = generate_map(fragments)
 	create_navigation_polygon(width, height)
@@ -51,7 +51,7 @@ func create_navigation_polygon(width : int, height : int):
 	bake_navigation_polygon()
 
 func place_player(x_pos : int, y_pos : int) -> void :
-	var player = load("res://scenes/entities/player.tscn").instantiate()
+	var player : Player = get_tree().get_first_node_in_group("player")
 	add_child(player)
 	player.scale = Vector2(tile_scale, tile_scale)
 	player.position = Vector2(x_pos, y_pos)
@@ -60,6 +60,5 @@ func _on_bake_finished():
 	if map_needs_update:
 		bake_navigation_polygon()
 
-
-func _on_child_exiting_tree(node):
+func _on_child_exiting_tree(_node):
 	map_needs_update = true

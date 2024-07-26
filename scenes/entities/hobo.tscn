@@ -1,0 +1,76 @@
+[gd_scene load_steps=8 format=3 uid="uid://dddi5pqj0cjoi"]
+
+[ext_resource type="PackedScene" uid="uid://rx0rdvf2oh53" path="res://scenes/entities/base/enemy.tscn" id="1_n6enl"]
+[ext_resource type="PackedScene" uid="uid://bw8nak3lvoi3i" path="res://scenes/components/path_finding_component.tscn" id="2_drs2e"]
+[ext_resource type="Texture2D" uid="uid://ppixbad0xxuw" path="res://Assets/Sprites/Ennemies/Trash/Hobo/hobo_1.png" id="3_i3cte"]
+[ext_resource type="PackedScene" uid="uid://dx1g6mxdvbnhv" path="res://scenes/components/oscillating_sprite_component.tscn" id="4_afc1d"]
+[ext_resource type="PackedScene" uid="uid://8gdhopimueak" path="res://scenes/components/shrinking_sprite_component.tscn" id="5_1ataw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ye7rg"]
+radius = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qlg61"]
+radius = 11.0
+
+[node name="Hobo" instance=ExtResource("1_n6enl")]
+z_index = 1
+position = Vector2(0, -8)
+collision_layer = 0
+collision_mask = 33
+collision_layers = PackedInt32Array(6)
+mask_layers = PackedInt32Array(6)
+
+[node name="HitboxComponent" parent="." index="0"]
+max_timeout = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" index="0"]
+shape = SubResource("CircleShape2D_ye7rg")
+
+[node name="FlashingSpriteComponent" parent="." index="1" node_paths=PackedStringArray("sprite")]
+sprite = NodePath("../Container/Sprite2D")
+
+[node name="HealthComponent" parent="." index="2"]
+MAX_HEALTH = 5
+
+[node name="PathFindingComponent" parent="." index="3" node_paths=PackedStringArray("enemy", "velocity_component") instance=ExtResource("2_drs2e")]
+enemy = NodePath("..")
+max_speed = 40.0
+acceleration = 40.0
+velocity_component = NodePath("../VelocityComponent")
+radius = 100
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="4"]
+shape = SubResource("CircleShape2D_ye7rg")
+
+[node name="Idle" parent="StateMachine" index="0" node_paths=PackedStringArray("pathfinding", "shrinking_sprite")]
+pathfinding = NodePath("../../PathFindingComponent")
+shrinking_sprite = NodePath("../../ShrinkingSpriteComponent")
+
+[node name="Follow" parent="StateMachine" index="1" node_paths=PackedStringArray("pathfinding", "body", "oscillating_component")]
+pathfinding = NodePath("../../PathFindingComponent")
+body = NodePath("../..")
+oscillating_component = NodePath("../../OscillatingSpriteComponent")
+
+[node name="Container" type="Node2D" parent="." index="7"]
+position = Vector2(0, 8)
+
+[node name="Sprite2D" type="Sprite2D" parent="Container" index="0"]
+position = Vector2(0, -8)
+texture = ExtResource("3_i3cte")
+
+[node name="OscillatingSpriteComponent" parent="." index="8" node_paths=PackedStringArray("enemy") instance=ExtResource("4_afc1d")]
+enemy = NodePath("../Container")
+
+[node name="ShrinkingSpriteComponent" parent="." index="9" node_paths=PackedStringArray("enemy") instance=ExtResource("5_1ataw")]
+enemy = NodePath("../Container")
+
+[node name="Area2D" type="Area2D" parent="." index="10"]
+collision_layer = 0
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+shape = SubResource("CircleShape2D_qlg61")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

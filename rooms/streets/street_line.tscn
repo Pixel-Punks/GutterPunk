@@ -2,7 +2,7 @@
 
 [ext_resource type="TileSet" uid="uid://iq8ujs6yhntt" path="res://tilesets/street_tileset.tres" id="1_aqrjc"]
 [ext_resource type="PackedScene" uid="uid://cxwnr5jjjgxix" path="res://scenes/entities/garbage_bin.tscn" id="2_oa1me"]
-[ext_resource type="PackedScene" uid="uid://dddi5pqj0cjoi" path="res://scenes/entities/test_enemy.tscn" id="3_ha0eh"]
+[ext_resource type="PackedScene" uid="uid://dddi5pqj0cjoi" path="res://scenes/entities/hobo.tscn" id="3_ha0eh"]
 
 [node name="street_line" type="TileMap"]
 position = Vector2(80, 4.76837e-07)

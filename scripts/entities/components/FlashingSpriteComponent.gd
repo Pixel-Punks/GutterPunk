@@ -1,5 +1,7 @@
 extends Node2D
 
+class_name FlashingSpriteComponent
+
 @export var sprite : Sprite2D
 
 func _on_health_component_took_damage(_attack : Attack):

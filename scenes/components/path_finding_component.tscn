@@ -16,6 +16,7 @@ avoidance_layers = 32
 avoidance_mask = 40
 
 [node name="Area2D" type="Area2D" parent="."]
+unique_name_in_owner = true
 collision_layer = 33
 collision_mask = 32
 
@@ -23,4 +24,6 @@ collision_mask = 32
 shape = SubResource("CircleShape2D_pyqcl")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

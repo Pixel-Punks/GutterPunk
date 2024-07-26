@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dx1g6mxdvbnhv"]
+
+[ext_resource type="Script" path="res://scripts/entities/components/OscillatingSpriteComponent.gd" id="1_h681r"]
+
+[node name="OscillatingSpriteComponent" type="Node2D"]
+script = ExtResource("1_h681r")

@@ -5,6 +5,7 @@ class_name VelocityComponent
 @export var max_speed : float = 0
 @export var acceleration : float = 0
 @export var deceleration : float = 0
+@export var knockback_sensibility : float = 1
 @export var body : CharacterBody2D
 
 func accelerate_in_direction(
@@ -14,8 +15,8 @@ func accelerate_in_direction(
 	delta : float = get_process_delta_time()
 	):
 	body.velocity = body.velocity.move_toward(
-		direction * max_speed, 
-		acceleration * delta) + knockback
+		direction*max_speed*10, 
+		movement_acc*delta*100) + knockback
 	body.move_and_slide()
 
 func knockback_in_direction(
@@ -23,7 +24,7 @@ func knockback_in_direction(
 	knockback_factor : int, 
 	delta : float = get_process_delta_time()
 	):
-	accelerate_in_direction(direction, acceleration, direction*knockback_factor*max_speed)
+	accelerate_in_direction(direction, acceleration, direction*knockback_factor*10*max_speed)
 	
-func decelerate(delta : float = get_process_delta_time()):
+func decelerate(_delta : float = get_process_delta_time()):
 	accelerate_in_direction(Vector2.ZERO, deceleration)
