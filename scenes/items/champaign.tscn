@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://dtonuaox0hhow"]
+[gd_scene load_steps=5 format=3 uid="uid://dtonuaox0hhow"]
 
+[ext_resource type="Script" path="res://scenes/items/champaign.gd" id="1_a17lg"]
 [ext_resource type="Texture2D" uid="uid://dbfgld8lhhxdi" path="res://Assets/Sprites/Items/Consumable/item_champaign.png" id="1_t32sq"]
 [ext_resource type="PackedScene" uid="uid://cd02131g1167t" path="res://scenes/interaction/interaction_area/InteractionArea.tscn" id="2_8xovr"]
 
@@ -7,6 +8,7 @@
 size = Vector2(62, 109)
 
 [node name="Champaign" type="Node2D"]
+script = ExtResource("1_a17lg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 50

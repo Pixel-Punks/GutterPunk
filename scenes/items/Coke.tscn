@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://dhjvsktwlyil5"]
+[gd_scene load_steps=5 format=3 uid="uid://dhjvsktwlyil5"]
 
+[ext_resource type="Script" path="res://scenes/items/Coke.gd" id="1_j1e7e"]
 [ext_resource type="Texture2D" uid="uid://75abe7lgchlk" path="res://Assets/Sprites/Items/Consumable/item_coke.png" id="1_vrj1m"]
 [ext_resource type="PackedScene" uid="uid://cd02131g1167t" path="res://scenes/interaction/interaction_area/InteractionArea.tscn" id="2_ebtwk"]
 
@@ -9,6 +10,7 @@ size = Vector2(20, 24.25)
 [node name="Coke" type="Node2D"]
 z_index = 45
 scale = Vector2(4, 4)
+script = ExtResource("1_j1e7e")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_vrj1m")
