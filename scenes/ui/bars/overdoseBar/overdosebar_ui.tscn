@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://c7mf66etejrik"]
+[gd_scene load_steps=9 format=3 uid="uid://c7mf66etejrik"]
 
 [ext_resource type="Texture2D" uid="uid://dkg0gnukx36v4" path="res://Assets/Sprites/Ui/Bar/healthBar.png" id="2_0guhn"]
+[ext_resource type="Texture2D" uid="uid://lajks8p73xlt" path="res://Assets/Sprites/Items/Consumable/Tilemap.png" id="2_gu03w"]
 
 [sub_resource type="GDScript" id="GDScript_0r033"]
 script/source = "extends CenterContainer
@@ -38,6 +39,10 @@ region = Rect2(1, 3, 78, 10)
 atlas = ExtResource("2_0guhn")
 region = Rect2(1, 19, 78, 10)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_x240e"]
+atlas = ExtResource("2_gu03w")
+region = Rect2(240, 0, 16, 16)
+
 [node name="OverdosebarUi" type="CenterContainer" node_paths=PackedStringArray("over_bar", "under_bar")]
 offset_right = 78.0
 offset_bottom = 10.0
@@ -56,3 +61,8 @@ layout_mode = 2
 texture_over = SubResource("AtlasTexture_45x67")
 texture_progress = SubResource("AtlasTexture_yklne")
 tint_progress = Color(0.341176, 0.611765, 0.929412, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(85, 5)
+scale = Vector2(0.75, 0.75)
+texture = SubResource("AtlasTexture_x240e")

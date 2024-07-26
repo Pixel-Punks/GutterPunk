@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cxsf3b7b5i0gv"]
+[gd_scene load_steps=9 format=3 uid="uid://cxsf3b7b5i0gv"]
 
 [ext_resource type="Script" path="res://scripts/ui/progressbar_ui.gd" id="1_c0gcq"]
 [ext_resource type="Texture2D" uid="uid://dkg0gnukx36v4" path="res://Assets/Sprites/Ui/Bar/healthBar.png" id="2_wox6e"]
+[ext_resource type="Texture2D" uid="uid://lajks8p73xlt" path="res://Assets/Sprites/Items/Consumable/Tilemap.png" id="3_u08yd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ex2ba"]
 atlas = ExtResource("2_wox6e")
@@ -19,6 +20,10 @@ region = Rect2(1, 3, 78, 10)
 atlas = ExtResource("2_wox6e")
 region = Rect2(1, 19, 78, 10)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_wrswc"]
+atlas = ExtResource("3_u08yd")
+region = Rect2(336, 0, 16, 16)
+
 [node name="BacbarUi" type="CenterContainer"]
 offset_right = 78.0
 offset_bottom = 10.0
@@ -35,3 +40,8 @@ layout_mode = 2
 texture_over = SubResource("AtlasTexture_45x67")
 texture_progress = SubResource("AtlasTexture_yklne")
 tint_progress = Color(0.984314, 0.694118, 0.0901961, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(84, 5)
+scale = Vector2(0.75, 0.75)
+texture = SubResource("AtlasTexture_wrswc")
