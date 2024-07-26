@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://cvwdcjf3boqyv"
+path="res://.godot/imported/brain_gate_open.aseprite-e50fa2b3483262279c61666ce75e72b4.res"
+
+[deps]
+
+source_file="res://Assets/Sprites/InteractiveTiles/brain_gate_open.aseprite"
+dest_files=["res://.godot/imported/brain_gate_open.aseprite-e50fa2b3483262279c61666ce75e72b4.res"]
+
+[params]
+
