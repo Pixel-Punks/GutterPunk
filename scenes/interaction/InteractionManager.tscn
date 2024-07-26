@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://cq3c0mnxnhbfa"]
+
+[ext_resource type="FontFile" uid="uid://jjuas3p4xaln" path="res://fonts/Abaddon Light.ttf" id="1_0yfff"]
+[ext_resource type="Script" path="res://scenes/interaction/InteractionManager.gd" id="1_u1arf"]
+
+[node name="InteractionManager" type="Node2D" groups=["player"]]
+script = ExtResource("1_u1arf")
+
+[node name="Label" type="Label" parent="."]
+z_index = 20
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -54.0
+offset_right = 54.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_0yfff")
+theme_override_font_sizes/font_size = 40
+text = "[E] To Interact"
+horizontal_alignment = 1
+vertical_alignment = 1

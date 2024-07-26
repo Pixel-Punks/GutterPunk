@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://gdupmmj1txhi"]
+
+[ext_resource type="Texture2D" uid="uid://7hopa7r56kkk" path="res://Assets/Sprites/Items/Consumable/item_meth.png" id="1_e3vmg"]
+[ext_resource type="Script" path="res://scenes/items/meth.gd" id="1_uard0"]
+[ext_resource type="PackedScene" uid="uid://cd02131g1167t" path="res://scenes/interaction/interaction_area/InteractionArea.tscn" id="2_mtc0e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8chyp"]
+size = Vector2(20, 30.75)
+
+[node name="Meth" type="Node2D"]
+z_index = 46
+scale = Vector2(4, 4)
+script = ExtResource("1_uard0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_e3vmg")
+
+[node name="InteractionArea" parent="." instance=ExtResource("2_mtc0e")]
+action_name = "prick yourself"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(0, -4.125)
+shape = SubResource("RectangleShape2D_8chyp")
