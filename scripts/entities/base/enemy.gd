@@ -13,4 +13,5 @@ func _on_health_component_hp_reached_zero():
 	queue_free()
 
 func _on_health_component_took_damage(attack):
-	pass # Replace with function body.
+	velocity = velocity.move_toward(attack.direction * attack.knockback* 100, 1000)
+	move_and_slide()

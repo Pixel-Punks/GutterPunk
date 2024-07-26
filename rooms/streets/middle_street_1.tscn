@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdbljjtd7k114"]
+
+[ext_resource type="Script" path="res://scripts/entities/base/street_parts.gd" id="1_mbhxg"]
+[ext_resource type="PackedScene" uid="uid://b8mtdggkhdrty" path="res://rooms/streets/street_line.tscn" id="2_4vauc"]
+
+[node name="middle_street_1" type="Node"]
+script = ExtResource("1_mbhxg")
+scene = ExtResource("2_4vauc")
+height = 12

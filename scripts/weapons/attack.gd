@@ -2,4 +2,6 @@ extends Node
 
 class_name Attack
 
-var damage := 1
+@export var damage := 1
+@export var knockback := 1
+var direction : Vector2

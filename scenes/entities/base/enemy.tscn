@@ -9,6 +9,8 @@
 script = ExtResource("1_nrgb2")
 
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("2_ohq10")]
+collision_layer = 8
+collision_mask = 0
 health_component = NodePath("../HealthComponent")
 
 [node name="FlashingSpriteComponent" parent="." instance=ExtResource("3_x5r8o")]

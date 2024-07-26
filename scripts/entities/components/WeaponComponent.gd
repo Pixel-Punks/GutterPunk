@@ -4,7 +4,9 @@ class_name Weapon
 
 @export var hurtbox : CollisionPolygon2D
 @export var animated_sprites : AnimatedSprite2D
-@export var weapon_damage : int = 1
+
+@export var weapon_attack : Attack
+
 var attack_strength : int = 1
 
 var animation_names : PackedStringArray
@@ -38,6 +40,5 @@ func _on_area_2d_area_entered(area):
 		if collided_hitboxes.find(area.get_rid()) >= 0:
 			return
 		collided_hitboxes.append(area.get_rid())
-		var att = Attack.new()
-		att.damage = weapon_damage * attack_strength
-		hitbox.damage(att)
+		weapon_attack.direction = Vector2.RIGHT.rotated(get_parent().transform.get_rotation())
+		hitbox.damage(weapon_attack)

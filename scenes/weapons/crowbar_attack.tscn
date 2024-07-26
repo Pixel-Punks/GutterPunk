@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bngee20wjrduv"]
+
+[ext_resource type="Script" path="res://scripts/weapons/attack.gd" id="1_5wmr8"]
+
+[node name="CrowbarAttack" type="Node"]
+script = ExtResource("1_5wmr8")

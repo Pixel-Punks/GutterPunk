@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bl21ahltktemb"]
+[gd_scene load_steps=6 format=3 uid="uid://bl21ahltktemb"]
 
 [ext_resource type="Script" path="res://scripts/maps/street_nav.gd" id="1_nwoih"]
-[ext_resource type="PackedScene" uid="uid://c3e2ieqre2k83" path="res://scenes/entities/player.tscn" id="2_gsa2q"]
+[ext_resource type="PackedScene" uid="uid://yqfmkglmfrmn" path="res://rooms/streets/street_up.tscn" id="2_ktqel"]
+[ext_resource type="PackedScene" uid="uid://c8w2a75gykdsd" path="res://rooms/streets/street_down.tscn" id="3_i76ep"]
+[ext_resource type="PackedScene" uid="uid://cdbljjtd7k114" path="res://rooms/streets/middle_street_1.tscn" id="4_y0rq3"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_o67wm"]
 vertices = PackedVector2Array(686, 113, 693, 1108, 113, 1095, 106, 106)
@@ -13,16 +15,15 @@ agent_radius = 90.0
 
 [node name="TestStreet" type="Node2D"]
 
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." node_paths=PackedStringArray("middle_streets")]
 navigation_polygon = SubResource("NavigationPolygon_o67wm")
 navigation_layers = 32
 script = ExtResource("1_nwoih")
+upper_street = ExtResource("2_ktqel")
+middle_streets = [NodePath("middle_street_1")]
+lower_street = ExtResource("3_i76ep")
 
-[node name="Player" parent="." instance=ExtResource("2_gsa2q")]
-position = Vector2(448, 352)
-acceleration = 10000
-deceleration = 10000
-strength = 20
+[node name="middle_street_1" parent="NavigationRegion2D" instance=ExtResource("4_y0rq3")]
 
 [connection signal="bake_finished" from="NavigationRegion2D" to="NavigationRegion2D" method="_on_bake_finished"]
 [connection signal="child_exiting_tree" from="NavigationRegion2D" to="NavigationRegion2D" method="_on_child_exiting_tree"]

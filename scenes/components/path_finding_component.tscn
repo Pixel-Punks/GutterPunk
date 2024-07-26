@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/entities/components/PathFindingComponent.gd" id="1_iyb1q"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pyqcl"]
-radius = 506.142
+radius = 48.6621
 
 [node name="PathFindingComponent" type="Node2D" node_paths=PackedStringArray("nav")]
 script = ExtResource("1_iyb1q")
