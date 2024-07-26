@@ -14,6 +14,8 @@ config/name="PFP"
 run/main_scene="res://scenes/menues/start_menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 boot_splash/bg_color=Color(0.205489, 0.0217949, 0.311387, 1)
+boot_splash/image="res://Assets/Logo/Logo_text.png"
+boot_splash/fullsize=false
 config/icon="res://icon.svg"
 
 [display]
