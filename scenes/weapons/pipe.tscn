@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://dg2abd5aa83t"]
+
+[ext_resource type="Script" path="res://scripts/weapons/weapon.gd" id="1_ppmpb"]
+[ext_resource type="PackedScene" uid="uid://cfaoy8ryqsvvl" path="res://scenes/components/weapon_component.tscn" id="1_r5bqt"]
+[ext_resource type="SpriteFrames" uid="uid://coxmnoyvndc4y" path="res://Assets/Sprites/Items/Equipment/Weapon/Pipe/pipe.aseprite" id="2_ntemd"]
+[ext_resource type="Script" path="res://scripts/weapons/attack.gd" id="3_vqu4t"]
+
+[node name="Pipe" type="Node2D" node_paths=PackedStringArray("weapon")]
+script = ExtResource("1_ppmpb")
+weapon = NodePath("WeaponComponent")
+
+[node name="WeaponComponent" parent="." node_paths=PackedStringArray("hurtbox", "animated_sprites", "weapon_attack") instance=ExtResource("1_r5bqt")]
+hurtbox = NodePath("Area2D/CollisionPolygon2D")
+animated_sprites = NodePath("AnimatedSprite2D")
+weapon_attack = NodePath("../Attack")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="WeaponComponent"]
+position = Vector2(16, 0)
+rotation = 1.5708
+sprite_frames = ExtResource("2_ntemd")
+animation = &"LTR"
+frame = 9
+frame_progress = 1.0
+
+[node name="Area2D" type="Area2D" parent="WeaponComponent"]
+collision_layer = 0
+collision_mask = 40
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="WeaponComponent/Area2D"]
+polygon = PackedVector2Array(0, 0, 0, 32, 16, 32, 32, 24, 40, 16, 40, -16, 32, -24, 16, -32, 0, -32)
+
+[node name="Attack" type="Node" parent="."]
+script = ExtResource("3_vqu4t")
+damage = 2
+knockback = 3
+
+[connection signal="area_entered" from="WeaponComponent/Area2D" to="WeaponComponent" method="_on_area_2d_area_entered"]

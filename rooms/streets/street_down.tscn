@@ -16,3 +16,4 @@ layer_1/tile_data = PackedInt32Array(0, 0, 2, 65536, 0, 2, 131072, 0, 2, 196608,
 
 [node name="DrainGateOpen" parent="." instance=ExtResource("2_fh3si")]
 position = Vector2(81.6, 147.2)
+collision_layer = 0

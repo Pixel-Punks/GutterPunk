@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://8gdhopimueak"]
+
+[ext_resource type="Script" path="res://scripts/entities/components/ShrinkingSpriteComponent.gd" id="1_im5ej"]
+
+[node name="ShrinkingSpriteComponent" type="Node2D"]
+script = ExtResource("1_im5ej")

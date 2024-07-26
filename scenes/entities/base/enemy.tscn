@@ -1,12 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://rx0rdvf2oh53"]
+[gd_scene load_steps=9 format=3 uid="uid://rx0rdvf2oh53"]
 
 [ext_resource type="Script" path="res://scripts/entities/base/enemy.gd" id="1_nrgb2"]
 [ext_resource type="PackedScene" uid="uid://lthvbl7wgup7" path="res://scenes/components/hitbox_component.tscn" id="2_ohq10"]
 [ext_resource type="PackedScene" uid="uid://oqbyes5tx2jp" path="res://scenes/components/flashing_sprite_component.tscn" id="3_x5r8o"]
 [ext_resource type="PackedScene" uid="uid://swvxckbky45x" path="res://scenes/components/health_component.tscn" id="4_sy1yc"]
+[ext_resource type="PackedScene" uid="uid://8e1qv67xcb1b" path="res://scenes/components/velocity_component.tscn" id="5_704fb"]
+[ext_resource type="Script" path="res://scripts/state_machines/state_machine.gd" id="6_so7ml"]
+[ext_resource type="Script" path="res://scripts/state_machines/hobo/HoboIdle.gd" id="7_0kaa0"]
+[ext_resource type="Script" path="res://scripts/state_machines/hobo/HoboFollow.gd" id="8_2un52"]
 
-[node name="enemy" type="CharacterBody2D"]
+[node name="enemy" type="CharacterBody2D" node_paths=PackedStringArray("velocity_component")]
 script = ExtResource("1_nrgb2")
+velocity_component = NodePath("VelocityComponent")
 
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("2_ohq10")]
 collision_layer = 8
@@ -17,6 +22,15 @@ health_component = NodePath("../HealthComponent")
 
 [node name="HealthComponent" parent="." instance=ExtResource("4_sy1yc")]
 
-[connection signal="hp_reached_zero" from="HealthComponent" to="." method="_on_health_component_hp_reached_zero"]
-[connection signal="took_damage" from="HealthComponent" to="." method="_on_health_component_took_damage"]
-[connection signal="took_damage" from="HealthComponent" to="FlashingSpriteComponent" method="_on_health_component_took_damage"]
+[node name="VelocityComponent" parent="." node_paths=PackedStringArray("body") instance=ExtResource("5_704fb")]
+body = NodePath("..")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("6_so7ml")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("7_0kaa0")
+
+[node name="Follow" type="Node" parent="StateMachine"]
+script = ExtResource("8_2un52")

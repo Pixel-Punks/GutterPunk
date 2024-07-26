@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="PFP"
-run/main_scene="res://scenes/menues/start_menu.tscn"
+run/main_scene="res://scenes/main_game.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 boot_splash/bg_color=Color(0.205489, 0.0217949, 0.311387, 1)
 boot_splash/image="res://Assets/Logo/Logo_text.png"
@@ -36,14 +36,14 @@ version_control/autoload_on_startup=true
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/gdLinter/plugin.cfg")
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg")
 
 [input]
 
 player_attack={
 "deadzone": 0.5,
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(306, 26),"global_position":Vector2(311, 76),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
-, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":2,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":10,"pressure":0.0,"pressed":false,"script":null)
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":32,"key_label":0,"unicode":32,"echo":false,"script":null)
 ]
 }

@@ -3,7 +3,7 @@
 [ext_resource type="TileSet" uid="uid://b6rvuciwjo5y2" path="res://tilesets/lab.tres" id="3_1wc68"]
 [ext_resource type="PackedScene" uid="uid://c3e2ieqre2k83" path="res://scenes/entities/player.tscn" id="3_rh25k"]
 [ext_resource type="PackedScene" uid="uid://cxwnr5jjjgxix" path="res://scenes/entities/garbage_bin.tscn" id="4_ywq08"]
-[ext_resource type="PackedScene" uid="uid://dddi5pqj0cjoi" path="res://scenes/entities/test_enemy.tscn" id="5_pqin2"]
+[ext_resource type="PackedScene" uid="uid://dddi5pqj0cjoi" path="res://scenes/entities/hobo.tscn" id="5_pqin2"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_4jitd"]
 vertices = PackedVector2Array(885, 563, 889, 723, 653, 720, 646, 775, 467, 773, 469, 722, 1196, 384, 1191, 19, 2080, 17, 2085, 1042, 1193, 1039, 1188, 565, 885, 384, 231, 717, 228, 100, 883, 100)
