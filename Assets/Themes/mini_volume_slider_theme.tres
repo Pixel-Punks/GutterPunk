@@ -1,0 +1,18 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://dverhp74tl1un"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gbi07"]
+bg_color = Color(0.728757, 0.622221, 0.991335, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_21q50"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 200.0
+bg_color = Color(1, 1, 1, 0.996078)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[resource]
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_gbi07")
+HSlider/styles/slider = SubResource("StyleBoxFlat_21q50")
