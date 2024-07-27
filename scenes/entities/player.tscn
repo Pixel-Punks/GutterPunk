@@ -20,7 +20,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d7mgq"]
 size = Vector2(16, 16)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("weapon", "velocity_component", "shrinking_sprite", "oscillating_sprite") groups=["player", "real_player_no_cap"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("weapon", "velocity_component", "shrinking_sprite", "oscillating_sprite", "flashing_sprite") groups=["player", "real_player_no_cap"]]
 z_index = 1
 position = Vector2(0, -8)
 collision_layer = 96
@@ -30,6 +30,7 @@ weapon = NodePath("CrowBar")
 velocity_component = NodePath("VelocityComponent")
 shrinking_sprite = NodePath("ShrinkingSpriteComponent")
 oscillating_sprite = NodePath("OscillatingSpriteComponent")
+flashing_sprite = NodePath("FlashingSpriteComponent")
 speed = 50
 strength = 1
 
@@ -48,50 +49,50 @@ zoom = Vector2(0.8, 0.8)
 
 [node name="HealthbarUi" parent="Camera2D" instance=ExtResource("6_sg0fs")]
 z_index = 4096
-offset_left = -113.2
-offset_top = -62.8
-offset_right = -35.2
-offset_bottom = -52.8
+offset_left = -142.0
+offset_top = -79.0
+offset_right = -64.0
+offset_bottom = -69.0
 scale = Vector2(0.5, 0.5)
 
 [node name="BacbarUi" parent="Camera2D" instance=ExtResource("7_xvq3g")]
 z_index = 4096
-offset_left = -113.0
-offset_top = -56.0
-offset_right = -35.0
-offset_bottom = -46.0
+offset_left = -142.0
+offset_top = -72.0
+offset_right = -64.0
+offset_bottom = -62.0
 scale = Vector2(0.5, 0.5)
 
 [node name="OverdosebarUi" parent="Camera2D" instance=ExtResource("8_12u4a")]
 z_index = 4096
-offset_left = -113.0
-offset_top = -49.0
-offset_right = -35.0
-offset_bottom = -39.0
+offset_left = -142.0
+offset_top = -65.0
+offset_right = -64.0
+offset_bottom = -55.0
 scale = Vector2(0.5, 0.5)
 
 [node name="SpeedStatUi" parent="Camera2D" instance=ExtResource("9_bkfh8")]
 z_index = 4096
-offset_left = -113.0
-offset_top = -42.0
-offset_right = -85.0
-offset_bottom = -19.0
+offset_left = -142.0
+offset_top = -59.0
+offset_right = -114.0
+offset_bottom = -36.0
 scale = Vector2(0.25, 0.25)
 
 [node name="ViolenceStatUi" parent="Camera2D" instance=ExtResource("10_hbcqk")]
 z_index = 4096
-offset_left = -113.0
-offset_top = -36.0
-offset_right = -85.0
-offset_bottom = -13.0
+offset_left = -142.0
+offset_top = -53.0
+offset_right = -114.0
+offset_bottom = -30.0
 scale = Vector2(0.25, 0.25)
 
 [node name="CoinsStatUi" parent="Camera2D" instance=ExtResource("11_32k5y")]
 z_index = 4096
-offset_left = 101.2
-offset_top = -62.8
-offset_right = 120.2
-offset_bottom = -39.8
+offset_left = 131.0
+offset_top = -79.0
+offset_right = 150.0
+offset_bottom = -56.0
 scale = Vector2(0.25, 0.25)
 
 [node name="PauseMenu" parent="Camera2D" instance=ExtResource("11_nq2tj")]
