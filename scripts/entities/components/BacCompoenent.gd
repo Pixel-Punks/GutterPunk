@@ -23,7 +23,7 @@ func _ready():
 	if bac_bar:
 		bac_bar.update_value(bac)
 
-func took_drugs():
+func drink():
 	bac += BAC_MALUS
 	if audio_player :
 		audio_player.play_random()

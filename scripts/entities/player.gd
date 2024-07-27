@@ -2,7 +2,6 @@ extends CharacterBody2D
 
 class_name Player
 
-
 @export var weapon : Node2D
 
 @export var audio_player_die : AudioComponent
@@ -18,6 +17,10 @@ class_name Player
 @export var oscillating_sprite : OscillatingSpriteComponent
 
 @export var flashing_sprite : FlashingSpriteComponent
+
+@export var overdose : OverdoseComponent
+
+@export var bac : BacCompoenent
 
 @export var speed : int = 400
 
