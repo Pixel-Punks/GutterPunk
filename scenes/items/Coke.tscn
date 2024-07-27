@@ -1,16 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://dhjvsktwlyil5"]
+[gd_scene load_steps=8 format=3 uid="uid://dhjvsktwlyil5"]
 
 [ext_resource type="Script" path="res://scenes/items/Coke.gd" id="1_j1e7e"]
 [ext_resource type="Texture2D" uid="uid://75abe7lgchlk" path="res://Assets/Sprites/Items/Consumable/item_coke.png" id="1_vrj1m"]
 [ext_resource type="PackedScene" uid="uid://cd02131g1167t" path="res://scenes/interaction/interaction_area/InteractionArea.tscn" id="2_ebtwk"]
+[ext_resource type="Script" path="res://scenes/entities/SfxComponent.gd" id="4_j4ywd"]
+[ext_resource type="AudioStream" uid="uid://dfhs5s71350bx" path="res://Assets/Sounds/Items/Drugs/Sniff/sniff_1.wav" id="5_ckymg"]
+[ext_resource type="AudioStream" uid="uid://c7wp1nshv43ph" path="res://Assets/Sounds/Items/Drugs/Sniff/sniff_2.wav" id="6_ig5ur"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ssv8g"]
 size = Vector2(20, 24.25)
 
-[node name="Coke" type="Node2D"]
+[node name="Coke" type="Node2D" node_paths=PackedStringArray("audio_player")]
 z_index = 45
 scale = Vector2(4, 4)
 script = ExtResource("1_j1e7e")
+audio_player = NodePath("AudioComponent")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_vrj1m")
@@ -21,3 +25,13 @@ action_name = "take a line"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
 position = Vector2(0, -4.125)
 shape = SubResource("RectangleShape2D_ssv8g")
+
+[node name="AudioComponent" type="Node2D" parent="." node_paths=PackedStringArray("audio_players")]
+script = ExtResource("4_j4ywd")
+audio_players = [NodePath("sniff_1"), NodePath("sniff_2")]
+
+[node name="sniff_1" type="AudioStreamPlayer2D" parent="AudioComponent"]
+stream = ExtResource("5_ckymg")
+
+[node name="sniff_2" type="AudioStreamPlayer2D" parent="AudioComponent"]
+stream = ExtResource("6_ig5ur")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://c3e2ieqre2k83"]
+[gd_scene load_steps=31 format=3 uid="uid://c3e2ieqre2k83"]
 
 [ext_resource type="Script" path="res://scripts/entities/player.gd" id="1_sjrlc"]
 [ext_resource type="PackedScene" uid="uid://lthvbl7wgup7" path="res://scenes/components/hitbox_component.tscn" id="2_5wbem"]
@@ -16,22 +16,35 @@
 [ext_resource type="PackedScene" uid="uid://oqbyes5tx2jp" path="res://scenes/components/flashing_sprite_component.tscn" id="10_l1b6j"]
 [ext_resource type="PackedScene" uid="uid://cmlbay3wqoxww" path="res://scenes/ui/stats/coins/coins_stat_ui.tscn" id="11_32k5y"]
 [ext_resource type="PackedScene" uid="uid://bm3obvhh2cyfr" path="res://scenes/menues/popup_menu.tscn" id="11_nq2tj"]
+[ext_resource type="Script" path="res://scenes/entities/SfxComponent.gd" id="17_b1wxt"]
+[ext_resource type="AudioStream" uid="uid://bhmd7wxu7c0b2" path="res://Assets/Sounds/Player/Die/fred_die_1.wav" id="18_aqhoj"]
+[ext_resource type="AudioStream" uid="uid://clwsn1vg5hjme" path="res://Assets/Sounds/Player/Die/fred_die_2.wav" id="19_bobdx"]
+[ext_resource type="AudioStream" uid="uid://3njchqxufolb" path="res://Assets/Sounds/Player/Die/fred_die_3.wav" id="20_kxfi2"]
+[ext_resource type="AudioStream" uid="uid://hsloccknhybe" path="res://Assets/Sounds/Player/Die/fred_die_4.wav" id="21_74c7h"]
+[ext_resource type="AudioStream" uid="uid://dvkxqxgfnkfoo" path="res://Assets/Sounds/Player/Hurt/fred_hurt_1.wav" id="22_ft4gm"]
+[ext_resource type="AudioStream" uid="uid://082a6rk4cfat" path="res://Assets/Sounds/Player/Hurt/fred_hurt_2.wav" id="23_t6eti"]
+[ext_resource type="AudioStream" uid="uid://b1onyqf3vuigr" path="res://Assets/Sounds/Player/Hurt/fred_hurt_3.wav" id="24_ecmxv"]
+[ext_resource type="AudioStream" uid="uid://8lky7buxe5y8" path="res://Assets/Sounds/Player/Hurt/fred_hurt_4.wav" id="25_62khs"]
+[ext_resource type="AudioStream" uid="uid://c4as65ndakg0y" path="res://Assets/Sounds/Player/Hurt/fred_hurt_5.wav" id="26_xhj8s"]
+[ext_resource type="AudioStream" uid="uid://bsusr3pl375sv" path="res://Assets/Sounds/Player/Hurt/fred_hurt_6.wav" id="27_pbjwh"]
+[ext_resource type="AudioStream" uid="uid://bgg05e65clphd" path="res://Assets/Sounds/Player/Idle/burp_1.wav" id="28_13u1n"]
+[ext_resource type="AudioStream" uid="uid://da60uecygwhfs" path="res://Assets/Sounds/Player/Overdose/fred_overdose_1.wav" id="29_iahop"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d7mgq"]
 size = Vector2(16, 16)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("weapon", "velocity_component", "shrinking_sprite", "oscillating_sprite") groups=["player", "real_player_no_cap"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("weapon", "audio_player", "velocity_component", "shrinking_sprite", "oscillating_sprite") groups=["player", "real_player_no_cap"]]
 z_index = 1
 position = Vector2(0, -8)
 collision_layer = 96
 collision_mask = 64
 script = ExtResource("1_sjrlc")
 weapon = NodePath("CrowBar")
+audio_player = NodePath("Audio/Die")
 velocity_component = NodePath("VelocityComponent")
 shrinking_sprite = NodePath("ShrinkingSpriteComponent")
 oscillating_sprite = NodePath("OscillatingSpriteComponent")
 speed = 50
-strength = 1
 
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("2_5wbem")]
 collision_layer = 64
@@ -40,8 +53,9 @@ health_component = NodePath("../HealthComponent")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 shape = SubResource("RectangleShape2D_d7mgq")
 
-[node name="HealthComponent" parent="." node_paths=PackedStringArray("health_bar") instance=ExtResource("3_ckffq")]
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("health_bar", "audio_player") instance=ExtResource("3_ckffq")]
 health_bar = NodePath("../Camera2D/HealthbarUi")
+audio_player = NodePath("../Audio/Hurt")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.8, 0.8)
@@ -105,8 +119,9 @@ shape = SubResource("RectangleShape2D_d7mgq")
 [node name="VelocityComponent" parent="." node_paths=PackedStringArray("body") instance=ExtResource("7_knj8m")]
 body = NodePath("..")
 
-[node name="ShrinkingSpriteComponent" parent="." node_paths=PackedStringArray("enemy") instance=ExtResource("7_vismv")]
+[node name="ShrinkingSpriteComponent" parent="." node_paths=PackedStringArray("enemy", "audio_player") instance=ExtResource("7_vismv")]
 enemy = NodePath("../Node2D")
+audio_player = NodePath("../Audio/Idle")
 
 [node name="OscillatingSpriteComponent" parent="." node_paths=PackedStringArray("enemy") instance=ExtResource("8_jnpau")]
 enemy = NodePath("../Node2D")
@@ -120,6 +135,60 @@ texture = ExtResource("4_yjnwf")
 
 [node name="FlashingSpriteComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("10_l1b6j")]
 sprite = NodePath("../Node2D/PlayerSprite")
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="Die" type="Node2D" parent="Audio" node_paths=PackedStringArray("audio_players")]
+script = ExtResource("17_b1wxt")
+audio_players = [NodePath("fred_die_1"), NodePath("fred_die_2"), NodePath("fred_die_3"), NodePath("fred_die_4")]
+
+[node name="fred_die_1" type="AudioStreamPlayer2D" parent="Audio/Die"]
+stream = ExtResource("18_aqhoj")
+
+[node name="fred_die_2" type="AudioStreamPlayer2D" parent="Audio/Die"]
+stream = ExtResource("19_bobdx")
+
+[node name="fred_die_3" type="AudioStreamPlayer2D" parent="Audio/Die"]
+stream = ExtResource("20_kxfi2")
+
+[node name="fred_die_4" type="AudioStreamPlayer2D" parent="Audio/Die"]
+stream = ExtResource("21_74c7h")
+
+[node name="Hurt" type="Node2D" parent="Audio" node_paths=PackedStringArray("audio_players")]
+script = ExtResource("17_b1wxt")
+audio_players = [NodePath("fred_hurt_1"), NodePath("fred_hurt_2"), NodePath("fred_hurt_3"), NodePath("fred_hurt_4"), NodePath("fred_hurt_5"), NodePath("fred_hurt_6")]
+
+[node name="fred_hurt_1" type="AudioStreamPlayer2D" parent="Audio/Hurt"]
+stream = ExtResource("22_ft4gm")
+
+[node name="fred_hurt_2" type="AudioStreamPlayer2D" parent="Audio/Hurt"]
+stream = ExtResource("23_t6eti")
+
+[node name="fred_hurt_3" type="AudioStreamPlayer2D" parent="Audio/Hurt"]
+stream = ExtResource("24_ecmxv")
+
+[node name="fred_hurt_4" type="AudioStreamPlayer2D" parent="Audio/Hurt"]
+stream = ExtResource("25_62khs")
+
+[node name="fred_hurt_5" type="AudioStreamPlayer2D" parent="Audio/Hurt"]
+stream = ExtResource("26_xhj8s")
+
+[node name="fred_hurt_6" type="AudioStreamPlayer2D" parent="Audio/Hurt"]
+stream = ExtResource("27_pbjwh")
+
+[node name="Idle" type="Node2D" parent="Audio" node_paths=PackedStringArray("audio_players")]
+script = ExtResource("17_b1wxt")
+audio_players = [NodePath("burp_1")]
+
+[node name="burp_1" type="AudioStreamPlayer2D" parent="Audio/Idle"]
+stream = ExtResource("28_13u1n")
+
+[node name="Overdose" type="Node2D" parent="Audio" node_paths=PackedStringArray("audio_players")]
+script = ExtResource("17_b1wxt")
+audio_players = [NodePath("fred_overdose_1")]
+
+[node name="fred_overdose_1" type="AudioStreamPlayer2D" parent="Audio/Overdose"]
+stream = ExtResource("29_iahop")
 
 [connection signal="hp_reached_zero" from="HealthComponent" to="." method="_on_health_component_hp_reached_zero"]
 [connection signal="took_damage" from="HealthComponent" to="FlashingSpriteComponent" method="_on_health_component_took_damage"]

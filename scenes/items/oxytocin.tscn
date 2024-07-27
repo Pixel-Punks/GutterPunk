@@ -1,16 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://rrp0i170igew"]
+[gd_scene load_steps=9 format=3 uid="uid://rrp0i170igew"]
 
 [ext_resource type="Script" path="res://scenes/items/oxytocin.gd" id="1_bchpr"]
 [ext_resource type="Texture2D" uid="uid://cq0ugvyypdq6p" path="res://Assets/Sprites/Items/Consumable/item_oxytocin.png" id="1_tv02b"]
 [ext_resource type="PackedScene" uid="uid://cd02131g1167t" path="res://scenes/interaction/interaction_area/InteractionArea.tscn" id="2_15goo"]
+[ext_resource type="Script" path="res://scenes/entities/SfxComponent.gd" id="4_gx2pe"]
+[ext_resource type="AudioStream" uid="uid://chnmun7v44mis" path="res://Assets/Sounds/Items/Drugs/Pills/gloup_1.wav" id="5_lsyjw"]
+[ext_resource type="AudioStream" uid="uid://b4loo2wtl1yfq" path="res://Assets/Sounds/Items/Drugs/Pills/gloup_2.wav" id="6_q8w0n"]
+[ext_resource type="AudioStream" uid="uid://c4e8ifaqsu40b" path="res://Assets/Sounds/Items/Drugs/Pills/pills_1.wav" id="7_l1r0r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_it3g7"]
 size = Vector2(20, 24.25)
 
-[node name="Oxytocin" type="Node2D"]
+[node name="Oxytocin" type="Node2D" node_paths=PackedStringArray("audio_player")]
 z_index = 47
 scale = Vector2(4, 4)
 script = ExtResource("1_bchpr")
+audio_player = NodePath("AudioComponent")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_tv02b")
@@ -21,3 +26,16 @@ action_name = "swallow "
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
 position = Vector2(0, -4.125)
 shape = SubResource("RectangleShape2D_it3g7")
+
+[node name="AudioComponent" type="Node2D" parent="." node_paths=PackedStringArray("audio_players")]
+script = ExtResource("4_gx2pe")
+audio_players = [NodePath("gloup_1"), NodePath("gloup_2"), NodePath("pills_1")]
+
+[node name="gloup_1" type="AudioStreamPlayer2D" parent="AudioComponent"]
+stream = ExtResource("5_lsyjw")
+
+[node name="gloup_2" type="AudioStreamPlayer2D" parent="AudioComponent"]
+stream = ExtResource("6_q8w0n")
+
+[node name="pills_1" type="AudioStreamPlayer2D" parent="AudioComponent"]
+stream = ExtResource("7_l1r0r")

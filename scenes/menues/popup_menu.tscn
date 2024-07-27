@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bm3obvhh2cyfr"]
+[gd_scene load_steps=10 format=3 uid="uid://bm3obvhh2cyfr"]
 
 [ext_resource type="Script" path="res://scripts/menues/pause_menu.gd" id="1_2cf8a"]
 [ext_resource type="Theme" uid="uid://d2oa4mfybj5hy" path="res://Assets/Themes/startmenu_btn_start.tres" id="2_ynhyw"]
 [ext_resource type="Theme" uid="uid://cdr0f37ukoy1b" path="res://Assets/Themes/startmenu_btn_option.tres" id="3_qfgag"]
 [ext_resource type="Theme" uid="uid://d3nm3wojms07c" path="res://Assets/Themes/startmenu_btn_exit.tres" id="4_0uk3b"]
+[ext_resource type="Script" path="res://scenes/entities/SfxComponent.gd" id="5_nxmrb"]
+[ext_resource type="AudioStream" uid="uid://dpstjh6t23e4b" path="res://Assets/Sounds/Ui/btn_clic.wav" id="6_p1i36"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8w2vj"]
 bg_color = Color(0, 0, 0, 1)
@@ -14,7 +16,7 @@ Panel/styles/panel = SubResource("StyleBoxFlat_8w2vj")
 [sub_resource type="Theme" id="Theme_stw5x"]
 VBoxContainer/constants/separation = 50
 
-[node name="PopupMenu" type="Control"]
+[node name="PopupMenu" type="Control" node_paths=PackedStringArray("audio_player")]
 process_mode = 2
 z_index = 99
 layout_mode = 3
@@ -24,6 +26,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_2cf8a")
+audio_player = NodePath("AudioComponent")
 
 [node name="Panel" type="Panel" parent="."]
 process_mode = 2
@@ -73,6 +76,13 @@ text = "Settings"
 layout_mode = 2
 theme = ExtResource("4_0uk3b")
 text = "Home"
+
+[node name="AudioComponent" type="Node2D" parent="." node_paths=PackedStringArray("audio_players")]
+script = ExtResource("5_nxmrb")
+audio_players = [NodePath("btn_click_1")]
+
+[node name="btn_click_1" type="AudioStreamPlayer2D" parent="AudioComponent"]
+stream = ExtResource("6_p1i36")
 
 [connection signal="pressed" from="Panel/VBoxContainer/ResumeButton" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

@@ -4,12 +4,15 @@ class_name HoboIdle
 
 @export var pathfinding : PathFindingComponent
 @export var shrinking_sprite : ShrinkingSpriteComponent
+@export var audio_player : AudioComponent
 
 func _ready():
 	pathfinding.player_detected.connect(switch_to_follow)
 	
 func enter():
 	shrinking_sprite.initialize()
+	if audio_player :
+		audio_player.play_random()
 
 func exit():
 	shrinking_sprite.reset()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://nbbbmdv4gyqy"]
+[gd_scene load_steps=20 format=3 uid="uid://nbbbmdv4gyqy"]
 
 [ext_resource type="Texture2D" uid="uid://dmgs13pp5ougq" path="res://Assets/Sprites/Backgrounds/settings_menu.png" id="1_1na4e"]
 [ext_resource type="Script" path="res://scripts/menues/fullsettings_menu.gd" id="1_tjtjs"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://bb3nttgkos64x" path="res://Assets/Sprites/Backgrounds/slider_icon.png" id="6_cjiu7"]
 [ext_resource type="Texture2D" uid="uid://do6awn11n6adm" path="res://Assets/Sprites/Backgrounds/slider_icon_disabled.png" id="7_ogb2u"]
 [ext_resource type="Texture2D" uid="uid://b26m2s6wl0xb4" path="res://Assets/Sprites/Backgrounds/slider_icon_highlight.png" id="8_nd3od"]
+[ext_resource type="Script" path="res://scenes/entities/SfxComponent.gd" id="9_q3n5t"]
+[ext_resource type="AudioStream" uid="uid://dpstjh6t23e4b" path="res://Assets/Sounds/Ui/btn_clic.wav" id="10_pkf6b"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dag6e"]
 bg_color = Color(0.780929, 0.416861, 0.925938, 1)
@@ -56,7 +58,7 @@ HSlider/icons/grabber_highlight = ExtResource("8_nd3od")
 HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_gbi07")
 HSlider/styles/slider = SubResource("StyleBoxFlat_21q50")
 
-[node name="SettingsMenu" type="Control"]
+[node name="SettingsMenu" type="Control" node_paths=PackedStringArray("audio_player")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -64,6 +66,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_tjtjs")
+audio_player = NodePath("AudioComponent")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -120,6 +123,12 @@ autowrap_mode = 0
 layout_mode = 2
 size_flags_vertical = 4
 theme = SubResource("Theme_6vs04")
-theme_override_icons/grabber = null
+
+[node name="AudioComponent" type="Node2D" parent="." node_paths=PackedStringArray("audio_players")]
+script = ExtResource("9_q3n5t")
+audio_players = [NodePath("btn_click_1")]
+
+[node name="btn_click_1" type="AudioStreamPlayer2D" parent="AudioComponent"]
+stream = ExtResource("10_pkf6b")
 
 [connection signal="pressed" from="TextureRect/Button" to="." method="_on_button_pressed"]

@@ -1,13 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://c1ofxpspmmvnv"]
+[gd_scene load_steps=6 format=3 uid="uid://c1ofxpspmmvnv"]
 
 [ext_resource type="Script" path="res://scenes/entities/coin.gd" id="1_ouu6n"]
 [ext_resource type="Texture2D" uid="uid://pvpn5rd87p52" path="res://Assets/Sprites/Items/Consumable/coin.png" id="3_4b8cu"]
+[ext_resource type="Script" path="res://scenes/entities/SfxComponent.gd" id="3_al8xa"]
+[ext_resource type="AudioStream" uid="uid://bcig386xfh03f" path="res://Assets/Sounds/Items/Coin/Pickup/coin_pickup_1.wav" id="4_xxteb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sjy8p"]
 radius = 9.05539
 
-[node name="Coin" type="StaticBody2D"]
+[node name="Coin" type="StaticBody2D" node_paths=PackedStringArray("audio_player")]
 script = ExtResource("1_ouu6n")
+audio_player = NodePath("AudioComponent")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("3_4b8cu")
@@ -17,5 +20,12 @@ collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pickeable_area"]
 shape = SubResource("CircleShape2D_sjy8p")
+
+[node name="AudioComponent" type="Node2D" parent="." node_paths=PackedStringArray("audio_players")]
+script = ExtResource("3_al8xa")
+audio_players = [NodePath("coin_pickup_1")]
+
+[node name="coin_pickup_1" type="AudioStreamPlayer2D" parent="AudioComponent"]
+stream = ExtResource("4_xxteb")
 
 [connection signal="body_entered" from="pickeable_area" to="." method="_on_pickeable_area_body_entered"]

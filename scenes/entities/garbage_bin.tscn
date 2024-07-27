@@ -1,8 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://cxwnr5jjjgxix"]
+[gd_scene load_steps=10 format=3 uid="uid://cxwnr5jjjgxix"]
 
 [ext_resource type="PackedScene" uid="uid://b3btsn8t46j5k" path="res://scenes/entities/base/breakable_object.tscn" id="1_anvki"]
 [ext_resource type="Texture2D" uid="uid://8y10h2kb3ohn" path="res://Assets/Sprites/InteractiveTiles/pfp_dustbin.png" id="2_wg5ma"]
 [ext_resource type="PackedScene" uid="uid://d07ll4ret32h5" path="res://scenes/components/moneydrop_component.tscn" id="3_qcmyn"]
+[ext_resource type="Script" path="res://scenes/entities/SfxComponent.gd" id="4_x22kb"]
+[ext_resource type="AudioStream" uid="uid://cy5uwn6oysfxk" path="res://Assets/Sounds/Decoration/Metal/trashcan_1.wav" id="5_x6i2a"]
+[ext_resource type="AudioStream" uid="uid://8blprudl4tmm" path="res://Assets/Sounds/Decoration/Metal/trashcan_2.wav" id="6_y2msn"]
+[ext_resource type="AudioStream" uid="uid://b5v7e508m4fgt" path="res://Assets/Sounds/Decoration/Metal/trashcan_3.wav" id="7_rsysw"]
+[ext_resource type="AudioStream" uid="uid://h4ut8srecgdf" path="res://Assets/Sounds/Decoration/Metal/trashcan_4.wav" id="8_ytky6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_enafy"]
 radius = 8.0
@@ -11,8 +16,9 @@ radius = 8.0
 collision_layer = 96
 collision_mask = 32
 
-[node name="HealthComponent" parent="." index="0"]
+[node name="HealthComponent" parent="." index="0" node_paths=PackedStringArray("audio_player")]
 MAX_HEALTH = 5
+audio_player = NodePath("../Audio/HurtSfx")
 
 [node name="HitboxComponent" parent="." index="1"]
 collision_layer = 40
@@ -34,3 +40,21 @@ z_index = 1
 shape = SubResource("CircleShape2D_enafy")
 
 [node name="MoneyDropComponent" parent="." index="5" instance=ExtResource("3_qcmyn")]
+
+[node name="Audio" type="Node" parent="." index="6"]
+
+[node name="HurtSfx" type="Node2D" parent="Audio" index="0" node_paths=PackedStringArray("audio_players")]
+script = ExtResource("4_x22kb")
+audio_players = [NodePath("trashcan_1"), NodePath("trashcan_2"), NodePath("trashcan_3"), NodePath("trashcan_4")]
+
+[node name="trashcan_1" type="AudioStreamPlayer2D" parent="Audio/HurtSfx" index="0"]
+stream = ExtResource("5_x6i2a")
+
+[node name="trashcan_2" type="AudioStreamPlayer2D" parent="Audio/HurtSfx" index="1"]
+stream = ExtResource("6_y2msn")
+
+[node name="trashcan_3" type="AudioStreamPlayer2D" parent="Audio/HurtSfx" index="2"]
+stream = ExtResource("7_rsysw")
+
+[node name="trashcan_4" type="AudioStreamPlayer2D" parent="Audio/HurtSfx" index="3"]
+stream = ExtResource("8_ytky6")

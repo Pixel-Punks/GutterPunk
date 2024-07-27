@@ -1,15 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://dsxxh4df67ty5"]
+[gd_scene load_steps=8 format=3 uid="uid://dsxxh4df67ty5"]
 
 [ext_resource type="Script" path="res://scenes/entities/drain_gate_open.gd" id="1_cltye"]
 [ext_resource type="Texture2D" uid="uid://1eq11c2tpi7r" path="res://Assets/Sprites/InteractiveTiles/brain_gate_open.png" id="1_umrek"]
+[ext_resource type="Script" path="res://scenes/entities/SfxComponent.gd" id="3_md3xe"]
+[ext_resource type="AudioStream" uid="uid://3kvpjp1xw71b" path="res://Assets/Sounds/Location/Shop/Entrance/shop_entrance_1.wav" id="4_3f08l"]
+[ext_resource type="AudioStream" uid="uid://dw1524hmrn61q" path="res://Assets/Sounds/Location/Shop/Entrance/shop_entrance_2.wav" id="5_wetem"]
+[ext_resource type="AudioStream" uid="uid://bd4k70a2d3ca0" path="res://Assets/Sounds/Location/Shop/Entrance/shop_entrance_3.wav" id="6_1w8s1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j6xqk"]
 radius = 8.0
 
-[node name="DrainGateOpen" type="StaticBody2D"]
+[node name="DrainGateOpen" type="StaticBody2D" node_paths=PackedStringArray("audio_player")]
 collision_layer = 32
 collision_mask = 32
 script = ExtResource("1_cltye")
+audio_player = NodePath("AudioComponent")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0
@@ -22,6 +27,19 @@ shape = SubResource("CircleShape2D_j6xqk")
 texture = ExtResource("1_umrek")
 
 [node name="DrainGateEntrance" type="Marker2D" parent="." groups=["DrainGateMarker"]]
+
+[node name="AudioComponent" type="Node2D" parent="." node_paths=PackedStringArray("audio_players")]
+script = ExtResource("3_md3xe")
+audio_players = [NodePath("shop_entrance_1"), NodePath("shop_entrance_2"), NodePath("shop_entrance_3")]
+
+[node name="shop_entrance_1" type="AudioStreamPlayer2D" parent="AudioComponent"]
+stream = ExtResource("4_3f08l")
+
+[node name="shop_entrance_2" type="AudioStreamPlayer2D" parent="AudioComponent"]
+stream = ExtResource("5_wetem")
+
+[node name="shop_entrance_3" type="AudioStreamPlayer2D" parent="AudioComponent"]
+stream = ExtResource("6_1w8s1")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

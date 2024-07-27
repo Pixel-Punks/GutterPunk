@@ -5,6 +5,7 @@ class_name ShrinkingSpriteComponent
 @export var enemy : Node2D
 @export var max_shrink_time : float = 1
 @export var shrink_time : float = 0.1
+@export var audio_player : AudioComponent
 
 var initial_scale : float
 var shrink : bool = true
@@ -14,6 +15,8 @@ func initialize():
 	initial_scale = enemy.scale.y
 	shrink_time = max_shrink_time/2
 	enabled = true
+	if audio_player :
+		audio_player.play_random()
 
 
 func reset():

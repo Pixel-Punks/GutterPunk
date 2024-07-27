@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bm3obvhh2cyfr"]
+[gd_scene load_steps=18 format=3 uid="uid://bm3obvhh2cyfr"]
 
 [ext_resource type="Script" path="res://scripts/menues/pause_menu.gd" id="1_1t0kl"]
 [ext_resource type="Theme" uid="uid://d2oa4mfybj5hy" path="res://Assets/Themes/startmenu_btn_start.tres" id="2_7cvoe"]
@@ -9,6 +9,8 @@
 [ext_resource type="FontFile" uid="uid://jjuas3p4xaln" path="res://fonts/Abaddon Light.ttf" id="7_nrvia"]
 [ext_resource type="Theme" uid="uid://dverhp74tl1un" path="res://Assets/Themes/mini_volume_slider_theme.tres" id="8_re3dr"]
 [ext_resource type="Theme" uid="uid://bcir5amvnxkob" path="res://Assets/Themes/mini_return_button.tres" id="9_swpvv"]
+[ext_resource type="Script" path="res://scenes/entities/SfxComponent.gd" id="10_3xj7j"]
+[ext_resource type="AudioStream" uid="uid://dpstjh6t23e4b" path="res://Assets/Sounds/Ui/btn_clic.wav" id="11_nt16i"]
 
 [sub_resource type="Theme" id="Theme_stw5x"]
 VBoxContainer/constants/separation = 50
@@ -70,7 +72,7 @@ RichTextLabel/styles/normal = SubResource("StyleBoxFlat_jkitf")
 default_font = ExtResource("7_nrvia")
 default_font_size = 50
 
-[node name="PauseMenu" type="Control"]
+[node name="PauseMenu" type="Control" node_paths=PackedStringArray("audio_player")]
 process_mode = 2
 z_index = 99
 layout_mode = 3
@@ -82,6 +84,7 @@ grow_vertical = 2
 scale = Vector2(0.1, 0.1)
 size_flags_horizontal = 0
 script = ExtResource("1_1t0kl")
+audio_player = NodePath("AudioComponent")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
@@ -173,6 +176,13 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("9_swpvv")
 text = "Return"
+
+[node name="AudioComponent" type="Node2D" parent="." node_paths=PackedStringArray("audio_players")]
+script = ExtResource("10_3xj7j")
+audio_players = [NodePath("btn_click_1")]
+
+[node name="btn_click_1" type="AudioStreamPlayer2D" parent="AudioComponent"]
+stream = ExtResource("11_nt16i")
 
 [connection signal="pressed" from="TextureRect/PauseBox/ResumeButton" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="TextureRect/PauseBox/SettingsButton" to="." method="_on_settings_button_pressed"]

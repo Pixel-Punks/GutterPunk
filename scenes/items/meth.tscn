@@ -1,16 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://gdupmmj1txhi"]
+[gd_scene load_steps=10 format=3 uid="uid://gdupmmj1txhi"]
 
 [ext_resource type="Texture2D" uid="uid://7hopa7r56kkk" path="res://Assets/Sprites/Items/Consumable/item_meth.png" id="1_e3vmg"]
 [ext_resource type="Script" path="res://scenes/items/meth.gd" id="1_uard0"]
 [ext_resource type="PackedScene" uid="uid://cd02131g1167t" path="res://scenes/interaction/interaction_area/InteractionArea.tscn" id="2_mtc0e"]
+[ext_resource type="Script" path="res://scenes/entities/SfxComponent.gd" id="4_2tvc6"]
+[ext_resource type="AudioStream" uid="uid://b8wgmg2ddm440" path="res://Assets/Sounds/Items/Drugs/Srynge/fist_water_1.wav" id="5_cor7k"]
+[ext_resource type="AudioStream" uid="uid://tcy6oio0s8c7" path="res://Assets/Sounds/Items/Drugs/Srynge/fist_water_2.wav" id="6_6jbvo"]
+[ext_resource type="AudioStream" uid="uid://bctdmecc5twdj" path="res://Assets/Sounds/Items/Drugs/Srynge/fist_water_3.wav" id="7_cnh7j"]
+[ext_resource type="AudioStream" uid="uid://cmrwo72bc6lb2" path="res://Assets/Sounds/Items/Drugs/Srynge/fist_water_4.wav" id="8_ii3xm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8chyp"]
 size = Vector2(20, 30.75)
 
-[node name="Meth" type="Node2D"]
+[node name="Meth" type="Node2D" node_paths=PackedStringArray("audio_player")]
 z_index = 46
 scale = Vector2(4, 4)
 script = ExtResource("1_uard0")
+audio_player = NodePath("AudioComponent")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_e3vmg")
@@ -21,3 +27,19 @@ action_name = "prick yourself"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
 position = Vector2(0, -4.125)
 shape = SubResource("RectangleShape2D_8chyp")
+
+[node name="AudioComponent" type="Node2D" parent="." node_paths=PackedStringArray("audio_players")]
+script = ExtResource("4_2tvc6")
+audio_players = [NodePath("fist_water_1"), NodePath("fist_water_2"), NodePath("fist_water_3"), NodePath("fist_water_4")]
+
+[node name="fist_water_1" type="AudioStreamPlayer2D" parent="AudioComponent"]
+stream = ExtResource("5_cor7k")
+
+[node name="fist_water_2" type="AudioStreamPlayer2D" parent="AudioComponent"]
+stream = ExtResource("6_6jbvo")
+
+[node name="fist_water_3" type="AudioStreamPlayer2D" parent="AudioComponent"]
+stream = ExtResource("7_cnh7j")
+
+[node name="fist_water_4" type="AudioStreamPlayer2D" parent="AudioComponent"]
+stream = ExtResource("8_ii3xm")
