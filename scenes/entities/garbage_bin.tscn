@@ -16,8 +16,8 @@ radius = 8.0
 collision_layer = 96
 collision_mask = 32
 
-[node name="HealthComponent" parent="." index="0" node_paths=PackedStringArray("audio_player")]
-MAX_HEALTH = 5
+[node name="HealthComponent" parent="." index="0"]
+MAX_HEALTH = 2
 audio_player = NodePath("../Audio/HurtSfx")
 
 [node name="HitboxComponent" parent="." index="1"]
@@ -58,3 +58,5 @@ stream = ExtResource("7_rsysw")
 
 [node name="trashcan_4" type="AudioStreamPlayer2D" parent="Audio/HurtSfx" index="3"]
 stream = ExtResource("8_ytky6")
+
+[connection signal="flicker" from="HealthComponent" to="FlashingSpriteComponent" method="_on_health_component_flicker"]

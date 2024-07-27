@@ -1,0 +1,152 @@
+[gd_scene load_steps=20 format=3 uid="uid://bslod7vrwm774"]
+
+[ext_resource type="Script" path="res://scenes/entities/rat_king.gd" id="1_5rwft"]
+[ext_resource type="PackedScene" uid="uid://8gdhopimueak" path="res://scenes/components/shrinking_sprite_component.tscn" id="2_8s8gf"]
+[ext_resource type="Texture2D" uid="uid://qrfe1ls7ncis" path="res://Assets/Sprites/Ennemies/Bosses/PunkRat/Boss_1.png" id="2_rmox1"]
+[ext_resource type="PackedScene" uid="uid://bw8nak3lvoi3i" path="res://scenes/components/path_finding_component.tscn" id="3_0dxa7"]
+[ext_resource type="PackedScene" uid="uid://lthvbl7wgup7" path="res://scenes/components/hitbox_component.tscn" id="3_8uf3b"]
+[ext_resource type="PackedScene" uid="uid://oqbyes5tx2jp" path="res://scenes/components/flashing_sprite_component.tscn" id="4_phork"]
+[ext_resource type="PackedScene" uid="uid://dx1g6mxdvbnhv" path="res://scenes/components/oscillating_sprite_component.tscn" id="5_hvbxj"]
+[ext_resource type="PackedScene" uid="uid://swvxckbky45x" path="res://scenes/components/health_component.tscn" id="5_ju8bd"]
+[ext_resource type="PackedScene" uid="uid://8e1qv67xcb1b" path="res://scenes/components/velocity_component.tscn" id="6_4r8s5"]
+[ext_resource type="Script" path="res://scripts/state_machines/state_machine.gd" id="7_atx4s"]
+[ext_resource type="Script" path="res://scripts/state_machines/rat_king/RatIdle.gd" id="8_lslc8"]
+[ext_resource type="Script" path="res://scripts/state_machines/rat_king/RatFollow.gd" id="9_f05qi"]
+[ext_resource type="Script" path="res://scripts/state_machines/rat_king/RatAttack.gd" id="10_evyii"]
+[ext_resource type="Script" path="res://scripts/entities/components/WeaponComponent.gd" id="14_lpkhc"]
+[ext_resource type="SpriteFrames" uid="uid://gdiqu7rxy73i" path="res://Assets/Sprites/Ennemies/Bosses/PunkRat/claw.aseprite" id="15_lvvs3"]
+[ext_resource type="Script" path="res://scripts/weapons/attack.gd" id="16_ckxh1"]
+[ext_resource type="SpriteFrames" uid="uid://bi2asjns6c0ec" path="res://Assets/Sprites/Ennemies/Bosses/PunkRat/fangs.aseprite" id="17_4os3a"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_83cav"]
+radius = 17.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xxgyr"]
+radius = 17.0
+
+[node name="RatKing" type="CharacterBody2D" node_paths=PackedStringArray("velocity_component")]
+collision_layer = 104
+collision_mask = 0
+script = ExtResource("1_5rwft")
+velocity_component = NodePath("VelocityComponent")
+
+[node name="ShrinkingSpriteComponent" parent="." node_paths=PackedStringArray("enemy") instance=ExtResource("2_8s8gf")]
+enemy = NodePath("../Node2D")
+
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_8uf3b")]
+collision_layer = 40
+collision_mask = 0
+health_component = NodePath("../HealthComponent")
+max_timeout = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("CircleShape2D_83cav")
+
+[node name="FlashingSpriteComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("4_phork")]
+sprite = NodePath("../Node2D/Sprite2D")
+
+[node name="HealthComponent" parent="." instance=ExtResource("5_ju8bd")]
+
+[node name="VelocityComponent" parent="." node_paths=PackedStringArray("body") instance=ExtResource("6_4r8s5")]
+body = NodePath("..")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("7_atx4s")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("pathfinding", "shrinking_sprite")]
+script = ExtResource("8_lslc8")
+pathfinding = NodePath("../../PathFindingComponent")
+shrinking_sprite = NodePath("../../ShrinkingSpriteComponent")
+
+[node name="Follow" type="Node" parent="StateMachine" node_paths=PackedStringArray("pathfinding", "body", "oscillating_component")]
+script = ExtResource("9_f05qi")
+pathfinding = NodePath("../../PathFindingComponent")
+body = NodePath("../..")
+oscillating_component = NodePath("../../OscillatingSpriteComponent")
+
+[node name="Attack" type="Node" parent="StateMachine" node_paths=PackedStringArray("pathfinding", "body", "claw", "bite")]
+script = ExtResource("10_evyii")
+pathfinding = NodePath("../../PathFindingComponent")
+body = NodePath("../..")
+claw = NodePath("../../Claw")
+bite = NodePath("../../Bite")
+
+[node name="PathFindingComponent" parent="." node_paths=PackedStringArray("enemy", "velocity_component") instance=ExtResource("3_0dxa7")]
+enemy = NodePath("..")
+max_speed = 40.0
+velocity_component = NodePath("../VelocityComponent")
+radius = 10000
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_xxgyr")
+
+[node name="OscillatingSpriteComponent" parent="." node_paths=PackedStringArray("enemy") instance=ExtResource("5_hvbxj")]
+enemy = NodePath("../Node2D")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+texture = ExtResource("2_rmox1")
+
+[node name="Claw" type="Node2D" parent="." node_paths=PackedStringArray("hurtbox", "animated_sprites", "weapon_attack")]
+visible = false
+y_sort_enabled = true
+script = ExtResource("14_lpkhc")
+hurtbox = NodePath("Area2D/CollisionPolygon2D")
+animated_sprites = NodePath("AnimatedSprite2D")
+non_damaging_frames = Array[int]([0])
+weapon_attack = NodePath("Attack")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Claw"]
+position = Vector2(16, 0)
+rotation = 1.5708
+sprite_frames = ExtResource("15_lvvs3")
+animation = &"Attack"
+frame = 9
+frame_progress = 1.0
+
+[node name="Attack" type="Node" parent="Claw"]
+script = ExtResource("16_ckxh1")
+damage = 20
+
+[node name="Area2D" type="Area2D" parent="Claw"]
+collision_layer = 0
+collision_mask = 64
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Claw/Area2D"]
+polygon = PackedVector2Array(0, -8, 0, 8, 24, 32, 40, 16, 40, -16, 24, -32)
+
+[node name="Bite" type="Node2D" parent="." node_paths=PackedStringArray("hurtbox", "animated_sprites", "weapon_attack")]
+visible = false
+y_sort_enabled = true
+script = ExtResource("14_lpkhc")
+hurtbox = NodePath("Area2D/CollisionPolygon2D")
+animated_sprites = NodePath("AnimatedSprite2D")
+non_damaging_frames = Array[int]([0])
+weapon_attack = NodePath("Attack")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Bite"]
+position = Vector2(16, 0)
+rotation = 1.5708
+sprite_frames = ExtResource("17_4os3a")
+animation = &"Attack"
+frame = 8
+frame_progress = 1.0
+
+[node name="Attack" type="Node" parent="Bite"]
+script = ExtResource("16_ckxh1")
+damage = 30
+
+[node name="Area2D" type="Area2D" parent="Bite"]
+collision_layer = 0
+collision_mask = 64
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bite/Area2D"]
+polygon = PackedVector2Array(0, -8, 0, 8, 16, 32, 40, 32, 40, -32, 16, -32)
+
+[connection signal="flicker" from="HealthComponent" to="FlashingSpriteComponent" method="_on_health_component_flicker"]
+[connection signal="hp_reached_zero" from="HealthComponent" to="." method="_on_health_component_hp_reached_zero"]
+[connection signal="took_damage" from="HealthComponent" to="." method="_on_health_component_took_damage"]
+[connection signal="area_entered" from="Claw/Area2D" to="Claw" method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Bite/Area2D" to="Bite" method="_on_area_2d_area_entered"]

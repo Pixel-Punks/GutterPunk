@@ -4,6 +4,7 @@ class_name Weapon
 
 @export var hurtbox : CollisionPolygon2D
 @export var animated_sprites : AnimatedSprite2D
+@export var non_damaging_frames : Array[int] = []
 
 @export var weapon_attack : Attack
 @export var audio_player : AudioComponent
@@ -24,7 +25,7 @@ func _ready():
 	collided_hitboxes = []
 
 func _process(delta):
-	if animated_sprites.is_playing():
+	if animated_sprites.is_playing() && non_damaging_frames.find(animated_sprites.frame) == -1:
 		hurtbox.disabled = false
 	else:
 		hurtbox.disabled = true
