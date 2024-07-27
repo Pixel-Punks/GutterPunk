@@ -1,7 +1,7 @@
 [remap]
 
-importer="aseprite_wizard.plugin.noop"
-type="PackedDataContainer"
+importer="aseprite_wizard.plugin"
+type="SpriteFrames"
 uid="uid://dk3f2imad7w3j"
 path="res://.godot/imported/coin.aseprite-0222f91e83a95e7c168d1bfe4b6130e3.res"
 
@@ -12,3 +12,7 @@ dest_files=["res://.godot/imported/coin.aseprite-0222f91e83a95e7c168d1bfe4b6130e
 
 [params]
 
+split_layers=false
+exclude_layers_pattern=""
+only_visible_layers=false
+sheet_type="Packed"
