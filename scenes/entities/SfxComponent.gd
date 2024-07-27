@@ -2,7 +2,7 @@ extends Node2D
 
 class_name AudioComponent
 
-@export var audio_players : Array[AudioStreamPlayer2D] = []
+@export var audio_players : Array[AudioStreamWAV] = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -15,4 +15,5 @@ func _process(delta):
 
 
 func play_random():
-	audio_players[randi() % audio_players.size()].play()
+	var path = audio_players[randi() % audio_players.size()].get_path()
+	AudioStreamManager.play(path)

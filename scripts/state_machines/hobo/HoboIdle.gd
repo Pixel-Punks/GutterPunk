@@ -11,8 +11,9 @@ func _ready():
 	
 func enter():
 	shrinking_sprite.initialize()
-	if audio_player :
-		audio_player.play_random()
+	if randi() % 100 + 1 == 1:
+		if audio_player :
+			audio_player.play_random()
 
 func exit():
 	shrinking_sprite.reset()

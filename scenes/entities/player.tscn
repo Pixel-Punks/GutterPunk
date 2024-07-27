@@ -151,57 +151,21 @@ sprite = NodePath("../Node2D/PlayerSprite")
 
 [node name="Audio" type="Node" parent="."]
 
-[node name="Die" type="Node2D" parent="Audio" node_paths=PackedStringArray("audio_players")]
+[node name="Die" type="Node2D" parent="Audio"]
 script = ExtResource("17_b1wxt")
-audio_players = [NodePath("fred_die_1"), NodePath("fred_die_2"), NodePath("fred_die_3"), NodePath("fred_die_4")]
+audio_players = Array[AudioStreamWAV]([ExtResource("18_aqhoj"), ExtResource("19_bobdx"), ExtResource("20_kxfi2"), ExtResource("21_74c7h")])
 
-[node name="fred_die_1" type="AudioStreamPlayer2D" parent="Audio/Die"]
-stream = ExtResource("18_aqhoj")
-
-[node name="fred_die_2" type="AudioStreamPlayer2D" parent="Audio/Die"]
-stream = ExtResource("19_bobdx")
-
-[node name="fred_die_3" type="AudioStreamPlayer2D" parent="Audio/Die"]
-stream = ExtResource("20_kxfi2")
-
-[node name="fred_die_4" type="AudioStreamPlayer2D" parent="Audio/Die"]
-stream = ExtResource("21_74c7h")
-
-[node name="Hurt" type="Node2D" parent="Audio" node_paths=PackedStringArray("audio_players")]
+[node name="Hurt" type="Node2D" parent="Audio"]
 script = ExtResource("17_b1wxt")
-audio_players = [NodePath("fred_hurt_1"), NodePath("fred_hurt_2"), NodePath("fred_hurt_3"), NodePath("fred_hurt_4"), NodePath("fred_hurt_5"), NodePath("fred_hurt_6")]
+audio_players = Array[AudioStreamWAV]([ExtResource("22_ft4gm"), ExtResource("23_t6eti"), ExtResource("24_ecmxv"), ExtResource("25_62khs"), ExtResource("26_xhj8s"), ExtResource("27_pbjwh")])
 
-[node name="fred_hurt_1" type="AudioStreamPlayer2D" parent="Audio/Hurt"]
-stream = ExtResource("22_ft4gm")
-
-[node name="fred_hurt_2" type="AudioStreamPlayer2D" parent="Audio/Hurt"]
-stream = ExtResource("23_t6eti")
-
-[node name="fred_hurt_3" type="AudioStreamPlayer2D" parent="Audio/Hurt"]
-stream = ExtResource("24_ecmxv")
-
-[node name="fred_hurt_4" type="AudioStreamPlayer2D" parent="Audio/Hurt"]
-stream = ExtResource("25_62khs")
-
-[node name="fred_hurt_5" type="AudioStreamPlayer2D" parent="Audio/Hurt"]
-stream = ExtResource("26_xhj8s")
-
-[node name="fred_hurt_6" type="AudioStreamPlayer2D" parent="Audio/Hurt"]
-stream = ExtResource("27_pbjwh")
-
-[node name="Idle" type="Node2D" parent="Audio" node_paths=PackedStringArray("audio_players")]
+[node name="Idle" type="Node2D" parent="Audio"]
 script = ExtResource("17_b1wxt")
-audio_players = [NodePath("burp_1")]
+audio_players = Array[AudioStreamWAV]([ExtResource("28_13u1n")])
 
-[node name="burp_1" type="AudioStreamPlayer2D" parent="Audio/Idle"]
-stream = ExtResource("28_13u1n")
-
-[node name="Overdose" type="Node2D" parent="Audio" node_paths=PackedStringArray("audio_players")]
+[node name="Overdose" type="Node2D" parent="Audio"]
 script = ExtResource("17_b1wxt")
-audio_players = [NodePath("fred_overdose_1")]
-
-[node name="fred_overdose_1" type="AudioStreamPlayer2D" parent="Audio/Overdose"]
-stream = ExtResource("29_iahop")
+audio_players = Array[AudioStreamWAV]([ExtResource("29_iahop")])
 
 [connection signal="hp_reached_zero" from="HealthComponent" to="." method="_on_health_component_hp_reached_zero"]
 [connection signal="took_damage" from="HealthComponent" to="FlashingSpriteComponent" method="_on_health_component_took_damage"]

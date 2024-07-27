@@ -177,12 +177,9 @@ size_flags_vertical = 4
 theme = ExtResource("9_swpvv")
 text = "Return"
 
-[node name="AudioComponent" type="Node2D" parent="." node_paths=PackedStringArray("audio_players")]
+[node name="AudioComponent" type="Node2D" parent="."]
 script = ExtResource("10_3xj7j")
-audio_players = [NodePath("btn_click_1")]
-
-[node name="btn_click_1" type="AudioStreamPlayer2D" parent="AudioComponent"]
-stream = ExtResource("11_nt16i")
+audio_players = Array[AudioStreamWAV]([ExtResource("11_nt16i")])
 
 [connection signal="pressed" from="TextureRect/PauseBox/ResumeButton" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="TextureRect/PauseBox/SettingsButton" to="." method="_on_settings_button_pressed"]

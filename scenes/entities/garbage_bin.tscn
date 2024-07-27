@@ -43,7 +43,7 @@ shape = SubResource("CircleShape2D_enafy")
 
 [node name="Audio" type="Node" parent="." index="6"]
 
-[node name="HurtSfx" type="Node2D" parent="Audio" index="0" node_paths=PackedStringArray("audio_players")]
+[node name="HurtSfx" type="Node2D" parent="Audio" index="0"]
 script = ExtResource("4_x22kb")
 audio_players = [NodePath("trashcan_1"), NodePath("trashcan_2"), NodePath("trashcan_3"), NodePath("trashcan_4")]
 
@@ -60,3 +60,5 @@ stream = ExtResource("7_rsysw")
 stream = ExtResource("8_ytky6")
 
 [connection signal="flicker" from="HealthComponent" to="FlashingSpriteComponent" method="_on_health_component_flicker"]
+
+audio_players = Array[AudioStreamWAV]([ExtResource("5_x6i2a"), ExtResource("6_y2msn"), ExtResource("7_rsysw"), ExtResource("8_ytky6")])

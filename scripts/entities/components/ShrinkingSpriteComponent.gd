@@ -17,8 +17,9 @@ func initialize():
 	initial_scale = enemy.scale.y
 	shrink_time = max_shrink_time/2
 	enabled = true
-	if audio_player :
-		audio_player.play_random()
+	if randi() % 100 + 1 == 1:
+		if audio_player :
+			audio_player.play_random()
 
 
 func reset():

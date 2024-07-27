@@ -48,14 +48,8 @@ damage = 2
 knockback = 2
 attacks_per_seconds = 10.0
 
-[node name="AudioComponent" type="Node2D" parent="." node_paths=PackedStringArray("audio_players")]
+[node name="AudioComponent" type="Node2D" parent="."]
 script = ExtResource("5_o2fat")
-audio_players = [NodePath("thump_1"), NodePath("thump_2")]
-
-[node name="thump_1" type="AudioStreamPlayer2D" parent="AudioComponent"]
-stream = ExtResource("6_5kyhw")
-
-[node name="thump_2" type="AudioStreamPlayer2D" parent="AudioComponent"]
-stream = ExtResource("7_1dry3")
+audio_players = Array[AudioStreamWAV]([ExtResource("6_5kyhw"), ExtResource("7_1dry3")])
 
 [connection signal="area_entered" from="WeaponComponent/Area2D" to="WeaponComponent" method="_on_area_2d_area_entered"]
