@@ -4,7 +4,7 @@ class_name Player
 
 @export var weapon : Node2D
 
-@export var audio_player : AudioComponent
+@export var audio_player_die : AudioComponent
 
 @export var velocity_component : VelocityComponent
 
@@ -101,7 +101,7 @@ func weapon_swap(new_weapon):
 
 
 func _on_health_component_hp_reached_zero():
-	if audio_player :
-		audio_player.play_random()
+	if audio_player_die :
+		audio_player_die.play_random()
 	queue_free()
 	# TODO GameOver

@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://t3du7oxso5e" path="res://scenes/ui/stats/violence/violence_stat_ui.tscn" id="10_hbcqk"]
 [ext_resource type="PackedScene" uid="uid://oqbyes5tx2jp" path="res://scenes/components/flashing_sprite_component.tscn" id="10_l1b6j"]
 [ext_resource type="PackedScene" uid="uid://cmlbay3wqoxww" path="res://scenes/ui/stats/coins/coins_stat_ui.tscn" id="11_32k5y"]
-[ext_resource type="PackedScene" uid="uid://bm3obvhh2cyfr" path="res://scenes/menues/popup_menu.tscn" id="11_nq2tj"]
+[ext_resource type="PackedScene" uid="uid://bm3obvhh2cyfr" path="res://scenes/menues/pause_full_menu.tscn" id="11_nq2tj"]
 [ext_resource type="Script" path="res://scenes/entities/SfxComponent.gd" id="17_b1wxt"]
 [ext_resource type="AudioStream" uid="uid://bhmd7wxu7c0b2" path="res://Assets/Sounds/Player/Die/fred_die_1.wav" id="18_aqhoj"]
 [ext_resource type="AudioStream" uid="uid://clwsn1vg5hjme" path="res://Assets/Sounds/Player/Die/fred_die_2.wav" id="19_bobdx"]
@@ -33,14 +33,14 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d7mgq"]
 size = Vector2(16, 16)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("weapon", "velocity_component", "shrinking_sprite", "oscillating_sprite", "flashing_sprite") groups=["player", "real_player_no_cap"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("weapon", "audio_player_die", "velocity_component", "shrinking_sprite", "oscillating_sprite", "flashing_sprite") groups=["player", "real_player_no_cap"]]
 z_index = 1
 position = Vector2(0, -8)
 collision_layer = 96
 collision_mask = 64
 script = ExtResource("1_sjrlc")
 weapon = NodePath("CrowBar")
-audio_player = NodePath("Audio/Die")
+audio_player_die = NodePath("Audio/Die")
 velocity_component = NodePath("VelocityComponent")
 shrinking_sprite = NodePath("ShrinkingSpriteComponent")
 oscillating_sprite = NodePath("OscillatingSpriteComponent")
