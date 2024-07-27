@@ -77,12 +77,9 @@ layout_mode = 2
 theme = ExtResource("4_0uk3b")
 text = "Home"
 
-[node name="AudioComponent" type="Node2D" parent="." node_paths=PackedStringArray("audio_players")]
+[node name="AudioComponent" type="Node2D" parent="."]
 script = ExtResource("5_nxmrb")
-audio_players = [NodePath("btn_click_1")]
-
-[node name="btn_click_1" type="AudioStreamPlayer2D" parent="AudioComponent"]
-stream = ExtResource("6_p1i36")
+audio_players = Array[AudioStreamWAV]([ExtResource("6_p1i36")])
 
 [connection signal="pressed" from="Panel/VBoxContainer/ResumeButton" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

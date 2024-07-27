@@ -8,11 +8,8 @@
 script = ExtResource("1_353au")
 audio_player = NodePath("AudioComponent")
 
-[node name="AudioComponent" type="Node2D" parent="." node_paths=PackedStringArray("audio_players")]
+[node name="AudioComponent" type="Node2D" parent="."]
 script = ExtResource("2_k8dcp")
-audio_players = [NodePath("coin_drop_1")]
-
-[node name="coin_drop_1" type="AudioStreamPlayer2D" parent="AudioComponent"]
-stream = ExtResource("3_gk21q")
+audio_players = Array[AudioStreamWAV]([ExtResource("3_gk21q")])
 
 [connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]

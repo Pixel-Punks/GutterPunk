@@ -28,18 +28,6 @@ action_name = "get drunk"
 position = Vector2(0, -23)
 shape = SubResource("RectangleShape2D_e4rv3")
 
-[node name="AudioComponent" type="Node2D" parent="." node_paths=PackedStringArray("audio_players")]
+[node name="AudioComponent" type="Node2D" parent="."]
 script = ExtResource("4_iqbit")
-audio_players = [NodePath("bottle_open_1"), NodePath("bottle_open_2"), NodePath("bottle_open_3"), NodePath("bottle_open_4")]
-
-[node name="bottle_open_1" type="AudioStreamPlayer2D" parent="AudioComponent"]
-stream = ExtResource("5_gp6pl")
-
-[node name="bottle_open_2" type="AudioStreamPlayer2D" parent="AudioComponent"]
-stream = ExtResource("6_vph6f")
-
-[node name="bottle_open_3" type="AudioStreamPlayer2D" parent="AudioComponent"]
-stream = ExtResource("7_bqq2t")
-
-[node name="bottle_open_4" type="AudioStreamPlayer2D" parent="AudioComponent"]
-stream = ExtResource("8_y78us")
+audio_players = Array[AudioStreamWAV]([ExtResource("5_gp6pl"), ExtResource("6_vph6f"), ExtResource("7_bqq2t"), ExtResource("8_y78us")])

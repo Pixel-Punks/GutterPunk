@@ -124,11 +124,8 @@ layout_mode = 2
 size_flags_vertical = 4
 theme = SubResource("Theme_6vs04")
 
-[node name="AudioComponent" type="Node2D" parent="." node_paths=PackedStringArray("audio_players")]
+[node name="AudioComponent" type="Node2D" parent="."]
 script = ExtResource("9_q3n5t")
-audio_players = [NodePath("btn_click_1")]
-
-[node name="btn_click_1" type="AudioStreamPlayer2D" parent="AudioComponent"]
-stream = ExtResource("10_pkf6b")
+audio_players = Array[AudioStreamWAV]([ExtResource("10_pkf6b")])
 
 [connection signal="pressed" from="TextureRect/Button" to="." method="_on_button_pressed"]

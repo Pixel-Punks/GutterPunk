@@ -94,64 +94,16 @@ shape = SubResource("CircleShape2D_qlg61")
 
 [node name="Audio" type="Node" parent="." index="11"]
 
-[node name="DetectSfx" parent="Audio" index="0" node_paths=PackedStringArray("audio_players") instance=ExtResource("7_0e6pk")]
-audio_players = [NodePath("hobo_detect_1"), NodePath("hobo_detect_2"), NodePath("hobo_detect_3"), NodePath("hobo_detect_4")]
+[node name="DetectSfx" parent="Audio" index="0" instance=ExtResource("7_0e6pk")]
+audio_players = Array[AudioStreamWAV]([ExtResource("8_7ydl4"), ExtResource("9_jwiop"), ExtResource("10_n7i4y"), ExtResource("11_3svnc")])
 
-[node name="hobo_detect_1" type="AudioStreamPlayer2D" parent="Audio/DetectSfx" index="0"]
-stream = ExtResource("8_7ydl4")
-
-[node name="hobo_detect_2" type="AudioStreamPlayer2D" parent="Audio/DetectSfx" index="1"]
-stream = ExtResource("9_jwiop")
-
-[node name="hobo_detect_3" type="AudioStreamPlayer2D" parent="Audio/DetectSfx" index="2"]
-stream = ExtResource("10_n7i4y")
-
-[node name="hobo_detect_4" type="AudioStreamPlayer2D" parent="Audio/DetectSfx" index="3"]
-stream = ExtResource("11_3svnc")
-
-[node name="IdleSfx" type="Node2D" parent="Audio" index="1" node_paths=PackedStringArray("audio_players")]
+[node name="IdleSfx" type="Node2D" parent="Audio" index="1"]
 script = ExtResource("12_ta3to")
-audio_players = [NodePath("hobo_idle_1"), NodePath("hobo_idle_2"), NodePath("hobo_idle_3")]
+audio_players = Array[AudioStreamWAV]([ExtResource("19_ljacv"), ExtResource("20_xir8p"), ExtResource("21_ne28o"), ExtResource("22_utecx"), ExtResource("23_lls7n")])
 
-[node name="hobo_idle_1" type="AudioStreamPlayer2D" parent="Audio/IdleSfx" index="0"]
-stream = ExtResource("21_ne28o")
-
-[node name="hobo_idle_2" type="AudioStreamPlayer2D" parent="Audio/IdleSfx" index="1"]
-stream = ExtResource("22_utecx")
-
-[node name="hobo_idle_3" type="AudioStreamPlayer2D" parent="Audio/IdleSfx" index="2"]
-stream = ExtResource("23_lls7n")
-
-[node name="cough_1" type="AudioStreamPlayer2D" parent="Audio/IdleSfx" index="3"]
-stream = ExtResource("19_ljacv")
-
-[node name="cough_2" type="AudioStreamPlayer2D" parent="Audio/IdleSfx" index="4"]
-stream = ExtResource("20_xir8p")
-
-[node name="HurtSfx" type="Node2D" parent="Audio" index="2" node_paths=PackedStringArray("audio_players")]
+[node name="HurtSfx" type="Node2D" parent="Audio" index="2"]
 script = ExtResource("12_ta3to")
-audio_players = [NodePath("hurt_1"), NodePath("hurt_2"), NodePath("hurt_3"), NodePath("hurt_4"), NodePath("hurt_5"), NodePath("hurt_6"), NodePath("hurt_7")]
-
-[node name="hurt_1" type="AudioStreamPlayer2D" parent="Audio/HurtSfx" index="0"]
-stream = ExtResource("8_3b6gn")
-
-[node name="hurt_2" type="AudioStreamPlayer2D" parent="Audio/HurtSfx" index="1"]
-stream = ExtResource("9_evvk8")
-
-[node name="hurt_3" type="AudioStreamPlayer2D" parent="Audio/HurtSfx" index="2"]
-stream = ExtResource("10_bvxo5")
-
-[node name="hurt_4" type="AudioStreamPlayer2D" parent="Audio/HurtSfx" index="3"]
-stream = ExtResource("11_88xd0")
-
-[node name="hurt_5" type="AudioStreamPlayer2D" parent="Audio/HurtSfx" index="4"]
-stream = ExtResource("12_nplng")
-
-[node name="hurt_6" type="AudioStreamPlayer2D" parent="Audio/HurtSfx" index="5"]
-stream = ExtResource("13_xiulh")
-
-[node name="hurt_7" type="AudioStreamPlayer2D" parent="Audio/HurtSfx" index="6"]
-stream = ExtResource("14_xknv2")
+audio_players = Array[AudioStreamWAV]([ExtResource("8_3b6gn"), ExtResource("9_evvk8"), ExtResource("10_bvxo5"), ExtResource("11_88xd0"), ExtResource("12_nplng"), ExtResource("13_xiulh"), ExtResource("14_xknv2")])
 
 [connection signal="flicker" from="HealthComponent" to="FlashingSpriteComponent" method="_on_health_component_flicker"]
 [connection signal="flicker" from="HealthComponent" to="Area2D" method="_on_health_component_flicker"]

@@ -26,12 +26,6 @@ action_name = "take a line"
 position = Vector2(0, -4.125)
 shape = SubResource("RectangleShape2D_ssv8g")
 
-[node name="AudioComponent" type="Node2D" parent="." node_paths=PackedStringArray("audio_players")]
+[node name="AudioComponent" type="Node2D" parent="."]
 script = ExtResource("4_j4ywd")
-audio_players = [NodePath("sniff_1"), NodePath("sniff_2")]
-
-[node name="sniff_1" type="AudioStreamPlayer2D" parent="AudioComponent"]
-stream = ExtResource("5_ckymg")
-
-[node name="sniff_2" type="AudioStreamPlayer2D" parent="AudioComponent"]
-stream = ExtResource("6_ig5ur")
+audio_players = Array[AudioStreamWAV]([ExtResource("5_ckymg"), ExtResource("6_ig5ur")])

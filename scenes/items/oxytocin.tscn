@@ -27,15 +27,6 @@ action_name = "swallow "
 position = Vector2(0, -4.125)
 shape = SubResource("RectangleShape2D_it3g7")
 
-[node name="AudioComponent" type="Node2D" parent="." node_paths=PackedStringArray("audio_players")]
+[node name="AudioComponent" type="Node2D" parent="."]
 script = ExtResource("4_gx2pe")
-audio_players = [NodePath("gloup_1"), NodePath("gloup_2"), NodePath("pills_1")]
-
-[node name="gloup_1" type="AudioStreamPlayer2D" parent="AudioComponent"]
-stream = ExtResource("5_lsyjw")
-
-[node name="gloup_2" type="AudioStreamPlayer2D" parent="AudioComponent"]
-stream = ExtResource("6_q8w0n")
-
-[node name="pills_1" type="AudioStreamPlayer2D" parent="AudioComponent"]
-stream = ExtResource("7_l1r0r")
+audio_players = Array[AudioStreamWAV]([ExtResource("5_lsyjw"), ExtResource("6_q8w0n"), ExtResource("7_l1r0r")])

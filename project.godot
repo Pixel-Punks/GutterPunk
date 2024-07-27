@@ -18,9 +18,14 @@ boot_splash/image="res://Assets/Logo/Logo_text.png"
 boot_splash/fullsize=false
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout=""
+
 [autoload]
 
 InteractionManager="*res://scenes/interaction/InteractionManager.tscn"
+AudioStreamManager="*res://scripts/audio/AudioStreamManager.gd"
 
 [display]
 

@@ -43,18 +43,6 @@ shape = SubResource("CircleShape2D_enafy")
 
 [node name="Audio" type="Node" parent="." index="6"]
 
-[node name="HurtSfx" type="Node2D" parent="Audio" index="0" node_paths=PackedStringArray("audio_players")]
+[node name="HurtSfx" type="Node2D" parent="Audio" index="0"]
 script = ExtResource("4_x22kb")
-audio_players = [NodePath("trashcan_1"), NodePath("trashcan_2"), NodePath("trashcan_3"), NodePath("trashcan_4")]
-
-[node name="trashcan_1" type="AudioStreamPlayer2D" parent="Audio/HurtSfx" index="0"]
-stream = ExtResource("5_x6i2a")
-
-[node name="trashcan_2" type="AudioStreamPlayer2D" parent="Audio/HurtSfx" index="1"]
-stream = ExtResource("6_y2msn")
-
-[node name="trashcan_3" type="AudioStreamPlayer2D" parent="Audio/HurtSfx" index="2"]
-stream = ExtResource("7_rsysw")
-
-[node name="trashcan_4" type="AudioStreamPlayer2D" parent="Audio/HurtSfx" index="3"]
-stream = ExtResource("8_ytky6")
+audio_players = Array[AudioStreamWAV]([ExtResource("5_x6i2a"), ExtResource("6_y2msn"), ExtResource("7_rsysw"), ExtResource("8_ytky6")])
