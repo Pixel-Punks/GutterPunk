@@ -35,7 +35,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d7mgq"]
 size = Vector2(16, 16)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("weapon", "audio_player_die", "audio_player_overdose", "audio_player_bac", "velocity_component", "shrinking_sprite", "oscillating_sprite", "flashing_sprite") groups=["player", "real_player_no_cap"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("weapon", "audio_player_die", "audio_player_overdose", "audio_player_bac", "velocity_component", "shrinking_sprite", "oscillating_sprite", "flashing_sprite", "overdose", "bac") groups=["player", "real_player_no_cap"]]
 z_index = 1
 position = Vector2(0, -8)
 collision_layer = 96
@@ -49,6 +49,8 @@ velocity_component = NodePath("VelocityComponent")
 shrinking_sprite = NodePath("ShrinkingSpriteComponent")
 oscillating_sprite = NodePath("OscillatingSpriteComponent")
 flashing_sprite = NodePath("FlashingSpriteComponent")
+overdose = NodePath("OverdoseComponent")
+bac = NodePath("BacComponent")
 speed = 50
 
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("2_5wbem")]
