@@ -1,7 +1,7 @@
 extends Node2D
 
-@export var small_streets : int = -1
-@export var big_streets : int = -1
+@export var small_streets : int = 1
+@export var big_streets : int = 1
 @export var boss_room_height : int = 18
 @export var boss_room_width : int = 18
 var player_character : Player
@@ -34,6 +34,7 @@ func place_boss_room():
 	var scene = load("res://rooms/streets/boss/boss_room.tscn").instantiate()
 	add_child(scene)
 	player_character.position = Vector2(16*5*boss_room_width/2,boss_room_height*15*5)
+	player_character.scale = Vector2(5,5)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):

@@ -13,7 +13,7 @@ func _process(_delta):
 		target.damage(attack)
 
 func _on_health_component_hp_reached_zero():
-	queue_free()
+	get_tree().change_scene_to_file("res://scenes/menues/start_menu.tscn")
 
 func _on_health_component_took_damage(attack):
 	pass

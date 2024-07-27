@@ -46,6 +46,7 @@ shape = SubResource("CircleShape2D_ye7rg")
 sprite = NodePath("../Container/Sprite2D")
 
 [node name="HealthComponent" parent="." index="2" node_paths=PackedStringArray("audio_player")]
+MAX_HEALTH = 10
 audio_player = NodePath("../Audio/HurtSfx")
 
 [node name="PathFindingComponent" parent="." index="3" node_paths=PackedStringArray("enemy", "velocity_component") instance=ExtResource("2_drs2e")]

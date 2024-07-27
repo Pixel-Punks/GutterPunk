@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bslod7vrwm774"]
+[gd_scene load_steps=20 format=3 uid="uid://o77s6qmsi27l"]
 
 [ext_resource type="Script" path="res://scenes/entities/rat_king.gd" id="1_5rwft"]
 [ext_resource type="PackedScene" uid="uid://8gdhopimueak" path="res://scenes/components/shrinking_sprite_component.tscn" id="2_8s8gf"]

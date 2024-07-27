@@ -81,9 +81,6 @@ func _process(_delta):
 func _physics_process(_delta):
 	handle_movement()
 	handle_attack()
-	if Input.is_action_pressed("player_interact"):
-		var new_weapon = load("res://scenes/weapons/pipe.tscn").instantiate()
-		weapon_swap(new_weapon)
 
 func handle_attack():
 	if Input.is_action_pressed("player_attack"):
@@ -125,19 +122,19 @@ func weapon_swap(new_weapon):
 func _on_health_component_hp_reached_zero():
 	if audio_player_die :
 		audio_player_die.play_random()
-	queue_free()
+	get_tree().change_scene_to_file("res://scenes/menues/start_menu.tscn")
 	# TODO GameOver
 
 
 func _on_overdose_component_overdose_reached_max():
 	if audio_player_overdose :
 		audio_player_overdose.play_random()
-	queue_free()
+	get_tree().change_scene_to_file("res://scenes/menues/start_menu.tscn")
 	# TODO GameOver
 
 
 func _on_bac_component_bac_reached_max():
 	if audio_player_bac :
 		audio_player_bac.play_random()
-	queue_free()
+	get_tree().change_scene_to_file("res://scenes/menues/start_menu.tscn")
 	# TODO GameOver
