@@ -2,9 +2,14 @@ extends CharacterBody2D
 
 class_name Player
 
+
 @export var weapon : Node2D
 
 @export var audio_player_die : AudioComponent
+
+@export var audio_player_overdose : AudioComponent
+
+@export var audio_player_bac : AudioComponent
 
 @export var velocity_component : VelocityComponent
 
@@ -46,15 +51,29 @@ class_name Player
 
 @export var money : int = 0
 
+@onready var moneyLabel = $Camera2D/CoinsStatUi/Label
+
+@onready var speedLabel = $Camera2D/SpeedStatUi/Label
+
+@onready var strengthLabel = $Camera2D/ViolenceStatUi/Label
+
 signal pause
 
 func _ready():
 	velocity_component.max_speed = speed + speed_unit * speed_level
 	velocity_component.acceleration = acceleration
 	velocity_component.deceleration = deceleration
+	moneyLabel.text = str(money)
+	speedLabel.text = str(speed)
+	strengthLabel.text = str(strength)
 
 func _input(event):
 	handle_menu(event)
+	
+func _process(_delta):
+	moneyLabel.text = str(money)
+	speedLabel.text = str(speed)
+	strengthLabel.text = str(strength)
 
 func _physics_process(_delta):
 	handle_movement()
@@ -103,5 +122,19 @@ func weapon_swap(new_weapon):
 func _on_health_component_hp_reached_zero():
 	if audio_player_die :
 		audio_player_die.play_random()
+	queue_free()
+	# TODO GameOver
+
+
+func _on_overdose_component_overdose_reached_max():
+	if audio_player_overdose :
+		audio_player_overdose.play_random()
+	queue_free()
+	# TODO GameOver
+
+
+func _on_bac_component_bac_reached_max():
+	if audio_player_bac :
+		audio_player_bac.play_random()
 	queue_free()
 	# TODO GameOver

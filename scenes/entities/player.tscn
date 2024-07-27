@@ -1,9 +1,11 @@
-[gd_scene load_steps=31 format=3 uid="uid://c3e2ieqre2k83"]
+[gd_scene load_steps=33 format=3 uid="uid://c3e2ieqre2k83"]
 
 [ext_resource type="Script" path="res://scripts/entities/player.gd" id="1_sjrlc"]
 [ext_resource type="PackedScene" uid="uid://lthvbl7wgup7" path="res://scenes/components/hitbox_component.tscn" id="2_5wbem"]
 [ext_resource type="PackedScene" uid="uid://swvxckbky45x" path="res://scenes/components/health_component.tscn" id="3_ckffq"]
+[ext_resource type="PackedScene" uid="uid://bbug3t17qrq13" path="res://scenes/components/overdose_component.tscn" id="4_l7uqf"]
 [ext_resource type="Texture2D" uid="uid://b0kgrvl2pd071" path="res://Assets/Sprites/Player/fred.png" id="4_yjnwf"]
+[ext_resource type="PackedScene" uid="uid://ydxvgdssv16x" path="res://scenes/components/bac_component.tscn" id="5_a3r6t"]
 [ext_resource type="PackedScene" uid="uid://c3lv1vx7mqof7" path="res://scenes/weapons/crowbar.tscn" id="5_kxjh0"]
 [ext_resource type="PackedScene" uid="uid://dlcrvyo2qfjxn" path="res://scenes/ui/bars/healthBar/healthbar_ui.tscn" id="6_sg0fs"]
 [ext_resource type="PackedScene" uid="uid://8e1qv67xcb1b" path="res://scenes/components/velocity_component.tscn" id="7_knj8m"]
@@ -15,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://t3du7oxso5e" path="res://scenes/ui/stats/violence/violence_stat_ui.tscn" id="10_hbcqk"]
 [ext_resource type="PackedScene" uid="uid://oqbyes5tx2jp" path="res://scenes/components/flashing_sprite_component.tscn" id="10_l1b6j"]
 [ext_resource type="PackedScene" uid="uid://cmlbay3wqoxww" path="res://scenes/ui/stats/coins/coins_stat_ui.tscn" id="11_32k5y"]
-[ext_resource type="PackedScene" uid="uid://bm3obvhh2cyfr" path="res://scenes/menues/pause_full_menu.tscn" id="11_nq2tj"]
+[ext_resource type="PackedScene" uid="uid://bm3obvhh2cyfr" path="res://scenes/menues/popup_menu.tscn" id="11_nq2tj"]
 [ext_resource type="Script" path="res://scenes/entities/SfxComponent.gd" id="17_b1wxt"]
 [ext_resource type="AudioStream" uid="uid://bhmd7wxu7c0b2" path="res://Assets/Sounds/Player/Die/fred_die_1.wav" id="18_aqhoj"]
 [ext_resource type="AudioStream" uid="uid://clwsn1vg5hjme" path="res://Assets/Sounds/Player/Die/fred_die_2.wav" id="19_bobdx"]
@@ -33,7 +35,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d7mgq"]
 size = Vector2(16, 16)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("weapon", "audio_player_die", "velocity_component", "shrinking_sprite", "oscillating_sprite", "flashing_sprite") groups=["player", "real_player_no_cap"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("weapon", "audio_player_die", "audio_player_overdose", "audio_player_bac", "velocity_component", "shrinking_sprite", "oscillating_sprite", "flashing_sprite") groups=["player", "real_player_no_cap"]]
 z_index = 1
 position = Vector2(0, -8)
 collision_layer = 96
@@ -41,6 +43,8 @@ collision_mask = 64
 script = ExtResource("1_sjrlc")
 weapon = NodePath("CrowBar")
 audio_player_die = NodePath("Audio/Die")
+audio_player_overdose = NodePath("Audio/Overdose")
+audio_player_bac = NodePath("Audio/Die")
 velocity_component = NodePath("VelocityComponent")
 shrinking_sprite = NodePath("ShrinkingSpriteComponent")
 oscillating_sprite = NodePath("OscillatingSpriteComponent")
@@ -57,6 +61,12 @@ shape = SubResource("RectangleShape2D_d7mgq")
 [node name="HealthComponent" parent="." node_paths=PackedStringArray("health_bar", "audio_player") instance=ExtResource("3_ckffq")]
 health_bar = NodePath("../Camera2D/HealthbarUi")
 audio_player = NodePath("../Audio/Hurt")
+
+[node name="OverdoseComponent" parent="." node_paths=PackedStringArray("overdose_bar") instance=ExtResource("4_l7uqf")]
+overdose_bar = NodePath("../Camera2D/HealthbarUi")
+
+[node name="BacComponent" parent="." node_paths=PackedStringArray("bac_bar") instance=ExtResource("5_a3r6t")]
+bac_bar = NodePath("../Camera2D/BacbarUi")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.8, 0.8)
@@ -193,3 +203,5 @@ stream = ExtResource("29_iahop")
 
 [connection signal="hp_reached_zero" from="HealthComponent" to="." method="_on_health_component_hp_reached_zero"]
 [connection signal="took_damage" from="HealthComponent" to="FlashingSpriteComponent" method="_on_health_component_took_damage"]
+[connection signal="overdose_reached_max" from="OverdoseComponent" to="." method="_on_overdose_component_overdose_reached_max"]
+[connection signal="bac_reached_max" from="BacComponent" to="." method="_on_bac_component_bac_reached_max"]
