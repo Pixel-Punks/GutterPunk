@@ -6,8 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://swvxckbky45x" path="res://scenes/components/health_component.tscn" id="4_sy1yc"]
 [ext_resource type="PackedScene" uid="uid://8e1qv67xcb1b" path="res://scenes/components/velocity_component.tscn" id="5_704fb"]
 [ext_resource type="Script" path="res://scripts/state_machines/state_machine.gd" id="6_so7ml"]
-[ext_resource type="Script" path="res://scripts/state_machines/hobo/HoboIdle.gd" id="7_0kaa0"]
-[ext_resource type="Script" path="res://scripts/state_machines/hobo/HoboFollow.gd" id="8_2un52"]
+[ext_resource type="Script" path="res://scripts/state_machines/hobo/HoboIdle.gd" id="7_1nsdt"]
+[ext_resource type="Script" path="res://scripts/state_machines/hobo/HoboFollow.gd" id="8_kwhjv"]
 
 [node name="enemy" type="CharacterBody2D" node_paths=PackedStringArray("velocity_component")]
 script = ExtResource("1_nrgb2")
@@ -17,6 +17,7 @@ velocity_component = NodePath("VelocityComponent")
 collision_layer = 8
 collision_mask = 0
 health_component = NodePath("../HealthComponent")
+max_timeout = 0.0
 
 [node name="FlashingSpriteComponent" parent="." instance=ExtResource("3_x5r8o")]
 
@@ -30,7 +31,7 @@ script = ExtResource("6_so7ml")
 initial_state = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="StateMachine"]
-script = ExtResource("7_0kaa0")
+script = ExtResource("7_1nsdt")
 
 [node name="Follow" type="Node" parent="StateMachine"]
-script = ExtResource("8_2un52")
+script = ExtResource("8_kwhjv")

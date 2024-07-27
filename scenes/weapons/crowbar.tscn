@@ -40,7 +40,7 @@ metadata/_aseprite_wizard_interface_config_ = {
 }
 
 [node name="CrowbarAttack" parent="." instance=ExtResource("4_3nhi2")]
-damage = 10
+damage = 2
 knockback = 2
 attacks_per_seconds = 10.0
 

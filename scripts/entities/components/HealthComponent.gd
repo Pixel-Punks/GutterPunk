@@ -15,6 +15,8 @@ var health : int
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	health = MAX_HEALTH
+	if health_bar:
+		health_bar.update_health(health)
 
 func damage(attack : Attack):
 	health -= attack.damage

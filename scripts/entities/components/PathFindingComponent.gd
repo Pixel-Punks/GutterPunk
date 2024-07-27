@@ -24,7 +24,7 @@ func _ready():
 	%Area2D.add_child(collision_shape)
 
 func _physics_process(_delta):
-	if !player :
+	if !player || nav.target_position == enemy.global_position:
 		return
 	var direction = (nav.get_next_path_position() - global_position).normalized()
 	velocity_component.accelerate_in_direction(direction)
@@ -32,6 +32,9 @@ func _physics_process(_delta):
 func start_following():
 	if player:
 		nav.target_position = player.global_position
+		
+func stop_following():
+	nav.target_position = enemy.global_position
 
 func _on_area_2d_body_entered(body):
 	if body is Player:
