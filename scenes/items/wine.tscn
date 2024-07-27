@@ -13,6 +13,7 @@
 size = Vector2(66, 110)
 
 [node name="Wine" type="Node2D" node_paths=PackedStringArray("audio_player")]
+z_index = 52
 script = ExtResource("1_e616b")
 audio_player = NodePath("AudioComponent")
 

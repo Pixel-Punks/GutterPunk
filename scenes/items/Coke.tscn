@@ -23,6 +23,7 @@ texture = ExtResource("1_vrj1m")
 action_name = "take a line"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+z_index = 111
 position = Vector2(0, -4.125)
 shape = SubResource("RectangleShape2D_ssv8g")
 
