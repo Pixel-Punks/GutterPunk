@@ -118,6 +118,7 @@ collision_mask = 64
 polygon = PackedVector2Array(0, -8, 0, 8, 24, 32, 40, 16, 40, -16, 24, -32)
 
 [node name="Bite" type="Node2D" parent="." node_paths=PackedStringArray("hurtbox", "animated_sprites", "weapon_attack")]
+visible = false
 y_sort_enabled = true
 script = ExtResource("14_lpkhc")
 hurtbox = NodePath("Area2D/CollisionPolygon2D")

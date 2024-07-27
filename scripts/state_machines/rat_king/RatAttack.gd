@@ -43,6 +43,7 @@ func update(_delta):
 		bite.look_at(pathfinding.player.global_position)
 		bite.visible = true
 		bite.attack(1)
+	pathfinding.stop_following()
 	claw_attack = !claw_attack
 
 func attack_end():
