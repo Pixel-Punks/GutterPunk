@@ -6,6 +6,7 @@ class_name Weapon
 @export var animated_sprites : AnimatedSprite2D
 
 @export var weapon_attack : Attack
+@export var audio_player : AudioComponent
 
 var attack_strength : int = 1
 
@@ -47,3 +48,5 @@ func _on_area_2d_area_entered(area):
 		collided_hitboxes.append(area.get_rid())
 		weapon_attack.direction = (area.global_position - get_parent().global_position).normalized()
 		hitbox.damage(weapon_attack)
+		if audio_player :
+			audio_player.play_random()

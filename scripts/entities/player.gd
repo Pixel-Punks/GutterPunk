@@ -4,6 +4,7 @@ class_name Player
 
 @export var weapon : Node2D
 
+@export var audio_player : AudioComponent
 
 @export var velocity_component : VelocityComponent
 
@@ -58,7 +59,7 @@ func _input(event):
 func _physics_process(_delta):
 	handle_movement()
 	handle_attack()
-	if Input.is_action_pressed("interact"):
+	if Input.is_action_pressed("player_interact"):
 		var new_weapon = load("res://scenes/weapons/pipe.tscn").instantiate()
 		weapon_swap(new_weapon)
 
@@ -100,5 +101,7 @@ func weapon_swap(new_weapon):
 
 
 func _on_health_component_hp_reached_zero():
+	if audio_player :
+		audio_player.play_random()
 	queue_free()
 	# TODO GameOver

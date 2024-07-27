@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://c3lv1vx7mqof7"]
+[gd_scene load_steps=8 format=3 uid="uid://c3lv1vx7mqof7"]
 
 [ext_resource type="Script" path="res://scripts/weapons/weapon.gd" id="1_mimof"]
 [ext_resource type="PackedScene" uid="uid://cfaoy8ryqsvvl" path="res://scenes/components/weapon_component.tscn" id="2_72yaw"]
 [ext_resource type="SpriteFrames" uid="uid://dmgog7d7otomv" path="res://Assets/Sprites/Items/Equipment/Weapon/Crowbar/crowbar.aseprite" id="3_pcdtv"]
 [ext_resource type="PackedScene" uid="uid://bngee20wjrduv" path="res://scenes/weapons/crowbar_attack.tscn" id="4_3nhi2"]
+[ext_resource type="Script" path="res://scenes/entities/SfxComponent.gd" id="5_o2fat"]
+[ext_resource type="AudioStream" uid="uid://d1r5rwtwem0jn" path="res://Assets/Sounds/Items/Weapons/Bludgeoning/thump_1.wav" id="6_5kyhw"]
+[ext_resource type="AudioStream" uid="uid://cyn3idlr80i12" path="res://Assets/Sounds/Items/Weapons/Bludgeoning/thump_2.wav" id="7_1dry3"]
 
 [node name="CrowBar" type="Node2D" node_paths=PackedStringArray("weapon")]
 z_index = 1
@@ -11,11 +14,12 @@ y_sort_enabled = true
 script = ExtResource("1_mimof")
 weapon = NodePath("WeaponComponent")
 
-[node name="WeaponComponent" parent="." node_paths=PackedStringArray("hurtbox", "animated_sprites", "weapon_attack") instance=ExtResource("2_72yaw")]
+[node name="WeaponComponent" parent="." node_paths=PackedStringArray("hurtbox", "animated_sprites", "weapon_attack", "audio_player") instance=ExtResource("2_72yaw")]
 position = Vector2(79, 1)
 hurtbox = NodePath("Area2D/CollisionShape2D")
 animated_sprites = NodePath("AttackSprites")
 weapon_attack = NodePath("../CrowbarAttack")
+audio_player = NodePath("../AudioComponent")
 
 [node name="Area2D" type="Area2D" parent="WeaponComponent"]
 collision_layer = 0
@@ -43,5 +47,15 @@ metadata/_aseprite_wizard_interface_config_ = {
 damage = 10
 knockback = 2
 attacks_per_seconds = 10.0
+
+[node name="AudioComponent" type="Node2D" parent="." node_paths=PackedStringArray("audio_players")]
+script = ExtResource("5_o2fat")
+audio_players = [NodePath("thump_1"), NodePath("thump_2")]
+
+[node name="thump_1" type="AudioStreamPlayer2D" parent="AudioComponent"]
+stream = ExtResource("6_5kyhw")
+
+[node name="thump_2" type="AudioStreamPlayer2D" parent="AudioComponent"]
+stream = ExtResource("7_1dry3")
 
 [connection signal="area_entered" from="WeaponComponent/Area2D" to="WeaponComponent" method="_on_area_2d_area_entered"]

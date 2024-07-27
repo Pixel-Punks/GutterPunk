@@ -1,14 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://dtonuaox0hhow"]
+[gd_scene load_steps=10 format=3 uid="uid://dtonuaox0hhow"]
 
 [ext_resource type="Script" path="res://scenes/items/champaign.gd" id="1_a17lg"]
 [ext_resource type="Texture2D" uid="uid://dbfgld8lhhxdi" path="res://Assets/Sprites/Items/Consumable/item_champaign.png" id="1_t32sq"]
 [ext_resource type="PackedScene" uid="uid://cd02131g1167t" path="res://scenes/interaction/interaction_area/InteractionArea.tscn" id="2_8xovr"]
+[ext_resource type="Script" path="res://scenes/entities/SfxComponent.gd" id="4_jxyim"]
+[ext_resource type="AudioStream" uid="uid://bti7yvsbmgpp6" path="res://Assets/Sounds/Items/Alcohol/bottle_open_1.wav" id="5_sba3w"]
+[ext_resource type="AudioStream" uid="uid://dxgw3sppe41kw" path="res://Assets/Sounds/Items/Alcohol/bottle_open_2.wav" id="6_cgxgk"]
+[ext_resource type="AudioStream" uid="uid://cqem0tk0yr2tt" path="res://Assets/Sounds/Items/Alcohol/bottle_open_3.wav" id="7_745xw"]
+[ext_resource type="AudioStream" uid="uid://dxv5oyk6i68bg" path="res://Assets/Sounds/Items/Alcohol/bottle_open_4.wav" id="8_ixnry"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5y3cd"]
 size = Vector2(62, 109)
 
-[node name="Champaign" type="Node2D"]
+[node name="Champaign" type="Node2D" node_paths=PackedStringArray("audio_player")]
 script = ExtResource("1_a17lg")
+audio_player = NodePath("Audio/AudioComponent")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 50
@@ -21,3 +27,21 @@ action_name = "get fancy"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
 position = Vector2(0, -22.5)
 shape = SubResource("RectangleShape2D_5y3cd")
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="AudioComponent" type="Node2D" parent="Audio" node_paths=PackedStringArray("audio_players")]
+script = ExtResource("4_jxyim")
+audio_players = [NodePath("bottle_open_1"), NodePath("bottle_open_2"), NodePath("bottle_open_3"), NodePath("bottle_open_4")]
+
+[node name="bottle_open_1" type="AudioStreamPlayer2D" parent="Audio/AudioComponent"]
+stream = ExtResource("5_sba3w")
+
+[node name="bottle_open_2" type="AudioStreamPlayer2D" parent="Audio/AudioComponent"]
+stream = ExtResource("6_cgxgk")
+
+[node name="bottle_open_3" type="AudioStreamPlayer2D" parent="Audio/AudioComponent"]
+stream = ExtResource("7_745xw")
+
+[node name="bottle_open_4" type="AudioStreamPlayer2D" parent="Audio/AudioComponent"]
+stream = ExtResource("8_ixnry")
