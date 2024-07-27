@@ -24,7 +24,7 @@ func damage(attack : Attack):
 	if audio_player :
 		audio_player.play_random()
 	if health_bar:
-		health_bar.update_health(health)
+		health_bar.update_value(health)
 	await get_tree().create_timer(0.2).timeout
 	if health <= 0:
 		hp_reached_zero.emit()
