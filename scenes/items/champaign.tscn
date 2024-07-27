@@ -13,6 +13,7 @@
 size = Vector2(62, 109)
 
 [node name="Champaign" type="Node2D" node_paths=PackedStringArray("audio_player")]
+z_index = 53
 script = ExtResource("1_a17lg")
 audio_player = NodePath("Audio/AudioComponent")
 
@@ -25,6 +26,7 @@ texture = ExtResource("1_t32sq")
 action_name = "get fancy"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+z_index = 110
 position = Vector2(0, -22.5)
 shape = SubResource("RectangleShape2D_5y3cd")
 
